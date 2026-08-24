@@ -1,0 +1,157 @@
+{
+	// One of THREE per-clone files to edit when cloning the boilerplate:
+	//   1. src/config/site.config.ts → names, brand text, emails (app + scripts)
+	//   2. src/app/(frontend)/styles.css @theme → visual tokens (colours, fonts)
+	//   3. this file → infrastructure (worker/db/bucket names, domains, resource IDs)
+	// You normally do NOT edit this by hand — `pnpm setup:cloudflare` (driven by the
+	// setup-cloudflare skill) provisions the resources and patches the names/ids/account below.
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "presidenthotel",
+	"account_id": "b25596487473fbd5533239ebfa37636e",
+	// account_id is pinned in below "name" by `pnpm setup:cloudflare`; until then it is absent so
+	// wrangler uses your logged-in account (or the CLOUDFLARE_ACCOUNT_ID env var) during provisioning.
+	// Production runtime environment signal (read at request time via process.env).
+	// Used to distinguish staging from production inside the Worker. See env.staging below.
+	"vars": {
+		"APP_ENV": "production",
+	},
+	// Production custom domain. Left commented until the zone's nameservers are delegated and the
+	// domain is owned — uncomment (filling the real apex/www host) and redeploy at launch. Verify no
+	// conflicting manual DNS/route record exists for www before the first custom_domain deploy.
+	// "routes": [
+	// 	{ "pattern": "<domain>", "custom_domain": true },
+	// 	{ "pattern": "www.<domain>", "custom_domain": true },
+	// ],
+	"compatibility_date": "2025-08-15",
+	"compatibility_flags": [
+		// Enable Node.js API
+		// see https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag
+		"nodejs_compat",
+		// Allow to fetch URLs in your app
+		// see https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-fetch-strictly-public
+		"global_fetch_strictly_public",
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS",
+	},
+	"d1_databases": [
+		{
+			"binding": "D1",
+			"database_id": "d97569df-28f6-4dcd-a0c8-f7e39480ef3c",
+			"database_name": "presidenthotel",
+			"remote": true,
+		},
+	],
+	// KV namespace backing CMS-managed redirects (src/middleware.ts reads this; the
+	// redirects collection hooks write to it). The `binding` (KV) is the code-facing
+	// name and stays identical across environments (like the D1/R2 bindings); only the
+	// Cloudflare namespace *title* differs per environment, following the same slug
+	// convention as D1/R2 (production: "<slug>", staging: "<slug>-staging").
+	// `pnpm setup:cloudflare` creates these and pastes the returned ids below.
+	// Local dev emulates this namespace via Miniflare regardless of the id.
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "44dce727acb34ad6b50ae7735d08bf62",
+		},
+	],
+	"services": [
+		// The service should match the "name" of your worker
+		// {
+		//   "binding": "WORKER_SELF_REFERENCE",
+		//   "service": "presidenthotel"
+		// },
+	],
+	"r2_buckets": [
+		{
+			"binding": "R2",
+			"bucket_name": "presidenthotel",
+			"preview_bucket_name": "presidenthotel",
+		},
+		// Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
+		// {
+		//   "binding": "NEXT_INC_CACHE_R2_BUCKET",
+		//   "bucket_name": "<BUCKET_NAME>",
+		// },
+	],
+	"observability": {
+		"enabled": false,
+		"head_sampling_rate": 1,
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"persist": true,
+			"invocation_logs": true,
+		},
+		"traces": {
+			"enabled": true,
+			"persist": true,
+			"head_sampling_rate": 1,
+		},
+	},
+	// Staging environment. Deployed via `CLOUDFLARE_ENV=staging pnpm run deploy` (see deploy:staging).
+	// NOTE: named environments do NOT inherit top-level bindings — d1_databases, r2_buckets,
+	// observability and any other bindings must be repeated here. account_id and main ARE inherited.
+	"env": {
+		"staging": {
+			"name": "presidenthotel-staging",
+			// Runtime environment signal for this Worker.
+			"vars": {
+				"APP_ENV": "staging",
+			},
+			// Staging custom domain — uncomment (filling the real host) and redeploy once the zone is owned.
+			// "routes": [
+			// 	{ "pattern": "staging.<domain>", "custom_domain": true },
+			// ],
+			// Mirrors the (empty) top-level services. Binding-type keys are not inherited by named
+			// environments, so wrangler warns if it's missing. If you add a WORKER_SELF_REFERENCE
+			// service later, set its "service" to this worker's name ("presidenthotel-staging").
+			"services": [],
+			// Separate staging D1 (isolated from production).
+			"d1_databases": [
+				{
+					"binding": "D1",
+					"database_id": "8e9771ef-b5ff-459b-b54f-c551b8b1b8ad",
+					"database_name": "presidenthotel-staging",
+					"remote": true,
+				},
+			],
+			// Separate staging KV for redirects (binding-type keys are not inherited).
+			// Keep the binding KV; the namespace title carries the -staging suffix, exactly
+			// like the staging D1/R2 names ("<slug>-staging").
+			"kv_namespaces": [
+				{
+					"binding": "KV",
+					"id": "acb464fd19ae41a8be5a657b73449916",
+				},
+			],
+			// Separate staging R2 bucket (isolated from production).
+			"r2_buckets": [
+				{
+					"binding": "R2",
+					"bucket_name": "presidenthotel-staging",
+					"preview_bucket_name": "presidenthotel-staging",
+				},
+			],
+			// observability is not inherited into named envs — repeat it.
+			"observability": {
+				"enabled": false,
+				"head_sampling_rate": 1,
+				"logs": {
+					"enabled": true,
+					"head_sampling_rate": 1,
+					"persist": true,
+					"invocation_logs": true,
+				},
+				"traces": {
+					"enabled": true,
+					"persist": true,
+					"head_sampling_rate": 1,
+				},
+			},
+		},
+	},
+
+}

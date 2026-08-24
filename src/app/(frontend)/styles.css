@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/*
+  Brand design tokens.
+
+  These values become Tailwind utilities automatically — e.g. `--color-brand`
+  generates `bg-brand` / `text-brand` / `border-brand`, and `--font-display`
+  generates `font-display`. To reskin the boilerplate for a new client, change
+  the token values here and the whole frontend re-themes consistently.
+
+  Tailwind v4 reads this `@theme` block at build time; there is no
+  tailwind.config.js.
+
+  One of THREE per-clone files to edit (see src/config/site.config.ts):
+    1. src/config/site.config.ts → names, brand text, emails (app + scripts)
+    2. this @theme block         → visual tokens (colours, fonts, spacing)
+    3. wrangler.jsonc            → infrastructure (domains, resource IDs)
+*/
+@theme {
+  /* Colours — replace per client */
+  --color-brand: #1b3a2f; /* deep forest */
+  --color-brand-muted: #2f4d40;
+  --color-accent: #c9a24b; /* warm gold */
+  --color-ink: #14110e; /* near-black text */
+  --color-paper: #faf8f3; /* warm off-white surface */
+
+  /* Typography — wire real brand fonts via next/font, then point these at the
+     resulting CSS variables (e.g. var(--font-canela)). */
+  --font-display: 'Georgia', serif;
+  --font-body: system-ui, sans-serif;
+
+  /* Spacing & shape */
+  --spacing-section: 6rem;
+  --radius-card: 0.75rem;
+}
+
+/* Base layer — minimal, brand-level defaults. Component styling lives in the
+   primitives under src/components/ui. */
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background-color: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+  }
+}
