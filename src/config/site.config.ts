@@ -3,7 +3,7 @@
  *
  * This is ONE of three files to edit when cloning the boilerplate for a new client:
  *   1. src/config/site.config.ts   ← this file (app + scripts: names, brand, emails)
- *   2. src/app/(frontend)/styles.css → @theme block (visual tokens: colours, fonts)
+ *   2. src/app/(frontend)/css/base.css → @theme block (visual tokens: colours, fonts)
  *   3. wrangler.jsonc                → infrastructure (worker/db/bucket names, domains, IDs)
  *
  * Keep it dependency-free (plain constants) so both the Next.js app (imported via the

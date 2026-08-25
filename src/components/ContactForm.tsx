@@ -48,28 +48,28 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <Stack gap={4}>
+      <Stack gap={16}>
         <label>
-          <span className="mb-1 block text-sm font-medium">Name</span>
-          <input className="w-full rounded-card border border-brand/30 px-3 py-2" {...register('name')} />
+          <span className="mb-4 block text-sm font-medium">Name</span>
+          <input className="w-full rounded-card border border-brand/30 px-12 py-8" {...register('name')} />
           {errors.name && <span className="text-sm text-red-700">{errors.name.message}</span>}
         </label>
 
         <label>
-          <span className="mb-1 block text-sm font-medium">Email</span>
+          <span className="mb-4 block text-sm font-medium">Email</span>
           <input
             type="email"
-            className="w-full rounded-card border border-brand/30 px-3 py-2"
+            className="w-full rounded-card border border-brand/30 px-12 py-8"
             {...register('email')}
           />
           {errors.email && <span className="text-sm text-red-700">{errors.email.message}</span>}
         </label>
 
         <label>
-          <span className="mb-1 block text-sm font-medium">Message</span>
+          <span className="mb-4 block text-sm font-medium">Message</span>
           <textarea
             rows={5}
-            className="w-full rounded-card border border-brand/30 px-3 py-2"
+            className="w-full rounded-card border border-brand/30 px-12 py-8"
             {...register('message')}
           />
           {errors.message && <span className="text-sm text-red-700">{errors.message.message}</span>}

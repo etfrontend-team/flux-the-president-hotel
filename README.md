@@ -224,7 +224,7 @@ below) is the whole reskin — nothing else in app code carries brand identifier
 | File | Holds |
 |---|---|
 | [`src/config/site.config.ts`](src/config/site.config.ts) | Slug, domain, brand name, default metadata, email fallbacks, account id, and `indexableHosts` — consumed by app code (`@/config/site.config`) and the ops scripts. `domain` also determines **where the site may be indexed**: every host not in `indexableHosts` is served `X-Robots-Tag: noindex, nofollow`. See [Search-engine indexing](#search-engine-indexing). |
-| [`src/app/(frontend)/styles.css`](src/app/(frontend)/styles.css) | Visual brand tokens in the `@theme` block (colours, fonts, spacing, radius). |
+| [`src/app/(frontend)/css/base.css`](src/app/(frontend)/css/base.css) | Visual brand tokens in the `@theme` block (colours, fonts, spacing, radius). |
 | [`wrangler.jsonc`](wrangler.jsonc) | Infrastructure: worker/D1/R2/KV names, custom domains, `account_id`, and the resource IDs created during setup below. Keep names in sync with `slug`/`domain` in `site.config.ts`. |
 
 Secrets are **never** in these files — they live in `.env` / GitHub org / Cloudflare secrets
@@ -444,7 +444,7 @@ Tailwind v4 uses **CSS-first config** — there is no `tailwind.config.js`. Setu
 | File | Role |
 |---|---|
 | [`postcss.config.mjs`](postcss.config.mjs) | Registers the `@tailwindcss/postcss` plugin |
-| [`src/app/(frontend)/styles.css`](src/app/(frontend)/styles.css) | Imports Tailwind, loads the typography plugin, and defines the brand `@theme` tokens |
+| [`src/app/(frontend)/css/styles.css`](src/app/(frontend)/css/styles.css) | Imports Tailwind, loads the typography plugin, and imports the `base.css` / `layout.css` / `components.css` partials |
 | [`src/components/ui/`](src/components/ui/) | Hand-rolled primitives composed with the `cn()` helper |
 
 **Scoped to the frontend.** Tailwind is imported **only** in the `(frontend)` stylesheet, so it never
@@ -453,7 +453,7 @@ and the Preflight reset) into stylesheets that import it, so the Payload admin U
 untouched. **Do not** add `@import "tailwindcss"` to `(payload)/custom.scss`.
 
 **Design tokens — how to reskin per client.** Brand values live in the `@theme` block in
-[`styles.css`](src/app/(frontend)/styles.css) (colours, fonts, spacing, radii). Each token becomes a
+[`css/base.css`](src/app/(frontend)/css/base.css) (colours, fonts, spacing, radii). Each token becomes a
 utility automatically — `--color-brand` generates `bg-brand` / `text-brand` / `border-brand`,
 `--font-display` generates `font-display`. To re-theme the boilerplate for a new client, change the
 token values in one place and the whole frontend updates consistently. Wire real brand fonts via

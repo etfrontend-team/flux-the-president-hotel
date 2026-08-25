@@ -24,7 +24,7 @@ broken deploys before. Bump coupled packages together and run the gate in docs/U
   See README → "Schema changes (migrations)".
 - **Cloning/renaming touches exactly three files:** `wrangler.jsonc` (infra: names, domains,
   resource IDs, bindings), `src/config/site.config.ts` (slug, domain, brand, emails),
-  `src/app/(frontend)/styles.css` `@theme` (visual tokens). Keep names/domains in sync across them.
+  `src/app/(frontend)/css/base.css` `@theme` (visual tokens). Keep names/domains in sync across them.
   See docs/UPGRADING.md → "Cluster 8" and README → "Cloning for a new client".
 - **Deploy / branch flow:** `main` is the source of truth — branch from `main` and PR into `staging`
   (which auto-deploys staging for review); `staging` → `main` is in-house only, and the production

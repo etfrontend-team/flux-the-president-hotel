@@ -2,16 +2,30 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-type ContainerProps = {
+type ContainerVariant = 'sm' | 'md' | 'lg' | 'xl'
+
+interface ContainerProps {
   as?: React.ElementType
+  variant?: ContainerVariant
   className?: string
   children: React.ReactNode
 }
 
-/**
- * Centres content with a max width and responsive horizontal padding.
- * The standard outer wrapper for page sections.
- */
-export function Container({ as: Tag = 'div', className, children }: ContainerProps) {
-  return <Tag className={cn('mx-auto w-full max-w-6xl px-6 md:px-8', className)}>{children}</Tag>
+const base = 'max-w-full w-full'
+
+const variants: Record<ContainerVariant, string> = {
+  sm: '992:px-24 px-19',
+  md: '1199:px-76 992:px-40 px-24',
+  lg: '1199:px-100 992:px-76 px-24',
+  xl: '1199:px-124 992:px-76 px-24',
+}
+
+/** Full-width wrapper with responsive edge padding (no max-width cap). */
+export function Container({
+  as: Tag = 'div',
+  variant = 'sm',
+  className,
+  children,
+}: ContainerProps) {
+  return <Tag className={cn(base, variants[variant], className)}>{children}</Tag>
 }

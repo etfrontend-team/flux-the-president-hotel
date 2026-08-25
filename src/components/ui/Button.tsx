@@ -2,37 +2,85 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost'
+type ButtonVariant = 'link' | 'outlined' | 'glass'
+type ButtonColor = 'brand' | 'paper' | 'ink'
 
 type ButtonProps = {
   variant?: ButtonVariant
+  color?: ButtonColor
   className?: string
 } & (
   | ({ as?: 'button' } & React.ButtonHTMLAttributes<HTMLButtonElement>)
   | ({ as: 'a' } & React.AnchorHTMLAttributes<HTMLAnchorElement>)
 )
 
-const base =
-  'inline-flex items-center justify-center rounded-card px-5 py-2.5 text-sm font-medium tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50'
-
 const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-brand text-paper hover:bg-brand-muted',
-  secondary: 'border border-brand text-brand hover:bg-brand hover:text-paper',
-  ghost: 'text-brand hover:bg-brand/10',
+  link: 'btn-link',
+  outlined: 'btn-outlined',
+  glass: 'btn-glass',
+}
+
+const variantColors: Record<ButtonVariant, Record<ButtonColor, string>> = {
+  link: {
+    brand: 'btn-link-brand',
+    paper: 'btn-link-paper',
+    ink: 'btn-link-ink',
+  },
+  outlined: {
+    brand: 'btn-outlined-brand',
+    paper: 'btn-outlined-paper',
+    ink: 'btn-outlined-ink',
+  },
+  glass: {
+    brand: 'btn-glass-brand',
+    paper: 'btn-glass-paper',
+    ink: 'btn-glass-ink',
+  },
 }
 
 /**
  * Brand button. Renders a <button> by default, or an <a> when `as="a"` is set
- * (use for links styled as buttons). Variants are driven by the brand tokens.
+ * (use for links styled as buttons). `variant` picks the shape (outlined
+ * border vs. plain underline link), `color` picks which brand token drives
+ * it. Shape/colour classes live in component.css (border-image assets for
+ * the outlined border are per-colour SVGs in /public).
+ *
+ * The label rolls on hover: two stacked copies slide up by half their
+ * combined height, revealing the second — independent of the background
+ * crossfade already handled by the variant classes above.
  */
-export function Button({ variant = 'primary', className, as = 'button', ...props }: ButtonProps) {
-  const classes = cn(base, variants[variant], className)
+export function Button({
+  variant = 'outlined',
+  color = 'brand',
+  className,
+  as = 'button',
+  children,
+  ...props
+}: ButtonProps) {
+  const classes = cn('group', variants[variant], variantColors[variant]?.[color], className)
+
+  const label = (
+    <span className="h-[1.2em] overflow-hidden">
+      <span className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-1/2">
+        <span className="flex h-[1.2em] items-center">{children}</span>
+        <span aria-hidden="true" className="flex h-[1.2em] items-center">
+          {children}
+        </span>
+      </span>
+    </span>
+  )
 
   if (as === 'a') {
-    return <a className={classes} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)} />
+    return (
+      <a className={classes} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
+        {label}
+      </a>
+    )
   }
 
   return (
-    <button className={classes} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)} />
+    <button className={classes} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
+      {label}
+    </button>
   )
 }

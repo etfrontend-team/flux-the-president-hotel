@@ -25,6 +25,10 @@ const nextConfig = {
       {
         pathname: '/api/media/file/**',
       },
+      // Static, code-owned brand assets (logo, hero imagery) — not CMS content.
+      {
+        pathname: '/images/**',
+      },
     ],
   },
   // Packages with Cloudflare Workers (workerd) specific code

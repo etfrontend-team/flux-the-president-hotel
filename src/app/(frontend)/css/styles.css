@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import './base.css';
+@import './layout.css';
+@import './utilities.css';
+@import './component.css';
+
+@theme {
+  /* Colours — from Figma (PRES Website Dev File, node 1:2291) */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-brand: #00313c; /* deep navy */
+  --color-brand-muted: #81938b; /* muted sage */
+  --color-accent: #af9062; /* warm gold */
+  --color-ink: #54555b; /* body text */
+  --color-paper: #fffcf9; /* warm off-white surface */
+  --color-paper-alt: #f7f1ea; /* secondary surface tint (cards, badges) */
+  --color-mist: #f8f9fb; /* announcement-bar background */
+  --color-mint: #d0e2d8; /* pale section-background tint */
+  --color-vignette: #2d0700; /* dark image-overlay gradient stop */
+  --color-placeholder: #d9d9d9; /* unloaded-image tile fill */
+  --color-smoke: #959494; /* glass/ghost field fill, e.g. rgba(149,148,148,*) */
+
+  --spacing: 1px;
+  --radius-card: 5px;
+
+  --font-body: 'roboto', sans-serif;
+  --font-accent: 'futura-pt', sans-serif;
+  --font-display: 'kepler-std', serif;
+
+  /* Line-height — Figma has no named tokens, but these three ratios recur
+     consistently by role (none matches a Tailwind default exactly).
+     Letter-spacing needs no new tokens: every value in the file is exactly
+     5% of its font-size (→ tracking-wider) or 10% (→ tracking-widest) —
+     both already ship as Tailwind defaults. */
+  --leading-display: 1.2; /* h1/h2 headings */
+  --leading-muted: 1.4; /* secondary/opacity-80 copy */
+  --leading-copy: 1.6; /* primary body paragraphs */
+
+  --tracking-5: 0.005em;
+  --tracking-10: 0.01em;
+
+  --container-content: 1320px; /* standard content width (1440 − 60px × 2) */
+  --container-bleed: 1390px; /* wider bleed container (1440 − 25px × 2) */
+  --shadow-image: 0px 1.92px 1.92px 0px rgb(0 0 0 / 0.1);
+
+  --breakpoint-2000: 2000px;
+  --breakpoint-1920: 1921px;
+  --breakpoint-1600: 1601px;
+  --breakpoint-1512: 1513px;
+  --breakpoint-1440: 1441px;
+  --breakpoint-1439: 1440px;
+  --breakpoint-1366: 1367px;
+  --breakpoint-1199: 1200px;
+  --breakpoint-1024: 1025px;
+  --breakpoint-1023: 1024px;
+  --breakpoint-992: 993px;
+  --breakpoint-768: 769px;
+  --breakpoint-767: 768px;
+  --breakpoint-640: 641px;
+  --breakpoint-576: 577px;
+  --breakpoint-425: 426px;
+  --breakpoint-410: 410px;
+  --breakpoint-375: 376px;
+  --breakpoint-325: 325px;
+}
+
+/* Figma's tablet breakpoint sits at 992px, off the default md/lg scale —
+   kept as a named variant so components can match it directly. */
+@custom-variant max-992 (@media (max-width: 992px));

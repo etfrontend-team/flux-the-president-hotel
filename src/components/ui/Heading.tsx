@@ -3,36 +3,55 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
+type HeadingColor = 'brand' | 'paper' | 'ink'
 
-type HeadingProps = {
+interface HeadingProps {
   /** Semantic heading level (h1–h6). */
   level?: HeadingLevel
   /** Visual size, decoupled from semantics. Defaults to match `level`. */
   size?: HeadingLevel
+  color?: HeadingColor
+  uppercase?: boolean
   className?: string
   children: React.ReactNode
 }
 
+const colorMap: Record<HeadingColor, string> = {
+  brand: 'text-brand',
+  paper: 'text-paper',
+  ink: 'text-ink',
+}
+
 const sizeMap: Record<HeadingLevel, string> = {
-  1: 'text-4xl md:text-6xl',
-  2: 'text-3xl md:text-5xl',
-  3: 'text-2xl md:text-4xl',
-  4: 'text-xl md:text-2xl',
-  5: 'text-lg md:text-xl',
-  6: 'text-base md:text-lg',
+  1: 'text-40 992:text-55 leading-display',
+  2: 'text-40 leading-display 992:text-45',
+  3: 'text-30 leading-display 992:text-35',
+  4: 'text-24 leading-display 992:text-25',
+  5: 'text-15 leading-copy 992:text-20',
+  6: 'text-18 leading-28',
 }
 
 /**
- * Display heading using the brand display font. `level` controls the semantic
- * tag (for accessibility/SEO); `size` controls the visual scale independently.
+ * Display heading using the brand display font. `level` controls the
+ * semantic tag (for accessibility/SEO); `size` controls the visual scale
+ * independently.
  */
-export function Heading({ level = 2, size, className, children }: HeadingProps) {
+export function Heading({
+  level = 2,
+  size,
+  color = 'brand',
+  uppercase = true,
+  className,
+  children,
+}: HeadingProps) {
   const Tag = `h${level}` as React.ElementType
   return (
     <Tag
       className={cn(
-        'font-display text-ink font-semibold tracking-tight text-balance',
+        'font-display font-light tracking-5 text-balance',
         sizeMap[size ?? level],
+        colorMap[color],
+        uppercase && 'uppercase',
         className,
       )}
     >

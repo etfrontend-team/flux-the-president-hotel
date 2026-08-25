@@ -1,0 +1,50 @@
+body {
+  @apply font-body bg-white max-992:m-15 m-25 p-0 overflow-x-hidden relative text-16 leading-18 font-normal antialiased;
+  /* Matches Figma's file-wide text settings: lining figures + tabular
+     numerals, and Roboto pinned to its default width axis. */
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+  font-variation-settings: 'wdth' 100;
+}
+
+body::-webkit-scrollbar {
+  @apply w-0;
+}
+
+img {
+  @apply overflow-hidden select-none;
+}
+
+.img-fluid-cover {
+  @apply h-full w-full object-cover;
+}
+  
+.img-fluid-contain {
+  @apply h-full w-full object-contain;
+}
+
+.pre-heading {
+  @apply flex;
+}
+
+.pre-heading span {
+  @apply text-18 text-brand font-accent rotate-[3.92deg] leading-35 tracking-normal;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ul li {
+  @apply leading-24;
+}
+.prose ul li:where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
+  @apply text-brand;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.general-padding {
+  @apply py-100;
+}

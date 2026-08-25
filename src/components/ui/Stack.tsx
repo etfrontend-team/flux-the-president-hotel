@@ -2,12 +2,18 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-type StackProps = {
+type StackDirection = 'row' | 'col' | 'row-reverse' | 'col-reverse'
+
+interface StackProps {
   as?: React.ElementType
   /** Layout direction. Defaults to vertical. */
-  direction?: 'row' | 'col'
-  /** Gap between items, mapped to Tailwind's spacing scale (e.g. 4 → gap-4). */
-  gap?: 2 | 4 | 6 | 8 | 12
+  direction?: StackDirection
+  /** Mobile direction (≤992). Defaults to `direction`. */
+  mobileDirection?: StackDirection
+  /** Desktop gap in px. Defaults to 32. */
+  gap?: number
+  /** Mobile gap in px (≤992). Defaults to 24. */
+  mobileGap?: number
   /** Cross-axis alignment. */
   align?: 'start' | 'center' | 'end' | 'stretch'
   /** Main-axis distribution. */
@@ -16,12 +22,18 @@ type StackProps = {
   children: React.ReactNode
 }
 
-const gapMap: Record<NonNullable<StackProps['gap']>, string> = {
-  2: 'gap-2',
-  4: 'gap-4',
-  6: 'gap-6',
-  8: 'gap-8',
-  12: 'gap-12',
+const directionMap: Record<StackDirection, string> = {
+  col: 'flex-col',
+  row: 'flex-row',
+  'col-reverse': 'flex-col-reverse',
+  'row-reverse': 'flex-row-reverse',
+}
+
+const mobileDirectionMap: Record<StackDirection, string> = {
+  col: 'max-992:flex-col',
+  row: 'max-992:flex-row',
+  'col-reverse': 'max-992:flex-col-reverse',
+  'row-reverse': 'max-992:flex-row-reverse',
 }
 
 const alignMap: Record<NonNullable<StackProps['align']>, string> = {
@@ -45,7 +57,9 @@ const justifyMap: Record<NonNullable<StackProps['justify']>, string> = {
 export function Stack({
   as: Tag = 'div',
   direction = 'col',
-  gap = 4,
+  mobileDirection,
+  gap = 32,
+  mobileGap = 24,
   align,
   justify,
   className,
@@ -53,10 +67,16 @@ export function Stack({
 }: StackProps) {
   return (
     <Tag
+      style={
+        {
+          '--gap': `${gap}px`,
+          '--gap-mobile': `${mobileGap}px`,
+        } as React.CSSProperties
+      }
       className={cn(
-        'flex',
-        direction === 'col' ? 'flex-col' : 'flex-row',
-        gapMap[gap],
+        'flex stack-gap',
+        directionMap[direction],
+        mobileDirection && mobileDirectionMap[mobileDirection],
         align && alignMap[align],
         justify && justifyMap[justify],
         className,

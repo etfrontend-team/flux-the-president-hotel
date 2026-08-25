@@ -1,5 +1,7 @@
 export { Button } from './Button'
 export { Container } from './Container'
 export { Heading } from './Heading'
+export { Lightbox } from './Lightbox'
+export { Parallax } from './Parallax'
 export { Prose } from './Prose'
 export { Stack } from './Stack'
