@@ -23,19 +23,35 @@
 }
 
 .btn-glass {
-  @apply inline-flex items-center justify-center rounded-card border border-solid px-25 py-15 cursor-pointer uppercase font-body font-normal text-13 leading-12 tracking-[1.3px] backdrop-blur-[1px] transition-colors duration-150 ease-out;
+  @apply inline-flex items-center justify-center rounded-card border border-solid border-brand-muted px-25 py-15 cursor-pointer uppercase font-body font-normal text-13 leading-12 tracking-[1.3px] backdrop-blur-[1px] bg-smoke/5 transition-colors duration-150 ease-out;
 }
 
 .btn-glass-brand {
-  @apply bg-brand/10 text-brand border-brand hover:bg-brand hover:text-paper;
+  @apply text-brand hover:bg-brand hover:text-paper hover:border-brand;
 }
 
 .btn-glass-paper {
-  @apply bg-paper/20 text-paper border-paper hover:bg-paper hover:text-brand;
+  @apply border-paper text-paper hover:bg-paper hover:text-brand hover:border-paper;
 }
 
 .btn-glass-ink {
-  @apply bg-ink/10 text-ink border-ink hover:bg-ink hover:text-paper;
+  @apply text-ink hover:bg-ink hover:text-paper hover:border-ink;
+}
+
+.btn-solid {
+  @apply inline-flex items-center justify-center rounded-card border border-solid px-25 py-15 cursor-pointer uppercase font-body font-normal text-13 leading-12 tracking-[1.3px] backdrop-blur-[1px] transition-colors duration-150 ease-out;
+}
+
+.btn-solid-brand {
+  @apply bg-brand text-paper border-brand hover:bg-smoke/5 hover:text-brand hover:border-brand-muted;
+}
+
+.btn-solid-paper {
+  @apply bg-paper text-brand border-paper hover:bg-smoke/5 hover:text-paper hover:border-brand-muted;
+}
+
+.btn-solid-ink {
+  @apply bg-ink text-paper border-ink hover:bg-smoke/5 hover:text-ink hover:border-brand-muted;
 }
 
 .btn-link {

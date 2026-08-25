@@ -2,6 +2,7 @@ import React from 'react'
 import { site } from '@/config/site.config'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { Header } from '@/components/Header'
+import { StickyNav } from '@/components/StickyNav'
 import './css/styles.css'
 
 export const metadata = {
@@ -23,6 +24,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       </head>
       <body>
         <SmoothScroll>
+          <StickyNav />
           <div className="relative">
             <Header />
             <main>{children}</main>

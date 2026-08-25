@@ -1,9 +1,11 @@
 import React from 'react'
 
+import { Stack } from '@/components/ui'
+
 /** Promo strip on the homepage, directly below the hero. */
 export function AnnouncementBar() {
   return (
-    <div className="flex items-center justify-center gap-16 bg-paper-alt py-12">
+    <Stack direction="row" align="center" justify="center" gap={16} className="bg-paper-alt py-12">
       <span className="font-accent text-15 tracking-[0.75px] text-brand uppercase">
         Best rate guarantee
       </span>
@@ -16,6 +18,6 @@ export function AnnouncementBar() {
       >
         Book Now
       </a>
-    </div>
+    </Stack>
   )
 }

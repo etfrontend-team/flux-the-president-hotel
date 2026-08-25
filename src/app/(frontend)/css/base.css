@@ -1,5 +1,5 @@
 body {
-  @apply font-body bg-white max-992:m-15 m-25 p-0 overflow-x-hidden relative text-16 leading-18 font-normal antialiased;
+  @apply font-body bg-paper m-0 p-0 overflow-x-hidden relative text-16 leading-18 font-normal antialiased;
   /* Matches Figma's file-wide text settings: lining figures + tabular
      numerals, and Roboto pinned to its default width axis. */
   font-feature-settings: 'lnum' 1, 'tnum' 1;

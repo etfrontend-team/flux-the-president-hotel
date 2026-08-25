@@ -14,7 +14,7 @@ import { BookingBar } from './BookingBar'
  */
 export function Hero() {
   return (
-    <section className="relative isolate min-h-screen overflow-hidden rounded-card">
+    <section data-hero className="relative isolate min-h-screen overflow-hidden rounded-card m-25">
       <div className="absolute inset-0 overflow-hidden">
         <Image
           src="/images/home-hero.jpg"
@@ -26,8 +26,8 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative z-10 flex min-h-screen flex-col gap-40 px-24 py-32 992:px-60 992:py-40">
-        <div className="my-auto flex flex-col items-start gap-30 text-paper">
+      <Container className="relative z-10 flex min-h-screen flex-col gap-40 p-0 992:p-0">
+        <div className="my-auto flex flex-col items-start gap-30 text-paper 992:px-35">
           <Prose as="span" font="accent" color="paper" className="text-16 font-normal uppercase">
             Cape Town, South Africa
           </Prose>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CalendarIcon, ChevronRightIcon } from '@/components/icons'
-import { Button } from '@/components/ui'
+import { Button, Stack } from '@/components/ui'
 
 import { GuestStepper } from './GuestStepper'
 
@@ -17,7 +17,7 @@ const fieldClasses =
 export function BookingBar() {
   return (
     <div className="rounded-t-none rounded-b-card bg-paper/10 p-15 backdrop-blur-[2.5px]">
-      <div className="flex flex-col gap-12 md:flex-row">
+      <Stack as="div" direction="row" align="center" gap={12} mobileGap={12}>
         <button type="button" className={fieldClasses}>
           <span className="font-body text-12 tracking-[1.2px] text-paper uppercase">
             Room Type
@@ -48,13 +48,13 @@ export function BookingBar() {
         </div>
 
         <Button
-          variant="outlined"
+          variant="solid"
           color="brand"
-          className="h-42 shrink-0 rounded-card px-20 py-0 font-normal text-12 tracking-[1.2px] uppercase md:w-177"
+          className="h-42 shrink-0 rounded-card px-20 py-0 font-normal text-12 tracking-[1.2px] uppercase"
         >
           Check availability
         </Button>
-      </div>
+      </Stack>
     </div>
   )
 }

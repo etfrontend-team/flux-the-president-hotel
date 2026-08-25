@@ -2,7 +2,7 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-type ButtonVariant = 'link' | 'outlined' | 'glass'
+type ButtonVariant = 'link' | 'outlined' | 'glass' | 'solid'
 type ButtonColor = 'brand' | 'paper' | 'ink'
 
 type ButtonProps = {
@@ -18,6 +18,7 @@ const variants: Record<ButtonVariant, string> = {
   link: 'btn-link',
   outlined: 'btn-outlined',
   glass: 'btn-glass',
+  solid: 'btn-solid',
 }
 
 const variantColors: Record<ButtonVariant, Record<ButtonColor, string>> = {
@@ -36,6 +37,11 @@ const variantColors: Record<ButtonVariant, Record<ButtonColor, string>> = {
     paper: 'btn-glass-paper',
     ink: 'btn-glass-ink',
   },
+  solid: {
+    brand: 'btn-solid-brand',
+    paper: 'btn-solid-paper',
+    ink: 'btn-solid-ink',
+  },
 }
 
 /**
@@ -44,6 +50,10 @@ const variantColors: Record<ButtonVariant, Record<ButtonColor, string>> = {
  * border vs. plain underline link), `color` picks which brand token drives
  * it. Shape/colour classes live in component.css (border-image assets for
  * the outlined border are per-colour SVGs in /public).
+ *
+ * `glass` and `solid` are exact mirrors of each other — `glass` starts as a
+ * blurred outline (muted border) and crossfades to a solid fill on hover;
+ * `solid` starts filled and crossfades to that same blurred outline.
  *
  * The label rolls on hover: two stacked copies slide up by half their
  * combined height, revealing the second — independent of the background

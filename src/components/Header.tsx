@@ -16,16 +16,16 @@ const underlineClasses =
  * in from the left, exits to the right) plus the label rolling up to a
  * duplicate copy underneath.
  */
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+export function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a
+    <Link
       href={href}
-      className={`group/link relative inline-block pb-4 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:!opacity-100 ${underlineClasses}`}
+      className={`group/link relative inline-block py-4 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:!opacity-100 ${underlineClasses}`}
     >
       <span className="block overflow-hidden">
-        <span className="flex items-center">{children}</span>
+        {children}
       </span>
-    </a>
+    </Link>
   )
 }
 
@@ -38,9 +38,9 @@ export function Header() {
   return (
     <Container
       as="header"
-      className="absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 px-25 py-32 992:px-35 992:py-17"
+      className="w-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 mx-25 px-25 py-32 992:px-35 992:py-17"
     >
-      <Stack as="nav" direction="row" align="center" gap={25} mobileGap={25} className="flex mt-27 1024:mt-28">
+      <Stack as="nav" direction="row" align="center" gap={25} mobileGap={25} className="mt-27 1024:mt-28">
         <MenuIcon className="h-10 w-20 text-paper" />
         <Stack
           as="ul"
