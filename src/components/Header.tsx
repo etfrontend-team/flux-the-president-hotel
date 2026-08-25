@@ -18,14 +18,12 @@ const underlineClasses =
  */
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a href={href} className={`group/link relative inline-block pb-4 ${underlineClasses}`}>
-      <span className="block h-[1.2em] overflow-hidden">
-        <span className="flex flex-col transition-transform duration-300 ease-out group-hover/link:-translate-y-1/2">
-          <span className="flex h-[1.2em] items-center">{children}</span>
-          <span aria-hidden="true" className="flex h-[1.2em] items-center">
-            {children}
-          </span>
-        </span>
+    <a
+      href={href}
+      className={`group/link relative inline-block pb-4 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:!opacity-100 ${underlineClasses}`}
+    >
+      <span className="block overflow-hidden">
+        <span className="flex items-center">{children}</span>
       </span>
     </a>
   )
@@ -50,7 +48,7 @@ export function Header() {
           align="center"
           gap={25}
           mobileGap={25}
-          className="max-1024:hidden font-body text-14 leading-12 tracking-[1.4px] text-paper uppercase"
+          className="group/navlist max-1024:hidden font-body text-14 leading-12 tracking-[1.4px] text-paper uppercase"
         >
           {navLinks.map((label) => (
             <li key={label}>
