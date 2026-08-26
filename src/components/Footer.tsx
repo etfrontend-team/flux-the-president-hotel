@@ -39,7 +39,7 @@ const socialLinks = [
 
 /** Thin divider matching Figma's "Line 28" — 30%-opacity paper stroke, capped to the content width. */
 function Divider({ className }: { className?: string }) {
-  return <div className={cn('h-px w-full max-w-content bg-paper/30', className)} />
+  return <div className={cn('h-px w-full bg-paper/30', className)} />
 }
 
 /**
@@ -49,7 +49,7 @@ function Divider({ className }: { className?: string }) {
  */
 export function Footer() {
   return (
-    <footer className="relative">
+    <footer data-footer className="relative">
       <div className="relative overflow-hidden rounded-card bg-brand max-992:m-15 max-992:mb-0 m-25 mb-0">
         <Image
           src="/images/footer-illustration.webp"
@@ -75,7 +75,7 @@ export function Footer() {
 
           <Divider className="max-992:my-50 mt-52 mb-50" />
 
-          <div className="flex flex-col items-center gap-50 992:flex-row 992:items-start 992:gap-x-107 992:gap-y-0">
+          <div className="flex flex-col items-center justify-around gap-50 w-full 992:flex-row 992:items-start 992:gap-y-0">
             {navColumns.map((column) => (
               <div
                 key={column.title}
@@ -99,7 +99,7 @@ export function Footer() {
               </div>
             ))}
 
-            <div className="flex flex-col items-center gap-25 text-15 leading-12 tracking-[1.5px] text-paper 992:items-start 992:gap-20">
+            <div className="flex flex-col items-center gap-25 text-15 leading-12 tracking-10 text-paper 992:items-start 992:gap-20">
               <p className="w-full text-center font-normal uppercase 992:w-auto 992:text-left">Contact</p>
               <div className="flex flex-col items-center gap-18 text-14 leading-copy font-light tracking-5 text-white 992:items-start 992:gap-15">
                 <div className="flex items-center gap-15 992:flex-col 992:items-start">
@@ -123,7 +123,7 @@ export function Footer() {
           <Divider className="max-992:mt-50 max-992:mb-30 mt-70 mb-40" />
 
           <div className="flex w-full max-w-content flex-col items-center gap-30 992:flex-row 992:flex-wrap 992:justify-around 992:gap-y-20 992:gap-x-30">
-            <div className="order-3 flex items-center gap-35 text-12 leading-12 tracking-[1.2px] text-paper font-light capitalize 992:order-0">
+            <div className="order-3 flex items-center gap-35 text-12 leading-12 tracking-10 text-paper font-light capitalize 992:order-0">
               <Link href="/privacy-policy" className="hover:opacity-70">
                 Privacy Policy
               </Link>

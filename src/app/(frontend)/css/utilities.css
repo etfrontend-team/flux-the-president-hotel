@@ -32,5 +32,5 @@
 }
 
 .stack-gap {
-  @apply gap-(--gap) max-1023:gap-(--gap-mobile);
+  @apply gap-(--gap) 1024:max-1199:gap-(--gap-tablet) max-1023:gap-(--gap-mobile);
 }

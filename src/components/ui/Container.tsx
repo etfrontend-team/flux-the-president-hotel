@@ -2,7 +2,7 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-type ContainerVariant = 'sm' | 'md' | 'lg' | 'xl'
+type ContainerVariant = 'sm' | 'lg'
 
 interface ContainerProps {
   as?: React.ElementType
@@ -15,9 +15,7 @@ const base = 'max-w-full w-full'
 
 const variants: Record<ContainerVariant, string> = {
   sm: '992:px-24 px-19',
-  md: '1199:px-76 992:px-40 px-24',
-  lg: '1199:px-100 992:px-76 px-24',
-  xl: '1199:px-124 992:px-76 px-24',
+  lg: '992:px-60 px-26',
 }
 
 /** Full-width wrapper with responsive edge padding (no max-width cap). */

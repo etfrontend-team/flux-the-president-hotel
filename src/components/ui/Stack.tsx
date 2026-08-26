@@ -12,6 +12,8 @@ interface StackProps {
   mobileDirection?: StackDirection
   /** Desktop gap in px. Defaults to 32. */
   gap?: number
+  /** Tablet gap in px (1025–1199). Defaults to `gap`. */
+  tabletGap?: number
   /** Mobile gap in px (≤992). Defaults to 24. */
   mobileGap?: number
   /** Cross-axis alignment. */
@@ -31,11 +33,11 @@ const directionMap: Record<StackDirection, string> = {
 }
 
 const mobileDirectionMap: Record<StackDirection, string> = {
-  col: 'max-992:flex-col',
-  row: 'max-992:flex-row',
-  wrap: 'max-992:flex-wrap',
-  'col-reverse': 'max-992:flex-col-reverse',
-  'row-reverse': 'max-992:flex-row-reverse',
+  col: 'max-992:flex-col max-1199:flex-col',
+  row: 'max-992:flex-row max-1199:flex-row',
+  wrap: 'max-992:flex-wrap max-1199:flex-wrap',
+  'col-reverse': 'max-992:flex-col-reverse max-1199:flex-col-reverse',
+  'row-reverse': 'max-992:flex-row-reverse max-1199:flex-row-reverse',
 }
 
 const alignMap: Record<NonNullable<StackProps['align']>, string> = {
@@ -61,6 +63,7 @@ export function Stack({
   direction = 'col',
   mobileDirection,
   gap = 32,
+  tabletGap,
   mobileGap = 24,
   align,
   justify,
@@ -72,6 +75,7 @@ export function Stack({
       style={
         {
           '--gap': `${gap}px`,
+          '--gap-tablet': `${tabletGap ?? gap}px`,
           '--gap-mobile': `${mobileGap}px`,
         } as React.CSSProperties
       }

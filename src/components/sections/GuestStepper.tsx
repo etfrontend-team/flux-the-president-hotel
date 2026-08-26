@@ -17,24 +17,24 @@ export function GuestStepper({ label, color = 'paper' }: GuestStepperProps) {
 
   return (
     <div className="flex h-full w-full items-center justify-between">
-      <span className={`font-body text-12 tracking-[0.6px] uppercase ${colorClass}`}>{label}</span>
-      <div className="flex items-center gap-10">
+      <span className={`font-body text-12 tracking-5 uppercase ${colorClass}`}>{label}</span>
+      <div className="flex items-stretch gap-10">
         <button
           type="button"
           aria-label={`Decrease ${label.toLowerCase()}`}
           onClick={() => setCount((n) => Math.max(0, n - 1))}
-          className={colorClass}
+          className={`${colorClass} h-auto cursor-pointer`}
         >
           <MinusIcon className="h-px w-7" />
         </button>
-        <span className={`font-body text-12 tracking-[0.6px] uppercase ${colorClass}`}>
+        <span className={`font-body text-12 tracking-5 uppercase ${colorClass}`}>
           {count}
         </span>
         <button
           type="button"
           aria-label={`Increase ${label.toLowerCase()}`}
           onClick={() => setCount((n) => n + 1)}
-          className={colorClass}
+          className={`${colorClass} h-auto cursor-pointer`}
         >
           <PlusIcon className="size-7" />
         </button>

@@ -174,7 +174,7 @@ export function MegaMenu() {
             className="flex cursor-pointer items-center gap-9 text-ink max-1024:mt-22 mt-37"
           >
             <CloseIcon className="size-12" />
-            <span className="font-body text-15 leading-12 font-light tracking-[1.5px] uppercase">
+            <span className="font-body text-15 leading-12 font-light tracking-10 uppercase">
               close
             </span>
           </button>
@@ -241,7 +241,7 @@ export function MegaMenu() {
               }`}
               style={{ transitionDelay: contentDelay(contactIndex) }}
             >
-              <p className="font-body text-18 leading-12 font-normal tracking-[1.8px] text-brand uppercase">
+              <p className="font-body text-18 leading-12 font-normal tracking-10 text-brand uppercase">
                 Contact
               </p>
               <div className="flex flex-col gap-20 font-body text-13 leading-muted font-light tracking-5 text-ink">

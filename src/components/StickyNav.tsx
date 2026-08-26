@@ -7,6 +7,7 @@ import { NavLink } from '@/components/Header'
 import { LogoMark, MenuIcon } from '@/components/icons'
 import { useMegaMenu } from '@/components/MegaMenuContext'
 import { Button, Container } from '@/components/ui'
+import { isHeroInView } from '@/lib/utils'
 
 const navLinks = ['Stay', 'Experiences', 'Wellness', 'taste', 'Offers']
 
@@ -18,6 +19,9 @@ const REVEAL_DELAY_MS = 220
  * Figma annotations (node 1:3204): shown with a slight delay after the
  * scroll-up starts, and disabled while a full-viewport hero (data-hero) is
  * still on screen — the transparent overlay Header already covers that case.
+ * Offset below AnnouncementBar (which uses the same hero check, so it's
+ * always present whenever this bar is even eligible to show) so the two
+ * fixed bars stack instead of overlapping.
  */
 export function StickyNav() {
   const [visible, setVisible] = React.useState(false)
@@ -34,17 +38,12 @@ export function StickyNav() {
       }
     }
 
-    function isWithinHero() {
-      const hero = document.querySelector('[data-hero]')
-      return hero !== null && hero.getBoundingClientRect().bottom > 0
-    }
-
     function onScroll() {
       const y = window.scrollY
       const scrollingUp = y < lastY
       lastY = y
 
-      if (y <= 0 || isWithinHero() || !scrollingUp) {
+      if (y <= 0 || isHeroInView() || !scrollingUp) {
         clearRevealTimer()
         setVisible(false)
         return
@@ -68,7 +67,7 @@ export function StickyNav() {
   return (
     <div
       aria-hidden={!visible}
-      className={`fixed inset-x-0 top-0 z-30 h-86 bg-paper/98 shadow-[0.5px_0.5px_0.5px_0px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-out ${
+      className={`fixed inset-x-0 top-99 992:top-43 z-30 h-86 bg-paper/98 shadow-[0.5px_0.5px_0.5px_0px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-out ${
         visible ? 'translate-y-0 pointer-events-auto' : '-translate-y-full pointer-events-none'
       }`}
     >
@@ -77,7 +76,7 @@ export function StickyNav() {
           <button type="button" onClick={toggle} aria-label="Open menu" className="cursor-pointer">
             <MenuIcon className="h-10 w-20 text-brand" />
           </button>
-          <ul className="group/navlist flex items-center gap-25 font-body text-14 leading-12 tracking-[1.4px] text-brand uppercase max-1024:hidden">
+          <ul className="group/navlist flex items-center gap-25 font-body text-14 leading-12 tracking-10 text-brand uppercase max-1024:hidden">
             {navLinks.map((label) => (
               <li key={label}>
                 <NavLink href="#">{label}</NavLink>

@@ -24,3 +24,22 @@ const twMerge = extendTailwindMerge({
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+/**
+ * True while any full-viewport hero section (`[data-hero]`) is still on
+ * screen. Shared by StickyNav and AnnouncementBar so both hide/reposition
+ * consistently while a hero is in view.
+ */
+export function isHeroInView() {
+  const hero = document.querySelector('[data-hero]')
+  return hero !== null && hero.getBoundingClientRect().bottom > 0
+}
+
+/**
+ * Scroll distance (px) past which the overlay BookingBar hands off to the
+ * compact BookingTab — matches the reference site's own threshold
+ * (reschio.com/hotel, measured via its computed `show` class toggle), which
+ * fires almost immediately on scroll rather than waiting for the hero to
+ * clear the viewport.
+ */
+export const BOOKING_TAB_SCROLL_THRESHOLD = 80

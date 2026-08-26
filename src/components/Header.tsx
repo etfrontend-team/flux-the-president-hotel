@@ -11,9 +11,12 @@ import { Button, Container, Stack } from '@/components/ui'
 
 const navLinks = ['Stay', 'Experiences', 'Wellness', 'taste', 'Offers']
 
+/* Transitions `scale` specifically, not `transform` — this Tailwind build compiles
+   scale-x-* to the standalone CSS `scale` property, so `transition-transform` never
+   actually animates it. */
 const underlineClasses =
-  "before:absolute before:inset-x-0 before:bottom-0 before:h-px before:origin-left before:scale-x-0 before:bg-current before:transition-transform before:duration-[735ms] before:ease-[cubic-bezier(0.625,0.05,0,1)] before:content-[''] " +
-  "after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-[735ms] after:ease-[cubic-bezier(0.625,0.05,0,1)] after:content-[''] " +
+  "before:absolute before:inset-x-0 before:bottom-0 before:h-px before:origin-left before:scale-x-0 before:bg-current before:transition-[scale] before:duration-[735ms] before:ease-[cubic-bezier(0.625,0.05,0,1)] before:content-[''] " +
+  "after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-right after:scale-x-0 after:bg-current after:transition-[scale] after:duration-[735ms] after:ease-[cubic-bezier(0.625,0.05,0,1)] after:content-[''] " +
   'hover:before:origin-right hover:before:delay-100 hover:after:origin-left hover:after:scale-x-100 hover:after:delay-100'
 
 export function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -37,9 +40,9 @@ export function Header() {
   return (
     <Container
       as="header"
-      className="w-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 max-992:mx-15 mx-25 max-992:px-25 992:px-35 py-17"
+      className="w-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 max-992:mx-15 mx-25 max-1199:px-25 1199:px-35 py-17"
     >
-      <Stack as="nav" direction="row" align="center" gap={25} mobileGap={25} className="mt-27 1024:mt-28">
+      <Stack as="nav" direction="row" align="center" gap={25} tabletGap={15} mobileGap={25} className="mt-27 1024:mt-28">
         <button type="button" onClick={toggle} aria-label="Open menu" className="cursor-pointer">
           <MenuIcon className="h-10 w-20 text-paper" />
         </button>
@@ -48,8 +51,9 @@ export function Header() {
           direction="row"
           align="center"
           gap={25}
+          tabletGap={10}
           mobileGap={25}
-          className="group/navlist max-1024:hidden font-body text-14 leading-12 tracking-[1.4px] text-paper uppercase"
+          className="group/navlist max-1024:hidden font-body text-14 leading-12 tracking-10 text-paper uppercase"
         >
           {navLinks.map((label) => (
             <li key={label}>

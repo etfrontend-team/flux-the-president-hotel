@@ -58,7 +58,8 @@ const variantColors: Record<ButtonVariant, Record<ButtonColor, string>> = {
  *
  * The label rolls on hover: two stacked copies slide up by half their
  * combined height, revealing the second — independent of the background
- * crossfade already handled by the variant classes above.
+ * crossfade already handled by the variant classes above. Skipped for
+ * `variant="link"`, which already has its own underline hover effect.
  */
 export function Button({
   variant = 'outlined',
@@ -70,16 +71,19 @@ export function Button({
 }: ButtonProps) {
   const classes = cn('group', variants[variant], variantColors[variant]?.[color], className)
 
-  const label = (
-    <span className="h-[1.2em] overflow-hidden">
-      <span className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-1/2">
-        <span className="flex h-[1.2em] items-center">{children}</span>
-        <span aria-hidden="true" className="flex h-[1.2em] items-center">
-          {children}
+  const label =
+    variant === 'link' ? (
+      children
+    ) : (
+      <span className="h-14 overflow-hidden">
+        <span className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-1/2">
+          <span className="flex h-14 items-center">{children}</span>
+          <span aria-hidden="true" className="flex h-14 items-center">
+            {children}
+          </span>
         </span>
       </span>
-    </span>
-  )
+    )
 
   if (as === 'a') {
     return (
