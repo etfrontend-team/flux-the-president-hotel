@@ -1,6 +1,7 @@
 import React from 'react'
 import { site } from '@/config/site.config'
 import { SmoothScroll } from '@/components/SmoothScroll'
+import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { StickyNav } from '@/components/StickyNav'
 import { MegaMenu } from '@/components/MegaMenu'
@@ -33,6 +34,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
               <div className="relative">
                 <Header />
                 <main>{children}</main>
+                <Footer />
               </div>
               <MegaMenu />
             </MegaMenuProvider>

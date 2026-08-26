@@ -37,7 +37,7 @@ export function Header() {
   return (
     <Container
       as="header"
-      className="w-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 max-992:mx-15 mx-25 max-992:px-25 px-35 py-17"
+      className="w-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 max-992:mx-15 mx-25 max-992:px-25 992:px-35 py-17"
     >
       <Stack as="nav" direction="row" align="center" gap={25} mobileGap={25} className="mt-27 1024:mt-28">
         <button type="button" onClick={toggle} aria-label="Open menu" className="cursor-pointer">
@@ -70,7 +70,7 @@ export function Header() {
       <Stack direction="row" align="center" gap={20} mobileGap={15} className="relative 1024:ml-auto max-w-476 mt-17 1024:mt-13">
         {isHomepage && (
           <>
-            <span className="absolute -left-105 text-right w-86 font-body text-14 leading-12 tracking-10 text-paper uppercase sm:inline">
+            <span className="font-body text-14 leading-12 tracking-10 text-paper uppercase sm:inline">
               {mode === 'night' ? 'Night Mode' : 'Day Mode'}
             </span>
             <button
