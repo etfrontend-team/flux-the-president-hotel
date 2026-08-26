@@ -20,6 +20,7 @@
   --color-vignette: #2d0700; /* dark image-overlay gradient stop */
   --color-placeholder: #d9d9d9; /* unloaded-image tile fill */
   --color-smoke: #959494; /* glass/ghost field fill, e.g. rgba(149,148,148,*) */
+  --color-night: #f1ecea; /* homepage body background in night mode (Figma "Home/" night frame, node 1:23068) */
 
   --spacing: 1px;
   --radius-card: 5px;

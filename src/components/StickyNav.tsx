@@ -5,6 +5,7 @@ import React from 'react'
 
 import { NavLink } from '@/components/Header'
 import { LogoMark, MenuIcon } from '@/components/icons'
+import { useMegaMenu } from '@/components/MegaMenuContext'
 import { Button, Container } from '@/components/ui'
 
 const navLinks = ['Stay', 'Experiences', 'Wellness', 'taste', 'Offers']
@@ -20,6 +21,7 @@ const REVEAL_DELAY_MS = 220
  */
 export function StickyNav() {
   const [visible, setVisible] = React.useState(false)
+  const { toggle } = useMegaMenu()
 
   React.useEffect(() => {
     let lastY = window.scrollY
@@ -72,7 +74,9 @@ export function StickyNav() {
     >
       <Container as="nav" className="flex h-full items-center justify-between px-25 992:px-35">
         <div className="flex items-center gap-25">
-          <MenuIcon className="h-10 w-20 text-brand" />
+          <button type="button" onClick={toggle} aria-label="Open menu" className="cursor-pointer">
+            <MenuIcon className="h-10 w-20 text-brand" />
+          </button>
           <ul className="group/navlist flex items-center gap-25 font-body text-14 leading-12 tracking-[1.4px] text-brand uppercase max-1024:hidden">
             {navLinks.map((label) => (
               <li key={label}>

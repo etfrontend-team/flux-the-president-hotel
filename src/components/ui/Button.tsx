@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 import { cn } from '@/lib/utils'
@@ -11,7 +12,7 @@ type ButtonProps = {
   className?: string
 } & (
   | ({ as?: 'button' } & React.ButtonHTMLAttributes<HTMLButtonElement>)
-  | ({ as: 'a' } & React.AnchorHTMLAttributes<HTMLAnchorElement>)
+  | ({ as: 'a' } & React.ComponentProps<typeof Link>)
 )
 
 const variants: Record<ButtonVariant, string> = {
@@ -45,7 +46,7 @@ const variantColors: Record<ButtonVariant, Record<ButtonColor, string>> = {
 }
 
 /**
- * Brand button. Renders a <button> by default, or an <a> when `as="a"` is set
+ * Brand button. Renders a <button> by default, or a Link when `as="a"` is set
  * (use for links styled as buttons). `variant` picks the shape (outlined
  * border vs. plain underline link), `color` picks which brand token drives
  * it. Shape/colour classes live in component.css (border-image assets for
@@ -82,9 +83,9 @@ export function Button({
 
   if (as === 'a') {
     return (
-      <a className={classes} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
+      <Link className={classes} {...(props as React.ComponentProps<typeof Link>)}>
         {label}
-      </a>
+      </Link>
     )
   }
 

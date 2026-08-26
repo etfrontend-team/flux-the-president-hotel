@@ -1,9 +1,15 @@
 body {
-  @apply font-body bg-paper m-0 p-0 overflow-x-hidden relative text-16 leading-18 font-normal antialiased;
+  @apply font-body bg-paper m-0 p-0 overflow-x-hidden relative text-16 leading-18 font-normal antialiased transition-colors duration-500;
   /* Matches Figma's file-wide text settings: lining figures + tabular
      numerals, and Roboto pinned to its default width axis. */
   font-feature-settings: 'lnum' 1, 'tnum' 1;
   font-variation-settings: 'wdth' 100;
+}
+
+/* Homepage-only day/night toggle (Figma node 1:23068) — night swaps the body
+   background to a warm cream; every other section keeps its own colors. */
+body.night {
+  @apply bg-night;
 }
 
 body::-webkit-scrollbar {

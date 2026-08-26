@@ -3,6 +3,9 @@ import { site } from '@/config/site.config'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { Header } from '@/components/Header'
 import { StickyNav } from '@/components/StickyNav'
+import { MegaMenu } from '@/components/MegaMenu'
+import { MegaMenuProvider } from '@/components/MegaMenuContext'
+import { DayNightProvider } from '@/components/DayNightContext'
 import './css/styles.css'
 
 export const metadata = {
@@ -24,11 +27,16 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       </head>
       <body>
         <SmoothScroll>
-          <StickyNav />
-          <div className="relative">
-            <Header />
-            <main>{children}</main>
-          </div>
+          <DayNightProvider>
+            <MegaMenuProvider>
+              <StickyNav />
+              <div className="relative">
+                <Header />
+                <main>{children}</main>
+              </div>
+              <MegaMenu />
+            </MegaMenuProvider>
+          </DayNightProvider>
         </SmoothScroll>
       </body>
     </html>

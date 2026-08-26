@@ -69,3 +69,33 @@
 .btn-link-ink {
   @apply text-ink;
 }
+
+/* Custom scrollbar for the mega menu's scrollable panel — stays invisible
+   until the `.is-scrolling` class is toggled on (while the user is actively
+   wheel-scrolling), then fades back out once scrolling stops. */
+.megamenu-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.megamenu-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.megamenu-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.megamenu-scroll::-webkit-scrollbar-thumb {
+  @apply rounded-full;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.megamenu-scroll.is-scrolling {
+  scrollbar-color: var(--color-brand) transparent;
+}
+
+.megamenu-scroll.is-scrolling::-webkit-scrollbar-thumb {
+  background-color: var(--color-brand);
+}

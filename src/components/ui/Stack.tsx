@@ -2,7 +2,7 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-type StackDirection = 'row' | 'col' | 'row-reverse' | 'col-reverse'
+type StackDirection = 'row' | 'col' | 'row-reverse' | 'col-reverse' | 'wrap'
 
 interface StackProps {
   as?: React.ElementType
@@ -25,6 +25,7 @@ interface StackProps {
 const directionMap: Record<StackDirection, string> = {
   col: 'flex-col',
   row: 'flex-row',
+  wrap: 'flex-wrap',
   'col-reverse': 'flex-col-reverse',
   'row-reverse': 'flex-row-reverse',
 }
@@ -32,6 +33,7 @@ const directionMap: Record<StackDirection, string> = {
 const mobileDirectionMap: Record<StackDirection, string> = {
   col: 'max-992:flex-col',
   row: 'max-992:flex-row',
+  wrap: 'max-992:flex-wrap',
   'col-reverse': 'max-992:flex-col-reverse',
   'row-reverse': 'max-992:flex-row-reverse',
 }
