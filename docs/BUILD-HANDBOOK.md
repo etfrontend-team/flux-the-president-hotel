@@ -588,6 +588,10 @@ Tailwind CSS v4 with CSS-first configuration. There is no `tailwind.config.js`.
 - Override primitive styling with the `className` prop; conflicts resolve correctly via `cn()`.
 - Wrap Payload Lexical rich text in `<Prose>` so headings, lists and links pick up typography styling.
 - Let `prettier-plugin-tailwindcss` sort class names on format.
+- Use `tracking-5` / `tracking-10` for letter-spacing (`--tracking-5: 5%`, `--tracking-10: 10%` in the
+  `@theme` block). Every letter-spacing value in the Figma file is exactly 5% or 10% of that element's
+  own font-size — check `text-N` on the same node and pick the token: `text-12` + 0.6px → `tracking-5`
+  (0.6 / 12 = 5%), `text-12` + 1.2px → `tracking-10` (1.2 / 12 = 10%).
 
 ### Do not
 
@@ -595,6 +599,8 @@ Tailwind CSS v4 with CSS-first configuration. There is no `tailwind.config.js`.
   front-end precisely so its reset never reaches the admin user interface.
 - Do not hard-code brand colours or fonts in components. Use the tokens.
 - Do not re-style from scratch what a primitive already covers.
+- Do not write letter-spacing as an arbitrary value (`tracking-[1.2px]`). Convert it to `tracking-5` or
+  `tracking-10` — see above.
 
 ---
 

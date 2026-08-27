@@ -29,7 +29,26 @@ export function BookingBar({ variant = 'overlay' }: { variant?: BookingBarVarian
       }
     >
       {!isFlow && (
-        <div className='bg-[linear-gradient(to_top,rgba(149,148,148,1)_0%,rgba(149,148,148,0)_100%)] absolute inset-0 backdrop-blur-[5px] -z-1'></div>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-full -z-1">
+          {[
+            { blur: 10, mask: 'linear-gradient(to top, rgba(149,148,148,1) 0%, rgba(149,148,148,1) 25%, transparent 40%)' },
+            { blur: 7, mask: 'linear-gradient(to top, rgba(149,148,148,1) 0%, rgba(149,148,148,1) 45%, transparent 60%)' },
+            { blur: 4, mask: 'linear-gradient(to top, rgba(149,148,148,1) 0%, rgba(149,148,148,1) 65%, transparent 80%)' },
+            { blur: 2, mask: 'linear-gradient(to top, rgba(149,148,148,1) 0%, rgba(149,148,148,1) 85%, transparent 100%)' },
+          ].map(({ blur, mask }) => (
+            <div
+              key={blur}
+              className="absolute inset-0"
+              style={{
+                backdropFilter: `blur(${blur}px)`,
+                WebkitBackdropFilter: `blur(${blur}px)`,
+                maskImage: mask,
+                WebkitMaskImage: mask,
+              }}
+            />
+          ))}
+          <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(149,148,148,1)_0%,rgba(149,148,148,0)_100%)]" />
+        </div>
       )}
       <Stack
         as="div"

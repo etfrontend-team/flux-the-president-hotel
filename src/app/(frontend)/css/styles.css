@@ -41,6 +41,8 @@
   --tracking-5: 5%;
   --tracking-10: 10%;
 
+  --radius-5: 5px;
+
   --container-content: 1320px; /* standard content width (1440 − 60px × 2) */
   --container-bleed: 1390px; /* wider bleed container (1440 − 25px × 2) */
   --shadow-image: 0px 1.92px 1.92px 0px rgb(0 0 0 / 0.1);

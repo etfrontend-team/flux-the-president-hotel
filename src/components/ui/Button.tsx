@@ -75,10 +75,10 @@ export function Button({
     variant === 'link' ? (
       children
     ) : (
-      <span className="h-14 overflow-hidden">
+      <span className="h-20 overflow-hidden">
         <span className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-1/2">
-          <span className="flex h-14 items-center">{children}</span>
-          <span aria-hidden="true" className="flex h-14 items-center">
+          <span className="flex h-20 items-center">{children}</span>
+          <span aria-hidden="true" className="flex h-20 items-center">
             {children}
           </span>
         </span>

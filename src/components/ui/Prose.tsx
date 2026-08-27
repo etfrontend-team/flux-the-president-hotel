@@ -11,6 +11,7 @@ interface ProseProps {
   color?: ProseColor
   font?: ProseFont
   className?: string
+  style?: React.CSSProperties
   children: React.ReactNode | React.ReactNode[]
 }
 
@@ -38,10 +39,13 @@ const fonts: Record<ProseFont, string> = {
  *   import { RichText } from '@payloadcms/richtext-lexical/react'
  *   <Prose><RichText data={post.content} /></Prose>
  */
-export function Prose({ as = 'div', color = 'ink', font = 'body', className, children }: ProseProps) {
+export function Prose({ as = 'div', color = 'ink', font = 'body', className, style, children }: ProseProps) {
   const Tag = as
   return (
-    <Tag className={cn('prose text-15 leading-muted font-light tracking-5', fonts[font], colors[color], className)}>
+    <Tag
+      style={style}
+      className={cn('prose text-15 leading-muted font-light tracking-5', fonts[font], colors[color], className)}
+    >
       {Array.isArray(children) ? (
         children.map((child, i) => <p key={i}>{child}</p>)
       ) : (

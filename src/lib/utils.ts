@@ -36,6 +36,23 @@ export function isHeroInView() {
 }
 
 /**
+ * True while any full-viewport pinned/fixed-scroll section (`[data-pinned-section]`,
+ * e.g. CoreExperience's tabbed scrollytelling block) is currently on screen.
+ * Per Figma annotation: "the nav bar and Best Rates Guaranteed banner should
+ * not be visible on this component, or any similar to it" — so any future
+ * section using the same pinned-scroll pattern just needs this attribute to
+ * get the same treatment, without AnnouncementBar knowing about it by name.
+ */
+export function isPinnedSectionInView() {
+  const sections = document.querySelectorAll('[data-pinned-section]')
+  for (const section of sections) {
+    const rect = section.getBoundingClientRect()
+    if (rect.top < window.innerHeight && rect.bottom > 0) return true
+  }
+  return false
+}
+
+/**
  * Scroll distance (px) past which the overlay BookingBar hands off to the
  * compact BookingTab — matches the reference site's own threshold
  * (reschio.com/hotel, measured via its computed `show` class toggle), which

@@ -13,6 +13,7 @@ interface HeadingProps {
   color?: HeadingColor
   uppercase?: boolean
   className?: string
+  style?: React.CSSProperties
   children: React.ReactNode
 }
 
@@ -42,11 +43,13 @@ export function Heading({
   color = 'brand',
   uppercase = true,
   className,
+  style,
   children,
 }: HeadingProps) {
   const Tag = `h${level}` as React.ElementType
   return (
     <Tag
+      style={style}
       className={cn(
         'font-display font-light tracking-5 text-balance',
         sizeMap[size ?? level],
