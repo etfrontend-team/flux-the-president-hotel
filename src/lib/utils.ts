@@ -52,6 +52,17 @@ export function isPinnedSectionInView() {
   return false
 }
 
+const VIDEO_EXTENSION_PATTERN = /\.(mp4|webm|mov|m4v)$/i
+
+/**
+ * A section's `media` field may point to either a still image or a
+ * background video — detected by file extension. Shared by CoreExperience
+ * and any other section with the same video-or-image background pattern.
+ */
+export function isVideoSrc(src: string) {
+  return VIDEO_EXTENSION_PATTERN.test(src)
+}
+
 /**
  * Scroll distance (px) past which the overlay BookingBar hands off to the
  * compact BookingTab — matches the reference site's own threshold

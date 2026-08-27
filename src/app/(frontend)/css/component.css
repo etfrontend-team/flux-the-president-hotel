@@ -1,25 +1,17 @@
 .btn-outlined {
-  @apply inline-flex items-center justify-center px-15 992:px-20 pt-10 pb-9 cursor-pointer uppercase font-normal font-display text-14 leading-19 transition-colors duration-300;
-  border-style: solid;
-  border-width: 1px;
-  border-image-slice: 1;
-  border-image-width: 1px;
-  border-image-repeat: stretch;
+  @apply inline-flex items-center justify-center px-25 rounded-card border border-solid 992:px-20 py-9 cursor-pointer uppercase font-normal font-body text-14 leading-19 transition-colors duration-300;
 }
 
 .btn-outlined-brand {
-  @apply text-brand hover:bg-brand hover:text-paper;
-  border-image-source: url('/btn.svg');
+  @apply border-brand text-brand hover:bg-brand hover:text-paper;
 }
 
 .btn-outlined-paper {
-  @apply text-paper hover:bg-paper hover:text-brand;
-  border-image-source: url('/btn-white.svg');
+  @apply border-paper text-paper hover:bg-paper hover:text-brand;
 }
 
 .btn-outlined-ink {
-  @apply text-ink hover:bg-ink hover:text-paper;
-  border-image-source: url('/btn-ink.svg');
+  @apply border-ink text-ink hover:bg-ink hover:text-paper;
 }
 
 .btn-glass {

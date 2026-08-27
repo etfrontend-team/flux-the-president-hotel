@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 
 import { Button, Heading, Prose } from '@/components/ui'
-import { cn } from '@/lib/utils'
+import { cn, isVideoSrc } from '@/lib/utils'
 
 type ExperienceTab = {
   key: string
@@ -18,12 +18,6 @@ type ExperienceTab = {
   alt: string
   buttonLabel: string
   href: string
-}
-
-const VIDEO_EXTENSION_PATTERN = /\.(mp4|webm|mov|m4v)$/i
-
-function isVideoSrc(src: string) {
-  return VIDEO_EXTENSION_PATTERN.test(src)
 }
 
 const tabs: ExperienceTab[] = [
