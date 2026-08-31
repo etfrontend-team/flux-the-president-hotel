@@ -19,7 +19,7 @@ const base = 'max-w-full w-full'
 
 const variants: Record<ContainerVariant, string> = {
   sm: '992:px-26 px-15',
-  lg: '992:px-60 px-26',
+  lg: '1024:px-60 px-15',
 }
 
 /**

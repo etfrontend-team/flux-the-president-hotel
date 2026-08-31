@@ -1,6 +1,7 @@
 import { AnnouncementBar } from '@/components/sections/AnnouncementBar'
 import { Hero } from '@/components/sections/Hero'
 import { MoreThanAView } from '@/components/sections/MoreThanAView'
+import { StayShowcase } from '@/components/sections/StayShowcase'
 import { Testimonial } from '@/components/sections/Testimonial'
 import { BookYourStay } from '@/components/sections/BookYourStay'
 import { Subscribe } from '@/components/sections/Subscribe'
@@ -19,6 +20,7 @@ export default function StayPage() {
         description="A boutique hotel on the edge of the sea — steps from the V&A Waterfront, with views that hold."
       />
       <AnnouncementBar />
+      <StayShowcase />
       <MoreThanAView />
       <Testimonial />
       <BookYourStay />
