@@ -34,8 +34,8 @@ const images: Record<ImageKey, { src: string; alt: string }> = {
  * presidenthotel.co.za). Only 3 distinct photos exist so far, so they
  * repeat in a cycle across the 9 links.
  */
-const primaryLinks: { label: string; image: ImageKey }[] = [
-  { label: 'Stay', image: 'stay' },
+const primaryLinks: { label: string; image: ImageKey; href?: string }[] = [
+  { label: 'Stay', image: 'stay', href: '/stay' },
   { label: 'Experiences', image: 'taste' },
   { label: 'Wellness', image: 'wellness' },
   { label: 'taste', image: 'stay' },
@@ -146,7 +146,7 @@ export function MegaMenu() {
   return (
     <div
       aria-hidden={!isOpen}
-      className={`fixed inset-0 z-40 bg-paper transition-[clip-path] duration-500 ease-in-out ${
+      className={`fixed inset-0 z-40 bg-paper transition-[clip-path] duration-700 ease-in-out ${
         panelOpen
           ? 'pointer-events-auto [clip-path:inset(0_0%_0_0)]'
           : 'pointer-events-none [clip-path:inset(0_100%_0_0)]'
@@ -181,6 +181,7 @@ export function MegaMenu() {
 
           <Link
             href="/"
+            onClick={close}
             aria-label="The President Hotel, Cape Town"
             className="block relative max-1024:!absolute max-1024:left-1/2 max-1024:top-0 max-1024:-translate-x-1/2 h-137 w-115"
           >
@@ -190,6 +191,7 @@ export function MegaMenu() {
           <Button
             as="a"
             href="#"
+            onClick={close}
             variant="glass"
             color="paper"
             className="max-1024:!hidden mt-13"
@@ -215,7 +217,7 @@ export function MegaMenu() {
                     }`}
                     style={{ transitionDelay: contentDelay(index) }}
                   >
-                    <NavLink href="#">{item.label}</NavLink>
+                    <NavLink href={item.href ?? '#'} onClick={close}>{item.label}</NavLink>
                   </li>
                 ))}
               </ul>
@@ -229,7 +231,7 @@ export function MegaMenu() {
                     }`}
                     style={{ transitionDelay: contentDelay(utilityStartIndex + index) }}
                   >
-                    <NavLink href="#">{label}</NavLink>
+                    <NavLink href="#" onClick={close}>{label}</NavLink>
                   </li>
                 ))}
               </ul>
@@ -245,10 +247,10 @@ export function MegaMenu() {
                 Contact
               </p>
               <div className="flex flex-col gap-20 font-body text-13 leading-muted font-light tracking-5 text-ink">
-                <Link href="tel:+27214348111" className="hover:opacity-70">
+                <Link href="tel:+27214348111" onClick={close} className="hover:opacity-70">
                   +27 21 434 8111
                 </Link>
-                <Link href="mailto:reservations@thepresident.co.za" className="hover:opacity-70">
+                <Link href="mailto:reservations@thepresident.co.za" onClick={close} className="hover:opacity-70">
                   reservations@thepresident.co.za
                 </Link>
                 <p className="max-w-213">Sea Point Promenade, Cape Town</p>
@@ -262,7 +264,7 @@ export function MegaMenu() {
               style={{ transitionDelay: contentDelay(socialsIndex) }}
             >
               {socialLinks.map(({ label, Icon }) => (
-                <Link key={label} href="#" aria-label={label} className="hover:opacity-70">
+                <Link key={label} href="#" onClick={close} aria-label={label} className="hover:opacity-70">
                   <Icon className="size-13" />
                 </Link>
               ))}
@@ -271,6 +273,7 @@ export function MegaMenu() {
             <Button
               as="a"
               href="#"
+              onClick={close}
               variant="solid"
               color="brand"
               className={`w-full 1024:!hidden transition-[opacity,transform] duration-400 ease-out ${

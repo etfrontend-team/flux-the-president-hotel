@@ -24,7 +24,7 @@ export function BookingBar({ variant = 'overlay' }: { variant?: BookingBarVarian
     <div
       className={
         isFlow
-          ? 'relative w-full bg-paper px-25 py-30'
+          ? 'relative w-full bg-paper px-25 pt-40 max-992:pb-25 pb-15'
           : 'absolute bottom-0 left-0 w-full pt-58 pb-35 max-1366:px-25 1366:px-35'
       }
     >

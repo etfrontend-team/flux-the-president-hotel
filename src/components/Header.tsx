@@ -5,24 +5,40 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 
 import { useDayNight } from '@/components/DayNightContext'
-import { LogoMark, MenuIcon } from '@/components/icons'
+import { LogoMark, LogoSticky, MenuIcon } from '@/components/icons'
 import { useMegaMenu } from '@/components/MegaMenuContext'
 import { Button, Container, Stack } from '@/components/ui'
+import { isHeroInView } from '@/lib/utils'
 
-const navLinks = ['Stay', 'Experiences', 'Wellness', 'taste', 'Offers']
+const navLinks: { label: string; href?: string }[] = [
+  { label: 'Stay', href: '/stay' },
+  { label: 'Experiences', href: '/experiences' },
+  { label: 'Wellness', href: 'wellness' },
+  { label: 'taste', href: 'taste' },
+  { label: 'Offers', href: 'offers' },
+]
 
-/* Transitions `scale` specifically, not `transform` — this Tailwind build compiles
-   scale-x-* to the standalone CSS `scale` property, so `transition-transform` never
-   actually animates it. */
+/** Delay before the sticky bar commits to appearing once the user starts scrolling up. */
+const STICKY_REVEAL_DELAY_MS = 220
+
 const underlineClasses =
   "before:absolute before:inset-x-0 before:bottom-0 before:h-px before:origin-left before:scale-x-0 before:bg-current before:transition-[scale] before:duration-[735ms] before:ease-[cubic-bezier(0.625,0.05,0,1)] before:content-[''] " +
   "after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-right after:scale-x-0 after:bg-current after:transition-[scale] after:duration-[735ms] after:ease-[cubic-bezier(0.625,0.05,0,1)] after:content-[''] " +
   'hover:before:origin-right hover:before:delay-100 hover:after:origin-left hover:after:scale-x-100 hover:after:delay-100'
 
-export function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+export function NavLink({
+  href,
+  children,
+  onClick,
+}: {
+  href: string
+  children: React.ReactNode
+  onClick?: () => void
+}) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={`group/link relative inline-block py-4 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:!opacity-100 ${underlineClasses}`}
     >
       <span className="block">
@@ -36,8 +52,47 @@ export function Header() {
   const { toggle } = useMegaMenu()
   const { mode, toggle: toggleDayNight } = useDayNight()
   const isHomepage = usePathname() === '/'
+  const [stickyVisible, setStickyVisible] = React.useState(false)
+
+  React.useEffect(() => {
+    let lastY = window.scrollY
+    let revealTimer: ReturnType<typeof setTimeout> | undefined
+
+    function clearRevealTimer() {
+      if (revealTimer) {
+        clearTimeout(revealTimer)
+        revealTimer = undefined
+      }
+    }
+
+    function onScroll() {
+      const y = window.scrollY
+      const scrollingUp = y < lastY
+      lastY = y
+
+      if (y <= 0 || isHeroInView() || !scrollingUp) {
+        clearRevealTimer()
+        setStickyVisible(false)
+        return
+      }
+
+      if (!revealTimer) {
+        revealTimer = setTimeout(() => {
+          setStickyVisible(true)
+          revealTimer = undefined
+        }, STICKY_REVEAL_DELAY_MS)
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      clearRevealTimer()
+    }
+  }, [])
 
   return (
+    <>
     <Container
       as="header"
       className="w-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 max-992:mx-15 mx-25 max-1199:px-25 1199:px-35 py-17"
@@ -55,9 +110,9 @@ export function Header() {
           mobileGap={25}
           className="group/navlist max-1024:hidden font-body text-14 leading-12 tracking-10 text-paper uppercase"
         >
-          {navLinks.map((label) => (
+          {navLinks.map(({ label, href }) => (
             <li key={label}>
-              <NavLink href="#">{label}</NavLink>
+              <NavLink href={href ?? '#'}>{label}</NavLink>
             </li>
           ))}
         </Stack>
@@ -98,5 +153,36 @@ export function Header() {
         </Button>
       </Stack>
     </Container>
+
+    <div
+      aria-hidden={!stickyVisible}
+      className={`fixed inset-x-0 top-0 992:top-0 z-30 h-86 bg-paper/98 shadow-[0.5px_0.5px_0.5px_0px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-out ${
+        stickyVisible ? 'translate-y-0 pointer-events-auto' : '-translate-y-full pointer-events-none'
+      }`}
+    >
+      <Container as="nav" className="flex h-full items-center justify-between px-25 992:px-35">
+        <div className="flex items-center gap-25">
+          <button type="button" onClick={toggle} aria-label="Open menu" className="cursor-pointer">
+            <MenuIcon className="h-10 w-20 text-brand" />
+          </button>
+          <ul className="group/navlist flex items-center gap-25 font-body text-14 leading-12 tracking-10 text-brand uppercase max-1024:hidden">
+            {navLinks.map(({ label, href }) => (
+              <li key={label}>
+                <NavLink href={href ?? '#'}>{label}</NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <Link href="/" aria-label="The President Hotel, Cape Town" className="block h-62 w-115 absolute left-1/2 -translate-x-1/2">
+          <LogoSticky className="h-full w-full text-brand" />
+        </Link>
+
+        <Button variant="solid" color="brand" className="max-1024:!hidden">
+          Book Your Stay
+        </Button>
+      </Container>
+    </div>
+    </>
   )
 }

@@ -25,19 +25,19 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/axz1hdw.css" />
       </head>
-      <body>
-        <SmoothScroll>
-          <DayNightProvider>
-            <MegaMenuProvider>
+      <body suppressHydrationWarning>
+        <MegaMenuProvider>
+          <SmoothScroll>
+            <DayNightProvider>
               <div className="relative">
                 <Header />
                 <main>{children}</main>
                 <Footer />
               </div>
-              <MegaMenu />
-            </MegaMenuProvider>
-          </DayNightProvider>
-        </SmoothScroll>
+            </DayNightProvider>
+          </SmoothScroll>
+          <MegaMenu />
+        </MegaMenuProvider>
       </body>
     </html>
   )

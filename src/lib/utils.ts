@@ -27,8 +27,8 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * True while any full-viewport hero section (`[data-hero]`) is still on
- * screen. Shared by StickyNav and AnnouncementBar so both hide/reposition
- * consistently while a hero is in view.
+ * screen. Shared by Header's sticky reveal bar and AnnouncementBar so both
+ * hide/reposition consistently while a hero is in view.
  */
 export function isHeroInView() {
   const hero = document.querySelector('[data-hero]')
@@ -64,10 +64,14 @@ export function isVideoSrc(src: string) {
 }
 
 /**
- * Scroll distance (px) past which the overlay BookingBar hands off to the
- * compact BookingTab — matches the reference site's own threshold
- * (reschio.com/hotel, measured via its computed `show` class toggle), which
- * fires almost immediately on scroll rather than waiting for the hero to
- * clear the viewport.
+ * True once the hero (`[data-hero]`) has scrolled up until only the given
+ * fraction of its own height (default 10%) remains visible above the fold.
+ * Shared by BookingBarOverlay (fades out at this point) and BookingTab
+ * (hands off at the same point on desktop) so they switch in sync.
  */
-export const BOOKING_TAB_SCROLL_THRESHOLD = 80
+export function isHeroMostlyScrolledPast(visibleFraction = 0.5) {
+  const hero = document.querySelector('[data-hero]')
+  if (!hero) return false
+  const rect = hero.getBoundingClientRect()
+  return rect.bottom <= rect.height * visibleFraction
+}

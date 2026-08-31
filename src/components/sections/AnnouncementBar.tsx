@@ -13,7 +13,7 @@ import { isPinnedSectionInView } from '@/lib/utils'
  * that its native position would leave the top of the viewport, it sticks
  * there natively — no JS needed to detect that. On top of that, a
  * translate-based show/hide driven by scroll direction (same mechanism as
- * StickyNav, inverted): hidden while scrolling up, visible while scrolling
+ * Header's sticky reveal bar, inverted): hidden while scrolling up, visible while scrolling
  * down — but only once actually stuck. A sticky element behaves like a
  * normal block until it engages, so applying the hide transform beforehand
  * would shift it out of its own in-flow position and overlap the Hero above

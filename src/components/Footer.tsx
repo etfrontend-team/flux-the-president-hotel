@@ -27,6 +27,14 @@ const navColumns: { title: string; links: string[] }[] = [
   { title: 'The Hotel', links: ['About Us', 'Careers', 'Sustainability', 'FAQs', 'Gallery', 'Loyalty'] },
 ]
 
+const partnerLogos = [
+  { src: '/images/logo-preferred-pride.webp', alt: 'Preferred Pride', className: 'h-30 w-auto 992:h-49' },
+  { src: '/images/logo-preferred-hotels.svg', alt: 'Preferred Hotels & Resorts', className: 'h-21 w-auto 992:h-34' },
+  { src: '/images/logo-i-prefer.svg', alt: 'I Prefer Hotel Rewards', className: 'h-20 w-auto 992:h-33' },
+  { src: '/images/logo-green-key.png', alt: 'Green Key certified', className: 'h-25 w-auto 992:h-42' },
+  { src: '/images/logo-stay-green.webp', alt: 'Stay Green at The President', className: 'h-35 w-auto 992:h-59' },
+]
+
 const socialLinks = [
   { label: 'Facebook', Icon: FacebookIcon },
   { label: 'TikTok', Icon: TikTokIcon },
@@ -132,25 +140,10 @@ export function Footer() {
               </Link>
             </div>
 
-            <div className="order-1 flex flex-wrap items-center justify-center gap-x-25 gap-y-15 992:order-0">
-              <img
-                src="/images/logo-preferred-hotels.svg"
-                alt="Preferred Hotels & Resorts"
-                className="h-21 w-auto 992:h-34"
-              />
-              <img
-                src="/images/logo-i-prefer.svg"
-                alt="I Prefer Hotel Rewards"
-                className="h-20 w-auto 992:h-33" />
-              <img
-                src="/images/logo-green-key.png"
-                alt="Green Key certified"
-                className="h-25 w-auto 992:h-42" />
-              <img
-                src="/images/logo-stay-green.webp"
-                alt="Stay Green at The President"
-                className="h-35 w-auto 992:h-59"
-              />
+            <div className="order-1 flex flex-wrap items-center justify-center gap-x-25 1199:gap-x-40 gap-y-15 992:order-0">
+              {partnerLogos.map(({ src, alt, className }) => (
+                <img key={src} src={src} alt={alt} className={className} />
+              ))}
             </div>
 
             <div className="order-2 flex items-center gap-16 992:order-0">

@@ -2,22 +2,22 @@
 
 import React from 'react'
 
-import { BOOKING_TAB_SCROLL_THRESHOLD } from '@/lib/utils'
+import { isHeroMostlyScrolledPast } from '@/lib/utils'
 
 import { BookingBar } from './BookingBar'
 
 /**
- * Fades out the desktop overlay BookingBar once the page scrolls past
- * BOOKING_TAB_SCROLL_THRESHOLD, handing off to BookingTab — matches the
- * reference site (reschio.com/hotel), which hides its own full bar the same
- * way rather than letting it just scroll out of view naturally.
+ * Fades out the desktop overlay BookingBar once the hero has scrolled up to
+ * where only 10% of it remains visible, handing off to BookingTab — matches
+ * the reference site (reschio.com/hotel), which hides its own full bar the
+ * same way rather than letting it just scroll out of view naturally.
  */
 export function BookingBarOverlay() {
   const [pastThreshold, setPastThreshold] = React.useState(false)
 
   React.useEffect(() => {
     function onScroll() {
-      setPastThreshold(window.scrollY > BOOKING_TAB_SCROLL_THRESHOLD)
+      setPastThreshold(isHeroMostlyScrolledPast())
     }
 
     onScroll()

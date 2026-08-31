@@ -11,7 +11,7 @@ type MegaMenuContextValue = {
 
 const MegaMenuContext = React.createContext<MegaMenuContextValue | null>(null)
 
-/** Shared open/close state for the mega menu, since both Header and StickyNav trigger it. */
+/** Shared open/close state for the mega menu, since both of Header's nav bars (the transparent overlay and the sticky reveal) trigger it. */
 export function MegaMenuProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState(false)
 
