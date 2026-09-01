@@ -162,7 +162,7 @@ export function Header() {
       }`}
     >
       <Container as="nav" className="flex h-full items-center justify-between px-25 992:px-35">
-        <div className="flex items-center gap-25">
+        <Stack direction="row" align="center" gap={25} tabletGap={25} mobileGap={25}>
           <button type="button" onClick={toggle} aria-label="Open menu" className="cursor-pointer">
             <MenuIcon className="h-10 w-20 text-brand" />
           </button>
@@ -173,7 +173,7 @@ export function Header() {
               </li>
             ))}
           </ul>
-        </div>
+        </Stack>
 
         <Link href="/" aria-label="The President Hotel, Cape Town" className="block h-62 w-115 absolute left-1/2 -translate-x-1/2">
           <LogoSticky className="h-full w-full text-brand" />

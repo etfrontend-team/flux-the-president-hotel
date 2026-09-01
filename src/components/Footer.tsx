@@ -11,7 +11,7 @@ import {
   XIcon,
   YouTubeIcon,
 } from '@/components/icons'
-import { Container } from '@/components/ui'
+import { Container, Stack } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 /** Per Figma (node 1:5681): each column's default resting opacity is 80%, dims
@@ -83,11 +83,15 @@ export function Footer() {
 
           <Divider className="max-992:my-50 mt-52 mb-50" />
 
-          <div className="flex flex-col items-center justify-around gap-50 w-full 992:flex-row 992:items-start 992:gap-y-0">
+          <Stack align="center" gap={50} tabletGap={50} mobileGap={50} className="w-full justify-around 992:flex-row 992:items-start">
             {navColumns.map((column) => (
-              <div
+              <Stack
                 key={column.title}
-                className="group/navlist flex flex-col items-center gap-25 text-15 leading-12 tracking-10 text-paper 992:items-start 992:gap-20"
+                align="center"
+                gap={20}
+                tabletGap={20}
+                mobileGap={25}
+                className="group/navlist text-15 leading-12 tracking-10 text-paper 992:items-start"
               >
                 <p className="w-full text-center font-normal uppercase 992:w-auto 992:text-left">
                   {column.title}
@@ -104,13 +108,13 @@ export function Footer() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Stack>
             ))}
 
-            <div className="flex flex-col items-center gap-25 text-15 leading-12 tracking-10 text-paper 992:items-start 992:gap-20">
+            <Stack align="center" gap={20} tabletGap={20} mobileGap={25} className="text-15 leading-12 tracking-10 text-paper 992:items-start">
               <p className="w-full text-center font-normal uppercase 992:w-auto 992:text-left">Contact</p>
-              <div className="flex flex-col items-center gap-18 text-14 leading-copy font-light tracking-5 text-white 992:items-start 992:gap-15">
-                <div className="flex items-center gap-15 992:flex-col 992:items-start">
+              <Stack align="center" gap={15} tabletGap={15} mobileGap={18} className="text-14 leading-copy font-light tracking-5 text-white 992:items-start">
+                <Stack direction="row" align="center" gap={15} tabletGap={15} mobileGap={15} className="992:flex-col 992:items-start">
                   <Link href="tel:+27214348111" className="whitespace-nowrap opacity-80 hover:opacity-100">
                     +27 21 434 8111
                   </Link>
@@ -120,25 +124,25 @@ export function Footer() {
                   >
                     hello@presidenthotel.co.za
                   </Link>
-                </div>
+                </Stack>
                 <p className="text-center opacity-80 992:max-w-165 992:text-left">
                   Sea Point Promenade, Cape Town
                 </p>
-              </div>
-            </div>
-          </div>
+              </Stack>
+            </Stack>
+          </Stack>
 
           <Divider className="max-992:mt-50 max-992:mb-30 mt-70 mb-40" />
 
-          <div className="flex w-full max-w-content flex-col items-center gap-30 992:flex-row 992:flex-wrap 992:justify-around 992:gap-y-20 992:gap-x-30">
-            <div className="order-3 flex items-center gap-35 text-12 leading-12 tracking-10 text-paper font-light capitalize 992:order-0">
+          <Stack align="center" gap={30} tabletGap={30} mobileGap={30} className="w-full max-w-content 992:flex-row 992:flex-wrap 992:justify-around">
+            <Stack direction="row" align="center" gap={35} tabletGap={35} mobileGap={35} className="order-3 text-12 leading-12 tracking-10 text-paper font-light capitalize 992:order-0">
               <Link href="/privacy-policy" className="hover:opacity-70">
                 Privacy Policy
               </Link>
               <Link href="/terms-conditions" className="hover:opacity-70">
                 Terms &amp; Conditions
               </Link>
-            </div>
+            </Stack>
 
             <div className="order-1 flex flex-wrap items-center justify-center gap-x-25 1199:gap-x-40 gap-y-15 992:order-0">
               {partnerLogos.map(({ src, alt, className }) => (
@@ -146,14 +150,14 @@ export function Footer() {
               ))}
             </div>
 
-            <div className="order-2 flex items-center gap-16 992:order-0">
+            <Stack direction="row" align="center" gap={16} tabletGap={16} mobileGap={16} className="order-2 992:order-0">
               {socialLinks.map(({ label, Icon }) => (
                 <Link key={label} href="#" aria-label={label} className="text-paper hover:opacity-70">
                   <Icon className="size-16" />
                 </Link>
               ))}
-            </div>
-          </div>
+            </Stack>
+          </Stack>
         </Container>
       </div>
 

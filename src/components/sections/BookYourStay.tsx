@@ -37,14 +37,14 @@ export function BookYourStay() {
           )}
 
           <div className="absolute inset-0 z-1 flex flex-col items-center justify-center px-36 text-center">
-            <Heading level={2} color="paper" className='mb-20'>
+            <Heading level={2} color="white" className='mb-20'>
               Book Your Stay
             </Heading>
-            <Prose color="paper" className="max-w-483 text-paper/80 mb-40">
+            <Prose color="white" className="max-w-483 opacity-80 mb-40">
               Direct bookings receive our best available rate, complimentary early check-in on request, and no
               booking fees.
             </Prose>
-            <Button as="a" href="#" variant="outlined" color="paper">
+            <Button as="a" href="#" variant="outlined" color="white">
               Book Now
             </Button>
           </div>

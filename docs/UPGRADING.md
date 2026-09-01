@@ -228,7 +228,7 @@ and runs on a `cron` schedule from `main`.
 |---|---|---|
 | Forms | `react-hook-form ^7.77.0`, `@hookform/resolvers ^5.4.0`, `zod ^4.4.3` | the resolvers major must support the installed `zod` major (v5 ↔ zod 4); RHF + resolvers track together |
 | Email | `resend ^6.12.4`, `@react-email/components ^1.0.12`, `@payloadcms/email-resend` | adapter is Payload-pinned (Cluster 1); `resend` + react-email move together |
-| Carousel | `embla-carousel-react ^8.6.0`, `embla-carousel-autoplay ^8.6.0` | the plugin **must share the same major/minor** as the core |
+| Carousel | `embla-carousel-react ^8.6.0`, `embla-carousel-autoplay ^8.6.0`, `embla-carousel-auto-scroll ^8.6.0` | every plugin **must share the same major/minor** as the core |
 | Animation | `motion ^12.40.0` | code-split via `LazyMotion`/`m` in `FadeIn` |
 | Turnstile | `@marsidev/react-turnstile ^1.5.2` | client widget + server verify in `lib/turnstile.ts` |
 | Monitoring | `@sentry/cloudflare ^10.56.0` | wired via Next `onRequestError` in `instrumentation.ts`; coupled to the Workers runtime |

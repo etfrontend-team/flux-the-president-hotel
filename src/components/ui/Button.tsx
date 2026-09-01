@@ -4,7 +4,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 
 type ButtonVariant = 'link' | 'outlined' | 'glass' | 'solid'
-type ButtonColor = 'brand' | 'paper' | 'ink'
+type ButtonColor = 'brand' | 'paper' | 'ink' | 'white'
 
 type ButtonProps = {
   variant?: ButtonVariant
@@ -26,21 +26,25 @@ const variantColors: Record<ButtonVariant, Record<ButtonColor, string>> = {
   link: {
     brand: 'btn-link-brand',
     paper: 'btn-link-paper',
+    white: 'btn-link-white',
     ink: 'btn-link-ink',
   },
   outlined: {
     brand: 'btn-outlined-brand',
     paper: 'btn-outlined-paper',
+    white: 'btn-outlined-white',
     ink: 'btn-outlined-ink',
   },
   glass: {
     brand: 'btn-glass-brand',
     paper: 'btn-glass-paper',
+    white: 'btn-glass-white',
     ink: 'btn-glass-ink',
   },
   solid: {
     brand: 'btn-solid-brand',
     paper: 'btn-solid-paper',
+    white: 'btn-solid-white',
     ink: 'btn-solid-ink',
   },
 }

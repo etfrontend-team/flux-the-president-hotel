@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { FadeIn } from '@/components/FadeIn'
 import { ChevronRightIcon } from '@/components/icons'
-import { Button, Container, Heading, Prose } from '@/components/ui'
+import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 export const underlineClasses =
@@ -130,7 +130,7 @@ export function DiningExperience() {
         {/* Figma node 68:440 — sticky 74px from the top (not flush), so it rests just below the
             sticky AnnouncementBar rather than under it. */}
         <div className="max-992:hidden">
-          <div className="sticky top-74 flex flex-col gap-25 rounded-card border border-brand/10 bg-paper-alt/40 px-35 py-40">
+          <Stack gap={25} tabletGap={25} mobileGap={25} className="sticky top-74 rounded-card border border-brand/10 bg-paper-alt/40 px-35 py-40">
             {DINING_CARDS.map((card, index) => (
               <button
                 key={card.navLabel}
@@ -149,7 +149,7 @@ export function DiningExperience() {
                 {card.navLabel}
               </button>
             ))}
-          </div>
+          </Stack>
         </div>
 
         {/* Mobile/tablet: sticky rail collapses into a dropdown (Figma nodes 1:4463, 1:5822). */}
@@ -167,7 +167,12 @@ export function DiningExperience() {
           </button>
 
           {isNavOpen && (
-            <div className="absolute inset-x-0 top-full z-10 mt-5 flex flex-col gap-20 rounded-card border border-brand-muted/40 bg-paper px-25 py-20 shadow-[0.5px_0.5px_0.5px_0px_rgba(0,0,0,0.1)] backdrop-blur-[1px]">
+            <Stack
+              gap={20}
+              tabletGap={20}
+              mobileGap={20}
+              className="absolute inset-x-0 top-full z-10 mt-5 rounded-card border border-brand-muted/40 bg-paper px-25 py-20 shadow-[0.5px_0.5px_0.5px_0px_rgba(0,0,0,0.1)] backdrop-blur-[1px]"
+            >
               {DINING_CARDS.map((card, index) => (
                 <button
                   key={card.navLabel}
@@ -184,11 +189,11 @@ export function DiningExperience() {
                   {card.navLabel}
                 </button>
               ))}
-            </div>
+            </Stack>
           )}
         </div>
 
-        <div className="flex flex-col gap-80 max-992:gap-50">
+        <Stack gap={80} tabletGap={80} mobileGap={50}>
           {DINING_CARDS.map((card, index) => (
             <FadeIn key={card.title} delay={index * 0.3}>
               <div
@@ -208,15 +213,15 @@ export function DiningExperience() {
                   />
                 </div>
 
-                <div className="flex max-w-650 flex-col gap-30">
+                <Stack gap={30} tabletGap={30} mobileGap={30} className="max-w-650">
                   <p className="font-accent text-13 tracking-5 text-accent uppercase">{card.eyebrow}</p>
-                  <div className="flex flex-col gap-25">
+                  <Stack gap={25} tabletGap={25} mobileGap={25}>
                     <Heading level={3} size={3}>
                       {card.title}
                     </Heading>
                     <Prose className="opacity-80 max-w-full">{card.description}</Prose>
-                  </div>
-                </div>
+                  </Stack>
+                </Stack>
 
                 <Button as="a" href={card.href} variant="glass" color="brand" className="w-fit">
                   {card.ctaLabel}
@@ -224,7 +229,7 @@ export function DiningExperience() {
               </div>
             </FadeIn>
           ))}
-        </div>
+        </Stack>
       </Container>
     </section>
   )

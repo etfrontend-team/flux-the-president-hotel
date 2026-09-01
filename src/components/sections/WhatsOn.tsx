@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { Button, Container, Heading, Prose } from '@/components/ui'
+import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 type EventItem = {
@@ -69,10 +69,10 @@ export function WhatsOn() {
         <div className="grid grid-cols-1 992:gap-50 992:grid-cols-2 992:items-start 1199:px-38">
           <div className="order-1 flex flex-col items-center text-center 992:order-2 992:col-start-2 992:row-start-1 992:items-start 992:text-left">
             <div className="flex flex-col items-center 1024:px-25 max-992:mb-50 mb-40 992:items-start">
-              <div className="flex flex-col items-center gap-30 mb-35 992:items-start">
+              <Stack align="center" gap={30} tabletGap={30} mobileGap={30} className="mb-35 992:items-start">
                 <span className="font-accent text-16 tracking-5 text-accent uppercase">At the president</span>
                 <Heading level={3}>What&apos;s On</Heading>
-              </div>
+              </Stack>
 
               <Button as="a" href="#" variant="glass" color="brand" className="self-start max-992:mx-auto">
                 View all
@@ -139,7 +139,7 @@ export function WhatsOn() {
                       activeIndex === index ? 'max-h-110 pb-20' : 'max-h-0',
                     )}
                   >
-                    <div className="flex flex-col max-992:gap-30 gap-20">
+                    <Stack gap={20} tabletGap={20} mobileGap={30}>
                       <div className="h-42">
                         <Prose color="ink-light" className="line-clamp-2 text-link/100">
                           {event.description}
@@ -148,7 +148,7 @@ export function WhatsOn() {
                       <Button as="a" href="#" variant="link" color="brand" className="self-start">
                         View Event
                       </Button>
-                    </div>
+                    </Stack>
                   </div>
                 </div>
               </div>

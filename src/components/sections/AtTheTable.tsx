@@ -173,7 +173,7 @@ function VenuePanel({
         )}
       />
 
-      <div className="pointer-events-none absolute inset-0 flex w-630 max-w-none flex-col gap-5 p-45 pt-50">
+      <Stack gap={5} tabletGap={5} mobileGap={5} className="pointer-events-none absolute inset-0 w-630 max-w-none p-45 pt-50">
         <RevealLine isActive={isActive} delay="delay-330">
           <span className="font-display text-25 leading-display tracking-5 text-paper capitalize">
             {venue.title}
@@ -184,7 +184,7 @@ function VenuePanel({
             {venue.caption}
           </span>
         </RevealLine>
-      </div>
+      </Stack>
     </Link>
   )
 }
@@ -237,18 +237,18 @@ function VenueCarousel() {
             />
           </div>
 
-          <div className="flex flex-col gap-30">
-            <div className="flex flex-col gap-24">
+          <Stack gap={30} tabletGap={30} mobileGap={30}>
+            <Stack gap={24} tabletGap={24} mobileGap={24}>
               <Heading level={3} size={4} uppercase={false} className="capitalize">
                 {venue.title}
               </Heading>
               <Prose color="ink-light">{venue.caption}</Prose>
-            </div>
+            </Stack>
 
             <span className="w-fit border-b border-brand-muted/80 pb-10 font-body text-13 tracking-5 text-brand uppercase">
               {venue.ctaLabel}
             </span>
-          </div>
+          </Stack>
         </Link>
       ))}
     </Carousel>

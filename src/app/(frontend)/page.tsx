@@ -5,7 +5,6 @@ import { AtTheTable } from '@/components/sections/AtTheTable'
 import { AtlanticMeetsCity } from '@/components/sections/AtlanticMeetsCity'
 import { BookYourStay } from '@/components/sections/BookYourStay'
 import { CoreExperience } from '@/components/sections/CoreExperience'
-import { DiscoverMore } from '@/components/sections/DiscoverMore'
 import { Hero } from '@/components/sections/Hero'
 import { MoreThanAView } from '@/components/sections/MoreThanAView'
 import { PhotoMarquee } from '@/components/sections/PhotoMarquee'
@@ -25,7 +24,6 @@ export default function HomePage() {
       <CoreExperience />
       <MoreThanAView />
       <AtTheTable/>
-      <DiscoverMore />
       <AtlanticMeetsCity />
       <Testimonial />
       <BookYourStay />

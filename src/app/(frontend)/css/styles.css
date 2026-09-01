@@ -43,10 +43,13 @@
 
   --radius-5: 5px;
 
-  --container-content: 1320px; /* standard content width (1440 − 60px × 2) */
-  --container-bleed: 1390px; /* wider bleed container (1440 − 25px × 2) */
+  --container-content: 1320px;
+  --container-bleed: 1390px;
+
   --shadow-image: 0px 1.92px 1.92px 0px rgb(0 0 0 / 0.1);
-  --shadow-card: 2.3px 2.3px 4.6px 1.15px rgb(0 0 0 / 0.1); /* Testimonial postcard drop shadow (Figma layer panel) */
+  --shadow-card: 2.3px 2.3px 4.6px 1.15px rgb(0 0 0 / 0.1);
+
+  --shadow-policy: 0.5px 0.5px 0.5px 0px rgb(0 0 0 / 0.1);
 
   --breakpoint-2000: 2000px;
   --breakpoint-1920: 1921px;

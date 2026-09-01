@@ -5,7 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 
 import { underlineClasses } from '@/components/Header'
-import { Button, Container, Heading, Prose } from '@/components/ui'
+import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 type ExperienceCategory = 'at-the-president' | 'neighbourhood'
@@ -114,7 +114,14 @@ export function ExploreExperiences() {
   return (
     <section className="general-padding">
       <Container variant="lg">
-        <div className="mb-50 flex items-center gap-25 max-992:flex-wrap max-992:gap-15">
+        <Stack
+          direction="row"
+          align="center"
+          gap={25}
+          tabletGap={25}
+          mobileGap={15}
+          className="mb-50 max-992:flex-wrap"
+        >
           {filters.map((filter) => (
             <button
               key={filter.value}
@@ -129,7 +136,7 @@ export function ExploreExperiences() {
               {filter.label}
             </button>
           ))}
-        </div>
+        </Stack>
 
         <div className="grid grid-cols-1 gap-x-40 gap-y-80 max-1024:gap-y-40 768:grid-cols-2 1024:grid-cols-3">
           {visible.map((experience) => (
@@ -145,8 +152,8 @@ export function ExploreExperiences() {
                 />
               </Link>
 
-              <div className="flex flex-col gap-30">
-                <div className="flex flex-col gap-20">
+              <Stack gap={30} tabletGap={30} mobileGap={30}>
+                <Stack gap={20} tabletGap={20} mobileGap={20}>
                   <span className="font-accent text-13 tracking-5 text-accent uppercase">
                     {experience.categoryLabel}
                   </span>
@@ -154,11 +161,11 @@ export function ExploreExperiences() {
                     {experience.title}
                   </Heading>
                   <Prose color="ink-light">{experience.description}</Prose>
-                </div>
+                </Stack>
                 <Button as="a" href="#" variant="link" color="brand" className="text-13">
                   Discover
                 </Button>
-              </div>
+              </Stack>
             </article>
           ))}
         </div>

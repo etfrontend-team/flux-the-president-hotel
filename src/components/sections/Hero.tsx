@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { Container, Heading, Prose } from '@/components/ui'
+import { Container, Heading, Prose, Stack } from '@/components/ui'
 
 import { BookingBar } from './BookingBar'
 import { BookingBarGate } from './BookingBarGate'
@@ -66,11 +66,11 @@ export function Hero({
           </div>
 
           <Container className="relative z-10 flex min-h-screen flex-col p-0 992:p-0">
-            <div className="my-auto flex flex-col items-start gap-30 text-paper max-992:px-25 px-35">
+            <Stack align="start" gap={30} tabletGap={30} mobileGap={30} className="my-auto text-paper max-992:px-25 px-35">
               <Prose as="span" font="accent" color="paper" className="text-16 leading-12 font-normal uppercase">
                 {eyebrow}
               </Prose>
-              <div className="flex flex-col gap-25">
+              <Stack gap={25} tabletGap={25} mobileGap={25}>
                 <Heading
                   level={1}
                   color="paper"
@@ -80,8 +80,8 @@ export function Hero({
                 <Prose color="paper" className="max-w-469 !leading-copy">
                   {description}
                 </Prose>
-              </div>
-            </div>
+              </Stack>
+            </Stack>
 
             {/* Desktop: glass fields overlaid on the image (Figma node 1:2354). */}
             <BookingBarGate>

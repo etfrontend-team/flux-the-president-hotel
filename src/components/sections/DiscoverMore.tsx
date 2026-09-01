@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 
 import { Carousel } from '@/components/Carousel'
 import { FadeIn } from '@/components/FadeIn'
-import { Container, Heading, Prose } from '@/components/ui'
+import { Container, Heading, Prose, Stack } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 type DiscoverCard = {
@@ -50,7 +50,7 @@ export function DiscoverMore() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className="general-padding bg-paper">
+    <section className="general-padding bg-paper overflow-hidden">
       <Container variant="lg" className='1024:max-w-930 mx-auto'>
         <FadeIn>
           <Heading level={2} size={3} className="text-center">
@@ -58,7 +58,7 @@ export function DiscoverMore() {
           </Heading>
         </FadeIn>
 
-        <div className="@container mt-50 flex gap-15 max-767:hidden">
+        <Stack direction="row" gap={15} tabletGap={15} mobileGap={15} className="@container mt-50 max-767:hidden">
           {DISCOVER_CARDS.map((card, index) => (
             <DiscoverCardPanel
               key={card.title}
@@ -67,7 +67,7 @@ export function DiscoverMore() {
               onActivate={() => setActiveIndex(index)}
             />
           ))}
-        </div>
+        </Stack>
 
         <DiscoverCarousel />
       </Container>
@@ -96,18 +96,18 @@ function DiscoverCarousel() {
             />
           </div>
 
-          <div className="flex flex-col gap-30">
-            <div className="flex flex-col gap-24">
+          <Stack gap={30} tabletGap={30} mobileGap={30}>
+            <Stack gap={24} tabletGap={24} mobileGap={24}>
               <Heading level={3} size={4} uppercase={false} className="capitalize">
                 {card.title}
               </Heading>
               <Prose color="ink-light">{card.caption}</Prose>
-            </div>
+            </Stack>
 
             <span className="w-fit border-b border-brand-muted/80 pb-10 font-body text-13 tracking-5 text-brand uppercase">
               {card.ctaLabel}
             </span>
-          </div>
+          </Stack>
         </Link>
       ))}
     </Carousel>
@@ -161,7 +161,13 @@ function DiscoverCardPanel({
         )}
       />
 
-      <div className="pointer-events-none absolute inset-0 flex w-438 max-w-none flex-col justify-end gap-5 pb-45 pl-30">
+      <Stack
+        justify="end"
+        gap={5}
+        tabletGap={5}
+        mobileGap={5}
+        className="pointer-events-none absolute inset-0 w-438 max-w-none pb-45 pl-30"
+      >
         <RevealLine isActive={isActive} delay="delay-330">
           <span className="font-display text-25 leading-display tracking-5 text-paper capitalize">
             {card.title}
@@ -172,7 +178,7 @@ function DiscoverCardPanel({
             {card.caption}
           </span>
         </RevealLine>
-      </div>
+      </Stack>
     </Link>
   )
 }

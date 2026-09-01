@@ -3,7 +3,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
-type HeadingColor = 'brand' | 'paper' | 'ink'
+type HeadingColor = 'brand' | 'paper' | 'ink' | 'white'
 
 interface HeadingProps {
   /** Semantic heading level (h1–h6). */
@@ -21,6 +21,7 @@ const colorMap: Record<HeadingColor, string> = {
   brand: 'text-brand',
   paper: 'text-paper',
   ink: 'text-ink',
+  white: 'text-white',
 }
 
 const sizeMap: Record<HeadingLevel, string> = {

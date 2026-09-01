@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 
 import { FadeIn } from '@/components/FadeIn'
-import { Button, Container, Heading } from '@/components/ui'
+import { Button, Container, Heading, Stack } from '@/components/ui'
 
 type ShowcaseCard = {
   title: string
@@ -106,24 +106,31 @@ export function StayShowcase() {
                 <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0)_100%)]" />
               </div>
 
-              <div className="relative flex h-full max-w-440 flex-col items-start justify-end gap-30 px-30 pb-40 max-992:px-25 max-992:pb-30">
-                <div className="flex flex-col gap-15">
+              <Stack
+                align="start"
+                justify="end"
+                gap={30}
+                tabletGap={30}
+                mobileGap={30}
+                className="relative h-full max-w-440 px-30 pb-40 max-992:px-25 max-992:pb-30"
+              >
+                <Stack gap={15} tabletGap={15} mobileGap={15}>
                   <Heading level={3} color="paper" uppercase={false}>
                     {card.title}
                   </Heading>
-                  <div className="flex flex-col gap-5">
+                  <Stack gap={5} tabletGap={5} mobileGap={5}>
                     <p className="font-accent font-medium text-12 leading-copy tracking-5 text-paper uppercase">
                       {card.meta}
                     </p>
                     <p className="font-body font-light text-14 leading-copy tracking-5 text-paper">
                       {card.description}
                     </p>
-                  </div>
-                </div>
+                  </Stack>
+                </Stack>
                 <Button as="a" href={card.href} variant="glass" color="paper">
                   {card.ctaLabel}
                 </Button>
-              </div>
+              </Stack>
             </div>
           </FadeIn>
         ))}

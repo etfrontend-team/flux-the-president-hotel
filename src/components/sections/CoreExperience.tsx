@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { Button, Heading, Prose } from '@/components/ui'
+import { Button, Heading, Prose, Stack } from '@/components/ui'
 import { cn, isVideoSrc } from '@/lib/utils'
 
 type ExperienceTab = {
@@ -25,9 +25,9 @@ const tabs: ExperienceTab[] = [
     key: 'wellness',
     label: 'Wellness',
     eyebrow: 'Wellness',
-    heading: ['Cove wellness spa —', 'your quiet sanctuary'],
+    heading: ['COVE WELLNESS SPA', 'Your Wellness Sanctuary'],
     description:
-      'Hot stone rituals, salt rooms and a hammam cut from a single block of marble. Treatments are drawn from the season and the shoreline.',
+      'Lorem ipsum dolor sit amet consectetur. Ullamcorper quam pellentesque porttitor nisi quis bibendum tristique consequat orci. Lorem ipsum dolor sit amet consectetur. ',
     media: '/images/core-experience-wellness.webp',
     alt: 'A guest receiving a hot stone massage at the spa',
     buttonLabel: 'Discover Wellness',
@@ -189,7 +189,13 @@ export function CoreExperience() {
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0)_100%)]" />
         </div>
 
-        <div className="absolute inset-x-0 top-45 max-992:top-90 z-20 flex max-992:gap-20 gap-30 px-60 max-1024:px-25">
+        <Stack
+          direction="row"
+          gap={30}
+          tabletGap={30}
+          mobileGap={20}
+          className="absolute inset-x-0 top-45 max-992:top-90 z-20 px-60 max-1024:px-25"
+        >
           {tabs.map((tab, index) => {
             const isActive = index === activeIndex
             const isPast = index < activeIndex
@@ -204,27 +210,31 @@ export function CoreExperience() {
               >
                 <span
                   className={cn(
-                    'font-accent text-16 tracking-5 uppercase text-paper transition-opacity duration-300 ease-out max-992:hidden',
+                    'font-accent text-16 tracking-5 uppercase text-white transition-opacity duration-300 ease-out max-992:hidden',
                     isActive || isPast ? 'opacity-100' : 'opacity-40',
                   )}
                 >
                   {tab.label}
                 </span>
-                <div className="relative h-px w-full bg-paper/40">
-                  <div className="absolute inset-y-0 left-0 bg-paper/80" style={{ width: `${fillPercent}%` }} />
+                <div className="relative h-px w-full bg-white/40">
+                  <div className="absolute inset-y-0 left-0 bg-white/80" style={{ width: `${fillPercent}%` }} />
                 </div>
               </button>
             )
           })}
-        </div>
+        </Stack>
 
-        <div
+        <Stack
           key={activeIndex}
-          className="absolute bottom-60 left-60 z-20 flex max-w-530 flex-col items-start gap-35 max-1024:left-25 max-1024:right-25 max-1024:max-w-full"
+          align="start"
+          gap={35}
+          tabletGap={35}
+          mobileGap={35}
+          className="absolute bottom-60 left-60 z-20 max-w-530 max-1024:left-25 max-1024:right-25 max-1024:max-w-full"
         >
-          <div className="flex flex-col items-start gap-30">
+          <Stack align="start" gap={30} tabletGap={30} mobileGap={30}>
             <span
-              className="core-experience-line font-accent text-16 uppercase leading-display tracking-5 text-paper"
+              className="core-experience-line font-accent text-16 uppercase leading-display tracking-5 text-white"
               style={{ animationDelay: '0ms' }}
             >
               {active.eyebrow}
@@ -236,17 +246,17 @@ export function CoreExperience() {
                   level={3}
                   color="paper"
                   uppercase={false}
-                  className="core-experience-line"
+                  className="core-experience-line text-white uppercase"
                   style={{ animationDelay: `${80 + index * 60}ms` }}
                 >
                   {line}
                 </Heading>
               ))}
             </div>
-          </div>
+          </Stack>
           <Prose
             color="ink-light"
-            className="core-experience-line max-w-529 text-paper!"
+            className="core-experience-line max-w-529 text-white!"
             style={{ animationDelay: '220ms' }}
           >
             {active.description}
@@ -255,13 +265,13 @@ export function CoreExperience() {
             as="a"
             href={active.href}
             variant="glass"
-            color="paper"
+            color="white"
             className="core-experience-line"
             style={{ animationDelay: '300ms' }}
           >
             {active.buttonLabel}
           </Button>
-        </div>
+        </Stack>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { Button, Container, Heading, Prose } from '@/components/ui'
+import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 
 type Experience = {
   key: string
@@ -42,12 +42,12 @@ const experiences: Experience[] = [
 
 const introBlock = (
   <>
-    <div className="flex flex-col items-start gap-30">
+    <Stack align="start" gap={30} tabletGap={30} mobileGap={30}>
       <span className="font-accent text-16 tracking-5 text-accent uppercase">Your Cape Town</span>
       <Heading level={3} className="max-992:max-w-360 992:max-w-542">
         More than a view. A city to discover.
       </Heading>
-    </div>
+    </Stack>
     <Prose color="ink-light" className="max-992:max-w-full 992:max-w-529">
       From sunrise penguin walks at Boulders Beach to sundowner picnics on the shoreline — The President unlocks Cape
       Town for you.
@@ -62,29 +62,29 @@ export function MoreThanAView() {
   return (
     <section className="general-padding bg-paper-alt/40">
       <Container variant="lg">
-        <div className="flex flex-col items-start gap-35 992:hidden">
+        <Stack align="start" gap={35} tabletGap={35} mobileGap={35} className="992:hidden">
           {introBlock}
 
-          <div className="flex w-full flex-col gap-50">
+          <Stack gap={50} tabletGap={50} mobileGap={50} className="w-full">
             {experiences.map((experience) => (
-              <div key={experience.key} className="flex w-full flex-col gap-30">
+              <Stack key={experience.key} gap={30} tabletGap={30} mobileGap={30} className="w-full">
                 <div className="relative h-230 w-full overflow-hidden rounded-card">
                   <Image src={experience.image} alt={experience.alt} fill sizes="100vw" className="object-cover" />
                 </div>
-                <div className="flex flex-col items-start gap-10">
+                <Stack align="start" gap={10} tabletGap={10} mobileGap={10}>
                   <Heading level={4} uppercase={false} className="capitalize">
                     {experience.heading}
                   </Heading>
                   <Prose color="ink-light">{experience.description}</Prose>
-                </div>
-              </div>
+                </Stack>
+              </Stack>
             ))}
-          </div>
-        </div>
+          </Stack>
+        </Stack>
 
         <div className="max-992:hidden 1024:px-38">
           <div className="grid grid-cols-2 gap-50">
-            <div className="flex flex-col gap-45">
+            <Stack gap={45} tabletGap={45} mobileGap={45}>
               <div className="relative aspect-607/337 overflow-hidden rounded-card">
                 <Image
                   src="/images/discover-cape-town-hero.webp"
@@ -95,26 +95,26 @@ export function MoreThanAView() {
                 />
               </div>
 
-              <div className="flex flex-col items-start gap-35">{introBlock}</div>
-            </div>
+              <Stack align="start" gap={35} tabletGap={35} mobileGap={35}>{introBlock}</Stack>
+            </Stack>
 
-            <div className="flex flex-col gap-30">
+            <Stack gap={30} tabletGap={30} mobileGap={30}>
               {experiences.map((experience) => (
-                <div key={experience.key} className="flex items-center gap-30">
+                <Stack key={experience.key} direction="row" align="center" gap={30} tabletGap={30} mobileGap={30}>
                   <div className="relative size-195 shrink-0 overflow-hidden rounded-card">
                     <Image src={experience.image} alt={experience.alt} fill sizes="195px" className="object-cover" />
                   </div>
-                  <div className="flex flex-col items-start gap-10">
+                  <Stack align="start" gap={10} tabletGap={10} mobileGap={10}>
                     <Heading level={4} uppercase={false} className="capitalize">
                       {experience.heading}
                     </Heading>
                     <Prose color="ink-light" className="max-w-398">
                       {experience.description}
                     </Prose>
-                  </div>
-                </div>
+                  </Stack>
+                </Stack>
               ))}
-            </div>
+            </Stack>
           </div>
         </div>
       </Container>

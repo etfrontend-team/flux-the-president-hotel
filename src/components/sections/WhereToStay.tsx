@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, Container, Heading, Prose } from '@/components/ui'
+import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 
 import { WhereToStayCarousel } from './WhereToStayCarousel'
 
@@ -12,10 +12,10 @@ export function WhereToStay() {
   return (
     <section className="general-padding">
       <Container variant="lg">
-        <div className="1199:px-38 w-full flex flex-col items-center gap-50">
+        <Stack align="center" gap={50} tabletGap={50} mobileGap={50} className="1199:px-38 w-full">
           <div className="flex max-w-864 flex-col items-center text-center">
             <span className="font-accent text-16 tracking-5 text-accent uppercase mb-30">Where to stay</span>
-            <div className="flex flex-col items-center gap-35 mb-35">
+            <Stack align="center" gap={35} tabletGap={35} mobileGap={35} className="mb-35">
               <Heading
                 level={3}
                 className="1024:!leading-23"
@@ -26,14 +26,14 @@ export function WhereToStay() {
                 Choose from sea-view rooms, self-catering apartments, and full suites — the sounds of the
                 ocean below.
               </Prose>
-            </div>
+            </Stack>
             <Button as="a" href="#" variant="glass" color="brand">
               Explore all stays
             </Button>
           </div>
 
           <WhereToStayCarousel />
-        </div>
+        </Stack>
       </Container>
     </section>
   )

@@ -17,7 +17,7 @@ import {
   YouTubeIcon,
 } from '@/components/icons'
 import { useMegaMenu } from '@/components/MegaMenuContext'
-import { Button, Container } from '@/components/ui'
+import { Button, Container, Stack } from '@/components/ui'
 
 type ImageKey = 'stay' | 'taste' | 'wellness'
 
@@ -206,7 +206,12 @@ export function MegaMenu() {
           }`}
         >
           <div className="flex flex-1 flex-col justify-center px-40 max-425:px-25 py-40 max-1024:gap-0 992:px-131">
-            <div className="flex flex-col gap-33 max-1024:flex-row max-1024:justify-start max-1024:mb-50 mb-47">
+            <Stack
+              gap={33}
+              tabletGap={33}
+              mobileGap={33}
+              className="max-1024:flex-row max-1024:justify-start max-1024:mb-50 mb-47"
+            >
               <ul className="group/navlist flex flex-col gap-30 font-body text-18 leading-12 font-normal tracking-10 text-brand uppercase">
                 {primaryLinks.map((item, index) => (
                   <li
@@ -235,10 +240,13 @@ export function MegaMenu() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Stack>
 
-            <div
-              className={`flex flex-col gap-33 mb-30 transition-[opacity,transform] duration-400 ease-out ${
+            <Stack
+              gap={33}
+              tabletGap={33}
+              mobileGap={33}
+              className={`mb-30 transition-[opacity,transform] duration-400 ease-out ${
                 contentOpen ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
               }`}
               style={{ transitionDelay: contentDelay(contactIndex) }}
@@ -246,7 +254,7 @@ export function MegaMenu() {
               <p className="font-body text-18 leading-12 font-normal tracking-10 text-brand uppercase">
                 Contact
               </p>
-              <div className="flex flex-col gap-20 font-body text-13 leading-muted font-light tracking-5 text-ink">
+              <Stack gap={20} tabletGap={20} mobileGap={20} className="font-body text-13 leading-muted font-light tracking-5 text-ink">
                 <Link href="tel:+27214348111" onClick={close} className="hover:opacity-70">
                   +27 21 434 8111
                 </Link>
@@ -254,11 +262,16 @@ export function MegaMenu() {
                   reservations@thepresident.co.za
                 </Link>
                 <p className="max-w-213">Sea Point Promenade, Cape Town</p>
-              </div>
-            </div>
+              </Stack>
+            </Stack>
 
-            <div
-              className={`flex items-center gap-13 max-1024:mb-50 text-brand transition-[opacity,transform] duration-400 ease-out ${
+            <Stack
+              direction="row"
+              align="center"
+              gap={13}
+              tabletGap={13}
+              mobileGap={13}
+              className={`max-1024:mb-50 text-brand transition-[opacity,transform] duration-400 ease-out ${
                 contentOpen ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
               }`}
               style={{ transitionDelay: contentDelay(socialsIndex) }}
@@ -268,7 +281,7 @@ export function MegaMenu() {
                   <Icon className="size-13" />
                 </Link>
               ))}
-            </div>
+            </Stack>
 
             <Button
               as="a"
@@ -287,8 +300,11 @@ export function MegaMenu() {
         </div>
 
         <div className="relative hidden h-full w-466 shrink-0 overflow-hidden rounded-l-card 1024:block">
-          <div
-            className="absolute inset-x-0 top-1/2 flex flex-col gap-30 transition-transform duration-500 ease-out"
+          <Stack
+            gap={30}
+            tabletGap={30}
+            mobileGap={30}
+            className="absolute inset-x-0 top-1/2 transition-transform duration-500 ease-out"
             style={{
               transform: `translateY(-${
                 (activeIndex + 1) * (IMAGE_SLOT_HEIGHT + IMAGE_SLOT_GAP) + IMAGE_SLOT_HEIGHT / 2
@@ -306,7 +322,7 @@ export function MegaMenu() {
                 />
               </div>
             ))}
-          </div>
+          </Stack>
         </div>
       </Container>
     </div>

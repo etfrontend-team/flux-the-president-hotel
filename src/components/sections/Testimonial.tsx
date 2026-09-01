@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 
-import { Container } from '@/components/ui'
+import { Container, Stack } from '@/components/ui'
 
 const quote =
   'Stayed at this hotel as part of a trip a deal and I cannot fault it one bit. Great area within walking distance to some great shops and the restaurants.'
@@ -63,7 +63,12 @@ export function Testimonial() {
             <div
               className="relative z-10 origin-center shadow-card"
             >
-              <div className="flex flex-col overflow-hidden rounded-card bg-paper shadow-card 992:aspect-888/651 992:flex-row 992:p-16 gap-16">
+              <Stack
+                gap={16}
+                tabletGap={16}
+                mobileGap={16}
+                className="overflow-hidden rounded-card bg-paper shadow-card 992:aspect-888/651 992:flex-row 992:p-16"
+              >
                 <div className="relative h-260 w-full shrink-0 992:h-full 992:w-380 max-992:hidden">
                   <div className="absolute inset-0 overflow-hidden rounded-5">
                     <Image
@@ -78,7 +83,13 @@ export function Testimonial() {
 
                 <div className="hidden w-px self-stretch bg-brand-muted/40 992:block" />
 
-                <div className="relative flex flex-1 flex-col justify-between max-992:gap-12 gap-40 pt-16 pb-40 px-26 992:pt-13 992:pb-12 992:pr-21 992:pl-17">
+                <Stack
+                  justify="between"
+                  gap={40}
+                  tabletGap={40}
+                  mobileGap={12}
+                  className="relative flex-1 pt-16 pb-40 px-26 992:pt-13 992:pb-12 992:pr-21 992:pl-17"
+                >
                   <div className="flex items-center justify-end">
                     <img src="/images/testimonial-postmark.svg" alt="" className="max-992:w-23 w-68 opacity-15 -mr-16" />
                     <div className="relative flex max-992:h-35 max-992:w-43 h-102 w-78 shrink-0 items-center justify-center">
@@ -99,9 +110,7 @@ export function Testimonial() {
                     </div>
                   </div>
 
-                  <div
-                    className="relative flex flex-col gap-16 max-768:max-w-261"
-                  >
+                  <Stack gap={16} tabletGap={16} mobileGap={16} className="relative max-768:max-w-261">
                     <p
                       className="font-display max-992:text-15 max-992:leading-copy text-21 leading-33 text-brand/80"
                       style={{ backgroundImage: ruledLineBackground }}
@@ -109,7 +118,7 @@ export function Testimonial() {
                       &ldquo;{quote}&rdquo;
                     </p>
                     <span className="font-body text-11 tracking-5 text-brand-muted uppercase">- Louise M</span>
-                  </div>
+                  </Stack>
 
                   <div className="pointer-events-none relative flex justify-center mix-blend-multiply opacity-15 max-992:hidden">
                     <div className="relative h-204 w-274">
@@ -122,8 +131,8 @@ export function Testimonial() {
                       />
                     </div>
                   </div>
-                </div>
-              </div>
+                </Stack>
+              </Stack>
             </div>
           </motion.div>
         </div>

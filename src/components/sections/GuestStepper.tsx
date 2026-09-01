@@ -3,6 +3,7 @@
 import React from 'react'
 
 import { MinusIcon, PlusIcon } from '@/components/icons'
+import { Stack } from '@/components/ui'
 
 type GuestStepperProps = {
   label: string
@@ -18,7 +19,7 @@ export function GuestStepper({ label, color = 'paper' }: GuestStepperProps) {
   return (
     <div className="flex h-full w-full items-center justify-between">
       <span className={`font-body text-12 tracking-5 uppercase ${colorClass}`}>{label}</span>
-      <div className="flex items-stretch gap-10">
+      <Stack direction="row" align="stretch" gap={10} tabletGap={10} mobileGap={10}>
         <button
           type="button"
           aria-label={`Decrease ${label.toLowerCase()}`}
@@ -38,7 +39,7 @@ export function GuestStepper({ label, color = 'paper' }: GuestStepperProps) {
         >
           <PlusIcon className="size-7" />
         </button>
-      </div>
+      </Stack>
     </div>
   )
 }

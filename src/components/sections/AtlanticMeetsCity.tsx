@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { Button, Container, Heading } from '@/components/ui'
+import { Button, Container, Heading, Stack } from '@/components/ui'
 import { isVideoSrc } from '@/lib/utils'
 
 /**
@@ -37,14 +37,21 @@ export function AtlanticMeetsCity() {
             />
           )}
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-25 px-25 text-center z-1">
-            <Heading level={2} color="paper" className="992:whitespace-nowrap">
+          <Stack
+            align="center"
+            justify="center"
+            gap={25}
+            tabletGap={25}
+            mobileGap={25}
+            className="absolute inset-0 px-25 text-center z-1"
+          >
+            <Heading level={2} color="white" className="992:whitespace-nowrap">
               Where the <br /> Atlantic meets the city.
             </Heading>
-            <Button as="a" href="/location/" variant="outlined" color="paper">
+            <Button as="a" href="/location/" variant="outlined" color="white">
               View location
             </Button>
-          </div>
+          </Stack>
         </div>
       </Container>
     </section>

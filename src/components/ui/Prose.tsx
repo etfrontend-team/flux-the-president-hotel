@@ -2,7 +2,7 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-type ProseColor = 'brand' | 'brand-light' | 'ink' | 'ink-light' | 'paper'
+type ProseColor = 'brand' | 'brand-light' | 'ink' | 'ink-light' | 'paper' | 'white'
 type ProseFont = 'body' | 'accent' | 'display'
 type ProseTag = 'div' | 'span' | 'p'
 
@@ -21,6 +21,7 @@ const colors: Record<ProseColor, string> = {
   ink: 'text-ink prose-headings:text-ink prose-a:text-ink',
   'ink-light': 'text-ink/80 prose-headings:text-ink/80 prose-a:text-ink/80',
   paper: 'text-paper prose-headings:text-paper prose-a:text-paper',
+  white: 'text-white prose-headings:text-white prose-a:text-white',
 }
 
 const fonts: Record<ProseFont, string> = {

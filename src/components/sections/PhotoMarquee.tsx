@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import React from 'react'
 
+import { Stack } from '@/components/ui'
+
 type MarqueeSlide = { src: string | null; video?: string | null; alt: string }
 
 const photos: MarqueeSlide[] = [
@@ -19,7 +21,7 @@ const photos: MarqueeSlide[] = [
 export function PhotoMarquee() {
   return (
     <div className="overflow-hidden bg-accent/10 max-992:pb-40 max-992:pt-14 pt-30 pb-60">
-      <div className="marquee-track flex w-max items-center gap-20 992:gap-40">
+      <Stack direction="row" align="center" gap={40} tabletGap={40} mobileGap={20} className="marquee-track w-max">
         {[...photos, ...photos].map((photo, index) => (
           <div
             key={index}
@@ -49,7 +51,7 @@ export function PhotoMarquee() {
             )}
           </div>
         ))}
-      </div>
+      </Stack>
     </div>
   )
 }

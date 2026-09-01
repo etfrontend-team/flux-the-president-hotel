@@ -6,7 +6,7 @@ import React from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 
 import { ChevronRightIcon } from '@/components/icons'
-import { Heading, Prose } from '@/components/ui'
+import { Heading, Prose, Stack } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 type StayCard = {
@@ -105,21 +105,26 @@ export function WhereToStayCarousel() {
 
                   <Heading
                     level={4}
-                    color="paper"
+                    color="white"
                     uppercase={false}
                     className="absolute left-1/2 top-35 -translate-x-1/2 capitalize"
                   >
                     {card.label}
                   </Heading>
 
-                  <div className="absolute inset-x-0 bottom-0 flex flex-col gap-15 max-1023:pr-116 p-30 1024:translate-y-10 1024:opacity-0 1024:transition-[opacity,translate] 1024:duration-400 1024:ease-out 1024:will-change-[translate,opacity] 1024:group-hover:translate-y-0 1024:group-hover:opacity-100">
-                    <Prose as="p" font="accent" color="paper" className="text-12 font-normal uppercase">
+                  <Stack
+                    gap={15}
+                    tabletGap={15}
+                    mobileGap={15}
+                    className="absolute inset-x-0 bottom-0 max-1023:pr-116 p-30 1024:translate-y-10 1024:opacity-0 1024:transition-[opacity,translate] 1024:duration-400 1024:ease-out 1024:will-change-[translate,opacity] 1024:group-hover:translate-y-0 1024:group-hover:opacity-100"
+                  >
+                    <Prose as="p" font="accent" color="white" className="text-12 leading-copy font-normal uppercase">
                       {card.meta}
                     </Prose>
-                    <Prose as="p" color="paper" className="text-14">
+                    <Prose as="p" color="white" className="text-14 leading-copy">
                       {card.description}
                     </Prose>
-                  </div>
+                  </Stack>
                 </Link>
 
                 {/* Shown below 1025 — desktop relies on the hover reveal instead.
@@ -149,7 +154,7 @@ export function WhereToStayCarousel() {
       </div>
 
       {/* Shown below 1025 — desktop shows all three slides at once. */}
-      <div className="mt-25 flex items-center justify-center gap-15 1024:hidden">
+      <Stack direction="row" align="center" justify="center" gap={15} tabletGap={15} mobileGap={15} className="mt-25 1024:hidden">
         {stayCards.map((card, index) => (
           <button
             key={card.label}
@@ -162,7 +167,7 @@ export function WhereToStayCarousel() {
             )}
           />
         ))}
-      </div>
+      </Stack>
     </div>
   )
 }

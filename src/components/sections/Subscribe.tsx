@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { Button, Container, Heading, Prose } from '@/components/ui'
+import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 
 /**
  * Homepage newsletter signup. Per Figma (node 1:2601) — the section's fill
@@ -49,16 +49,16 @@ export function Subscribe() {
             />
           </div>
 
-          <div className="flex flex-col items-center gap-50">
-            <div className="flex flex-col items-center gap-20 text-center">
+          <Stack align="center" gap={50} tabletGap={50} mobileGap={50}>
+            <Stack align="center" gap={20} tabletGap={20} mobileGap={20} className="text-center">
               <Heading level={3}>Stay in the loop</Heading>
               <Prose color="ink-light" className="max-w-404">
                 Get our best rates, latest stories, and stay up to date with what&apos;s on at the hotel.
               </Prose>
-            </div>
+            </Stack>
 
             <form onSubmit={handleSubmit} className="flex flex-col items-center gap-50">
-              <div className="flex flex-col gap-15">
+              <Stack gap={15} tabletGap={15} mobileGap={15}>
                 <input
                   type="text"
                   name="name"
@@ -71,12 +71,12 @@ export function Subscribe() {
                   placeholder="Your email address"
                   className="block w-310 rounded-5 border border-brand-muted bg-transparent px-25 py-10 text-13 leading-9 tracking-5 text-ink capitalize placeholder:text-ink/60 placeholder:capitalize focus:outline-none"
                 />
-              </div>
+              </Stack>
               <Button type="submit" variant="solid" color="brand">
                 Subscribe
               </Button>
             </form>
-          </div>
+          </Stack>
 
           <div className="relative hidden aspect-343/383 overflow-hidden rounded-5 992:block">
             <Image

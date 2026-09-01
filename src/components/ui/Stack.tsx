@@ -21,6 +21,8 @@ interface StackProps {
   /** Main-axis distribution. */
   justify?: 'start' | 'center' | 'end' | 'between'
   className?: string
+  /** Merged with the internal gap CSS variables — for things like a transition delay. */
+  style?: React.CSSProperties
   children: React.ReactNode
 }
 
@@ -68,6 +70,7 @@ export function Stack({
   align,
   justify,
   className,
+  style,
   children,
 }: StackProps) {
   return (
@@ -77,6 +80,7 @@ export function Stack({
           '--gap': `${gap}px`,
           '--gap-tablet': `${tabletGap ?? gap}px`,
           '--gap-mobile': `${mobileGap}px`,
+          ...style,
         } as React.CSSProperties
       }
       className={cn(
