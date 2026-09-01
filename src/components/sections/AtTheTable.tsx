@@ -12,19 +12,14 @@ import { cn } from '@/lib/utils'
 type Venue = {
   title: string
   caption: string
-  /** Label for the mobile card's "Discover …" link (Figma node 1:3574). */
   ctaLabel: string
   image: string
-  /** Set only where the mobile mockup pairs the venue with a different photo than the desktop one. */
   mobileImage?: string
   alt: string
   mobileAlt?: string
   href: string
 }
 
-/** Botany Café and Restaurant & Terrace take their copy from Figma (desktop node 1:2419/1:2410,
-    mobile node 1:3571/1:3572); the other two are named from the footer's DINE column, with
-    placeholder captions until the CMS lands. */
 const VENUES: Venue[] = [
   {
     title: 'Restaurant & Terrace',
@@ -62,48 +57,20 @@ const VENUES: Venue[] = [
   },
 ]
 
-/** Panel widths from Figma (node 1:2409 vs. 1:2411): 720px expanded, 160px collapsed, 15px gutters
-    — expressed as flex-grow ratios against a `basis-0` row so the section stays fluid. */
 const EXPANDED_GROW = 720
 const COLLAPSED_GROW = 160
 
-/**
- * Width of the image layer inside every panel — always the *expanded* panel width, whatever the
- * panel currently measures, so the photo never rescales as the panel opens or closes (see
- * VenuePanel). Derived from the row's own width via container query units: the row distributes
- * `rowWidth − gaps` by the grow ratios above, so the expanded share is
- * `(100cqw − 3 × 15px) × 720 / 1200` → `60cqw − 27px`. Revisit both terms if the panel count,
- * the gap or the ratios change.
- */
 const IMAGE_WIDTH = 'w-[calc(60cqw-27px)]'
 
-/** GSAP easings from the reference implementation, as their CSS equivalents. */
-const EASE_EXPAND = 'ease-[cubic-bezier(0.215,0.61,0.355,1)]' // power3.out — panel width
-const EASE_REVEAL = 'ease-[cubic-bezier(0.16,1,0.3,1)]' // expo.out — text rising into place
-const EASE_TINT = 'ease-[cubic-bezier(0.87,0,0.13,1)]' // expo.inOut — glass crossfade
+const EASE_EXPAND = 'ease-[cubic-bezier(0.215,0.61,0.355,1)]'
+const EASE_REVEAL = 'ease-[cubic-bezier(0.16,1,0.3,1)]'
+const EASE_TINT = 'ease-[cubic-bezier(0.87,0,0.13,1)]'
 
-/**
- * "At the Table" — the dining section, which Figma designs as two different things:
- *
- * - ≥768px (node 1:2401): a row of panels. The hovered panel grows to the 720px Figma width while
- *   its siblings collapse to 160px behind glass. The Figma annotation on node 1:2409 ("As the user
- *   hovers, image expands") points at produx.design, and the client's reference recording shows the
- *   photo holding still under the opening panel — so the image is a fixed-size, centre-anchored
- *   layer and the panel is only a mask. The active panel is sticky: it stays open on mouse-out
- *   until another panel takes over, as on the reference.
- * - <768px (node 1:3555): no hover, so no expansion — a snap-scrolling carousel showing one card and half of the next, with
- *   the title, caption and "Discover …" link set below each image on the paper background.
- *
- * Not ported from the reference: its per-word stagger and its scroll-scrubbed image parallax.
- */
 export function AtTheTable() {
   return (
     <section className="general-padding bg-paper">
       <Container variant="lg">
         <FadeIn>
-          {/* Desktop puts the button opposite the heading; mobile (node 1:3556) stacks it 35px below. */}
-          {/* Stack's own mobile direction switches at 992px; this section's breakpoint is 768px
-              (Figma has a desktop and a mobile frame, nothing between), so the switch is local. */}
           <Stack
             direction="row"
             justify="between"
@@ -134,14 +101,12 @@ export function AtTheTable() {
   )
 }
 
-/** ≥768px — the hover-expanded panel row (Figma node 1:2401). */
 function ExpandingPanels() {
-  const [activeIndex, setActiveIndex] = useState(1)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   return (
     <div
       className={cn(
-        // `@container` so each panel can size its image layer off the row width — see IMAGE_WIDTH.
         '@container mt-63 flex gap-15',
         'max-767:hidden',
       )}
@@ -180,9 +145,6 @@ function VenuePanel({
         EASE_EXPAND,
       )}
     >
-      {/* The image layer is held at the expanded panel width and centred, so the panel opening is a
-          mask sliding off a stationary photo — the client's reference recording shows the image
-          neither scaling nor drifting, only its centre crop widening. */}
       <div className={cn('absolute top-0 left-1/2 h-full -translate-x-1/2', IMAGE_WIDTH)}>
         <Image
           src={venue.image}
@@ -193,9 +155,6 @@ function VenuePanel({
         />
       </div>
 
-      {/* Figma node 1:2413 — collapsed panels sit behind glass: a flat rgba(149,148,148,0.25) fill
-          plus Figma's "Frost" (its Refraction/Dispersion have no CSS equivalent). The glass lifts
-          off the panel as it expands. */}
       <div
         aria-hidden="true"
         className={cn(
@@ -205,7 +164,6 @@ function VenuePanel({
         )}
       />
 
-      {/* Figma node 1:2409 — 45% black at the top edge, over a flat 10% black, for caption legibility. */}
       <div
         aria-hidden="true"
         className={cn(
@@ -215,8 +173,6 @@ function VenuePanel({
         )}
       />
 
-      {/* Fixed-width so the copy never reflows while the panel animates — it is simply clipped
-          by the collapsing frame, as on the reference. */}
       <div className="pointer-events-none absolute inset-0 flex w-630 max-w-none flex-col gap-5 p-45 pt-50">
         <RevealLine isActive={isActive} delay="delay-330">
           <span className="font-display text-25 leading-display tracking-5 text-paper capitalize">
@@ -233,7 +189,6 @@ function VenuePanel({
   )
 }
 
-/** One line of panel copy, rising out of its own clipping box once the panel is active. */
 function RevealLine({
   isActive,
   delay,
@@ -258,18 +213,12 @@ function RevealLine({
   )
 }
 
-/** <768px — the embla-driven card carousel (Figma node 1:3564): image, then copy on the paper background. */
 function VenueCarousel() {
   return (
     <Carousel
       options={{ loop: false, align: 'start', containScroll: 'trimSnaps' }}
-      /* -mr-24 cancels Container's mobile right padding so the strip runs to the screen edge —
-         the half-visible card is cut off by the viewport, not by a gutter. */
-      className="mt-50 -mr-24 767:hidden"
+      className="mt-50 767:hidden max-767:overflow-visible"
       trackClassName="gap-20"
-      /* Sized off the viewport rather than pinned to the mockup's literal 320px: the whole card
-         takes 70% of the track and the next one shows through the remaining 30% (less the 20px
-         gutter), matching the split in the mobile frame. */
       slideClassName="flex-[0_0_70%]"
     >
       {VENUES.map((venue) => (
@@ -296,8 +245,6 @@ function VenueCarousel() {
               <Prose color="ink-light">{venue.caption}</Prose>
             </div>
 
-            {/* Not a Button: Figma node 1:3573 is a static bottom rule in the body font, not the
-                brand button's animated underline. */}
             <span className="w-fit border-b border-brand-muted/80 pb-10 font-body text-13 tracking-5 text-brand uppercase">
               {venue.ctaLabel}
             </span>
