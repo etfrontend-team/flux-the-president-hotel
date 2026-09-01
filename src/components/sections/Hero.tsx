@@ -77,7 +77,7 @@ export function Hero({
                 >
                   {heading}
                 </Heading>
-                <Prose color="paper" className="max-w-469 !leading-copy">
+                <Prose color="paper" className="max-w-475">
                   {description}
                 </Prose>
               </Stack>

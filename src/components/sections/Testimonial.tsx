@@ -40,7 +40,7 @@ export function Testimonial() {
 
   return (
     <section ref={sectionRef} className="max-992:mt-15 mt-25">
-      <Container variant="sm">
+      <Container variant="sm" className="max-992:px-15!">
         <div className="relative overflow-hidden rounded-card bg-mint/50 pl-26 pr-[13%] py-100 992:pl-90 992:pr-[15%] 992:pt-180 992:pb-180">
           <motion.div
             style={{ translateY, rotateZ, willChange: 'transform', transformStyle: 'preserve-3d' }}
@@ -110,14 +110,14 @@ export function Testimonial() {
                     </div>
                   </div>
 
-                  <Stack gap={16} tabletGap={16} mobileGap={16} className="relative max-768:max-w-261">
+                  <Stack gap={36} tabletGap={32} mobileGap={32} className="relative max-768:max-w-261 max-w-390">
                     <p
                       className="font-display max-992:text-15 max-992:leading-copy text-21 leading-33 text-brand/80"
                       style={{ backgroundImage: ruledLineBackground }}
                     >
                       &ldquo;{quote}&rdquo;
                     </p>
-                    <span className="font-body text-11 tracking-5 text-brand-muted uppercase">- Louise M</span>
+                    <span className="font-body max-992:text-8 max-992:tracking-10 text-11 tracking-5 text-brand-muted uppercase">- Louise M</span>
                   </Stack>
 
                   <div className="pointer-events-none relative flex justify-center mix-blend-multiply opacity-15 max-992:hidden">

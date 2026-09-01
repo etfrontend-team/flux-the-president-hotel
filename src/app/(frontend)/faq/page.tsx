@@ -11,10 +11,11 @@ export default function FaqPage() {
         eyebrow="GUEST INFORMATION"
         heading={
           <>
-            <span className="block">FAQs</span>
+            <span className="block">Frequently Asked</span>
+            <span className='block'>Questions</span>
           </>
         }
-        description="Answers to the questions we're asked most, from booking to check-out."
+        description="Everything you need to know before, during, and after your stay. Can't find what you're looking for? Our concierge team is always available."
       />
       <AnnouncementBar />
       <Faq />

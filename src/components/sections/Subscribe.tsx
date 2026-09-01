@@ -38,7 +38,7 @@ export function Subscribe() {
       />
 
       <Container variant="lg" className="relative">
-        <div className="grid grid-cols-1 items-center gap-40 992:grid-cols-[343px_1fr_343px] max-992:px-14">
+        <div className="grid grid-cols-1 items-center gap-40 1024:grid-cols-3 1199:grid-cols-[343px_1fr_343px] max-992:px-25 1024:px-38">
           <div className="relative hidden aspect-343/383 overflow-hidden rounded-5 992:block">
             <Image
               src="/images/subscribe-left.webp"
@@ -63,16 +63,16 @@ export function Subscribe() {
                   type="text"
                   name="name"
                   placeholder="Your name"
-                  className="block w-310 rounded-5 border border-brand-muted bg-transparent px-25 py-10 text-13 leading-9 tracking-5 text-ink capitalize placeholder:text-ink/60 placeholder:capitalize focus:outline-none"
+                  className="block h-40 w-310 rounded-5 border border-brand-muted bg-transparent px-25 py-15 text-13 leading-12 tracking-5 text-ink capitalize placeholder:text-ink/60 placeholder:capitalize focus:outline-none"
                 />
                 <input
                   type="email"
                   name="email"
                   placeholder="Your email address"
-                  className="block w-310 rounded-5 border border-brand-muted bg-transparent px-25 py-10 text-13 leading-9 tracking-5 text-ink capitalize placeholder:text-ink/60 placeholder:capitalize focus:outline-none"
+                  className="block h-40 w-310 rounded-5 border border-brand-muted bg-transparent px-25 py-15 text-13 leading-12 tracking-5 text-ink capitalize placeholder:text-ink/60 placeholder:capitalize focus:outline-none"
                 />
               </Stack>
-              <Button type="submit" variant="solid" color="brand">
+              <Button type="submit" variant="solid" color="brand" className="px-20!">
                 Subscribe
               </Button>
             </form>

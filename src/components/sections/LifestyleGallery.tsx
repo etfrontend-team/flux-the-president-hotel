@@ -25,7 +25,7 @@ export function LifestyleGallery() {
   ])
 
   return (
-    <section className="py-60 max-992:py-0">
+    <section className="py-60 max-992:pt-0 max-992:pb-100">
       <Container>
         <div ref={emblaRef} className="cursor-grab overflow-hidden active:cursor-grabbing">
           <div className="flex gap-15">

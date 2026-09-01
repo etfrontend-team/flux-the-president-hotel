@@ -11,14 +11,14 @@ import { WhereToStayCarousel } from './WhereToStayCarousel'
 export function WhereToStay() {
   return (
     <section className="general-padding">
-      <Container variant="lg">
+      <Container variant="lg" className="max-992:px-26">
         <Stack align="center" gap={50} tabletGap={50} mobileGap={50} className="1199:px-38 w-full">
           <div className="flex max-w-864 flex-col items-center text-center">
             <span className="font-accent text-16 tracking-5 text-accent uppercase mb-30">Where to stay</span>
             <Stack align="center" gap={35} tabletGap={35} mobileGap={35} className="mb-35">
               <Heading
                 level={3}
-                className="1024:!leading-23"
+                className=""
               >
                 Your room above the Atlantic.
               </Heading>

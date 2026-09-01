@@ -44,7 +44,7 @@ const introBlock = (
   <>
     <Stack align="start" gap={30} tabletGap={30} mobileGap={30}>
       <span className="font-accent text-16 tracking-5 text-accent uppercase">Your Cape Town</span>
-      <Heading level={3} className="max-992:max-w-360 992:max-w-542">
+      <Heading level={3} className="max-992:max-w-360 992:max-w-542 text-wrap">
         More than a view. A city to discover.
       </Heading>
     </Stack>
@@ -61,7 +61,7 @@ const introBlock = (
 export function MoreThanAView() {
   return (
     <section className="general-padding bg-paper-alt/40">
-      <Container variant="lg">
+      <Container variant="lg" className="max-992:px-26">
         <Stack align="start" gap={35} tabletGap={35} mobileGap={35} className="992:hidden">
           {introBlock}
 
@@ -82,8 +82,8 @@ export function MoreThanAView() {
           </Stack>
         </Stack>
 
-        <div className="max-992:hidden 1024:px-38">
-          <div className="grid grid-cols-2 gap-50">
+        <div className="max-992:hidden 1024:pl-38 1024:pr-22">
+          <div className="grid grid-cols-2 1024:grid-cols-[minmax(607px,_1fr)_minmax(623px,_1fr)] gap-30">
             <Stack gap={45} tabletGap={45} mobileGap={45}>
               <div className="relative aspect-607/337 overflow-hidden rounded-card">
                 <Image
@@ -104,7 +104,7 @@ export function MoreThanAView() {
                   <div className="relative size-195 shrink-0 overflow-hidden rounded-card">
                     <Image src={experience.image} alt={experience.alt} fill sizes="195px" className="object-cover" />
                   </div>
-                  <Stack align="start" gap={10} tabletGap={10} mobileGap={10}>
+                  <Stack align="start" gap={20} tabletGap={20} mobileGap={20}>
                     <Heading level={4} uppercase={false} className="capitalize">
                       {experience.heading}
                     </Heading>

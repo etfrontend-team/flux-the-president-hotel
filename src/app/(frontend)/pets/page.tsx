@@ -26,7 +26,7 @@ export default function PetsPage() {
         <RoomShowcase />
         <SplitContent />
         <LifestyleGallery />
-        <Faq />
+        <Faq className="max-992:bg-paper-alt/40"/>
         <DiscoverMore/>
         <BookYourStay />
         <Subscribe />

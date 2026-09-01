@@ -16,8 +16,8 @@ const media = '/images/atlantic-meets-city.mp4'
 export function AtlanticMeetsCity() {
   return (
     <section className="">
-      <Container variant="sm">
-        <div className="relative max-992:aspect-440/742 992:aspect-1390/843 overflow-hidden rounded-card after:content-[''] after:inset-0 after:absolute after:bg-black/40">
+      <Container variant="sm" className="max-992:!px-15">
+        <div className="relative max-992:aspect-410/742 992:aspect-1390/843 overflow-hidden rounded-card after:content-[''] after:inset-0 after:absolute after:bg-black/40">
           {isVideoSrc(media) ? (
             <video
               src={media}

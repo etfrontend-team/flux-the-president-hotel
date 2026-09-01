@@ -10,7 +10,7 @@ type BookingBarVariant = 'overlay' | 'flow'
 const fieldBase = 'flex h-42 max-1199:min-h-42 flex-1 items-center justify-between rounded-card px-10 1366:px-20'
 
 const fieldVariantClasses: Record<BookingBarVariant, string> = {
-  overlay: 'border border-paper bg-[rgba(149,148,148,0.15)]',
+  overlay: 'border border-paper bg-smoke/15',
   flow: 'border border-brand-muted bg-transparent',
 }
 
@@ -95,7 +95,7 @@ export function BookingBar({ variant = 'overlay' }: { variant?: BookingBarVarian
         <Button
           variant="solid"
           color="brand"
-          className="h-42 shrink-0 rounded-card px-20 py-0 font-normal text-12 tracking-10 uppercase max-1199:w-full"
+          className="h-42 shrink-0 rounded-card px-20 py-0 font-normal !text-12 !tracking-10 uppercase max-1199:w-full"
         >
           Check availability
         </Button>

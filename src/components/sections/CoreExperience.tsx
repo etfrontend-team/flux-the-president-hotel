@@ -194,7 +194,7 @@ export function CoreExperience() {
           gap={30}
           tabletGap={30}
           mobileGap={20}
-          className="absolute inset-x-0 top-45 max-992:top-90 z-20 px-60 max-1024:px-25"
+          className="absolute inset-x-0 top-90 max-992:top-90 z-20 px-60 max-1024:px-25"
         >
           {tabs.map((tab, index) => {
             const isActive = index === activeIndex
@@ -230,7 +230,7 @@ export function CoreExperience() {
           gap={35}
           tabletGap={35}
           mobileGap={35}
-          className="absolute bottom-60 left-60 z-20 max-w-530 max-1024:left-25 max-1024:right-25 max-1024:max-w-full"
+          className="absolute bottom-80 left-60 z-20 max-w-530 max-1024:bottom-60 max-1024:left-26 max-1024:right-26 max-1024:max-w-full"
         >
           <Stack align="start" gap={30} tabletGap={30} mobileGap={30}>
             <span
@@ -240,18 +240,17 @@ export function CoreExperience() {
               {active.eyebrow}
             </span>
             <div className="flex flex-col">
-              {active.heading.map((line, index) => (
                 <Heading
-                  key={line}
+                  
                   level={3}
                   color="paper"
                   uppercase={false}
                   className="core-experience-line text-white uppercase"
-                  style={{ animationDelay: `${80 + index * 60}ms` }}
-                >
-                  {line}
+                  >
+                  {active.heading.map((line, index) => (
+                    <span className='block' key={line} style={{ animationDelay: `${80 + index * 60}ms` }}>{line}</span>
+                  ))}
                 </Heading>
-              ))}
             </div>
           </Stack>
           <Prose

@@ -21,11 +21,10 @@ const navLinks: { label: string; href?: string }[] = [
 /** Delay before the sticky bar commits to appearing once the user starts scrolling up. */
 const STICKY_REVEAL_DELAY_MS = 220
 
-/** Hover-reveal double-sweep underline — shared with any other tab/link that should match the nav's hover treatment. */
+/** Hover-reveal underline — shared with any other tab/link that should match the nav's hover treatment. */
 export const underlineClasses =
-  "before:absolute before:inset-x-0 before:bottom-0 before:h-px before:origin-left before:scale-x-0 before:bg-current before:transition-[scale] before:duration-[735ms] before:ease-[cubic-bezier(0.625,0.05,0,1)] before:content-[''] " +
-  "after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-right after:scale-x-0 after:bg-current after:transition-[scale] after:duration-[735ms] after:ease-[cubic-bezier(0.625,0.05,0,1)] after:content-[''] " +
-  'hover:before:origin-right hover:before:delay-100 hover:after:origin-left hover:after:scale-x-100 hover:after:delay-100'
+  "before:absolute before:inset-x-0 before:-bottom-5 before:h-px before:origin-right before:scale-x-0 before:bg-current before:transition-[scale] before:duration-[735ms] before:ease-[cubic-bezier(0.625,0.05,0,1)] before:content-[''] " +
+  'hover:before:origin-left hover:before:scale-x-100 hover:before:delay-300'
 
 export function NavLink({
   href,
@@ -149,7 +148,7 @@ export function Header() {
             </button>
           </>
         )}
-        <Button as="a" href="#" variant="glass" color="paper" className='max-1024:!hidden'>
+        <Button as="a" href="#" variant="glass" color="paper" className='max-1024:!hidden 1024:text-13! tracking-10!'>
           Book Your Stay
         </Button>
       </Stack>

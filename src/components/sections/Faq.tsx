@@ -47,12 +47,12 @@ const FAQS: FaqItem[] = [
  * and per the annotation, only one item can be open at a time (opening one
  * closes whichever was open; clicking the open item closes it).
  */
-export function Faq() {
+export function Faq({ className }: { className?: string }) {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(0)
 
   return (
-    <section className="general-padding">
-      <Container variant="lg" className="max-w-1095 mx-auto 1199:px-0">
+    <section className={cn('general-padding', className)}>
+      <Container className="max-w-1095 mx-auto 1199:px-0">
         <Heading level={3} className="mb-60 text-center">
           Frequently Asked Questions
         </Heading>

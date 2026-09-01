@@ -83,7 +83,7 @@ export function Footer() {
 
           <Divider className="max-992:my-50 mt-52 mb-50" />
 
-          <Stack align="center" gap={50} tabletGap={50} mobileGap={50} className="w-full justify-around 992:flex-row 992:items-start">
+          <Stack align="center" gap={50} tabletGap={50} mobileGap={50} className="w-full justify-between 1199:px-80 992:flex-row 992:items-start">
             {navColumns.map((column) => (
               <Stack
                 key={column.title}

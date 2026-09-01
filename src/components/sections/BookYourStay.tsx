@@ -15,7 +15,7 @@ const media = '/images/PRESIDENTHOTEL-PICNIC-20260513-TOMPARKINSON-27.mp4'
 export function BookYourStay() {
   return (
     <section className='max-992:mt-15 mt-25'>
-      <Container variant="sm">
+      <Container variant="sm" className="max-992:px-15!">
         <div className="relative max-992:aspect-410/526 992:aspect-1390/626 overflow-hidden rounded-card after:content-[''] after:inset-0 after:absolute after:bg-black/20">
           {isVideoSrc(media) ? (
             <video
@@ -37,7 +37,7 @@ export function BookYourStay() {
           )}
 
           <div className="absolute inset-0 z-1 flex flex-col items-center justify-center px-36 text-center">
-            <Heading level={2} color="white" className='mb-20'>
+            <Heading level={2} color="white" className='mb-35'>
               Book Your Stay
             </Heading>
             <Prose color="white" className="max-w-483 opacity-80 mb-40">

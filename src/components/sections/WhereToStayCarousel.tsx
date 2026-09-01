@@ -101,7 +101,7 @@ export function WhereToStayCarousel() {
 
                   {/* Bottom darken + vignette behind the meta/description: shown by default
                       below 1025 (no hover to reveal it there), hover-only from 1025 up. */}
-                  <div className="pointer-events-none absolute inset-0 will-change-opacity bg-[linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15)),linear-gradient(to_bottom,rgba(0,0,0,0)_65%,rgba(0,0,0,0.45)_100%)] opacity-100 transition-opacity duration-400 ease-out 1024:opacity-0 1024:group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 will-change-[opacity] bg-[linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15)),linear-gradient(to_bottom,rgba(0,0,0,0)_65%,rgba(0,0,0,0.45)_100%)] opacity-100 transition-opacity duration-400 ease-out 1024:opacity-0 1024:group-hover:opacity-100" />
 
                   <Heading
                     level={4}
@@ -121,7 +121,7 @@ export function WhereToStayCarousel() {
                     <Prose as="p" font="accent" color="white" className="text-12 leading-copy font-normal uppercase">
                       {card.meta}
                     </Prose>
-                    <Prose as="p" color="white" className="text-14 leading-copy">
+                    <Prose as="p" color="white" className="text-14 leading-copy!">
                       {card.description}
                     </Prose>
                   </Stack>

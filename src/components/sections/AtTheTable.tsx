@@ -68,34 +68,35 @@ const EASE_TINT = 'ease-[cubic-bezier(0.87,0,0.13,1)]'
 
 export function AtTheTable() {
   return (
-    <section className="general-padding bg-paper">
-      <Container variant="lg">
-        <FadeIn>
-          <Stack
-            direction="row"
-            justify="between"
-            align="end"
-            gap={30}
-            mobileGap={35}
-            className="max-767:flex-col max-767:items-start!"
-          >
-            <Stack gap={30} mobileGap={30}>
-              <Prose as="span" font="accent" className="text-accent text-16 font-normal uppercase">
-                At the Table
-              </Prose>
-              <Heading level={2} size={3}>
-                Where the day tastes best.
-              </Heading>
+    <section className="general-padding bg-paper overflow-hidden">
+      <Container variant="lg" className="max-992:px-26">
+        <div className='992:px-38'>
+          <FadeIn>
+            <Stack
+              direction="row"
+              justify="between"
+              align="end"
+              gap={30}
+              mobileGap={35}
+              className="max-767:flex-col max-767:items-start!"
+            >
+              <Stack gap={30} mobileGap={30}>
+                <Prose as="span" font="accent" className="text-accent text-16 font-normal uppercase">
+                  At the Table
+                </Prose>
+                <Heading level={2} size={3}>
+                  Where the day tastes best.
+                </Heading>
+              </Stack>
+
+              <Button as="a" href="#" variant="glass">
+                View all
+              </Button>
             </Stack>
-
-            <Button as="a" href="#" variant="glass">
-              View all
-            </Button>
-          </Stack>
-        </FadeIn>
-
-        <ExpandingPanels />
-        <VenueCarousel />
+          </FadeIn>
+          <ExpandingPanels />
+          <VenueCarousel />
+        </div>
       </Container>
     </section>
   )

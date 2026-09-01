@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <AnnouncementBar />
+      <AnnouncementBar pairedWithMarquee />
       <PhotoMarquee />
       <WhereToStay />
       <WhatsOn />

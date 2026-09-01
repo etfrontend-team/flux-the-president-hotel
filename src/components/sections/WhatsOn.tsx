@@ -63,7 +63,7 @@ export function WhatsOn() {
 
   return (
     <section className="general-padding !pt-0">
-      <Container variant="lg">
+      <Container variant="lg" className="max-992:px-26">
         <div className="border-t border-brand-muted/30 mb-140 max-1024:mb-80" />
 
         <div className="grid grid-cols-1 992:gap-50 992:grid-cols-2 992:items-start 1199:px-38">
@@ -95,7 +95,7 @@ export function WhatsOn() {
               />
             ))}
 
-            <div className="absolute left-0 top-40 rounded-tr-5 rounded-br-5 bg-paper-alt/80 size-80 px-24 py-14">
+            <div className="absolute left-0 top-40 rounded-tr-5 rounded-br-5 bg-paper-alt/80 max-768:size-72 max-768:p-10 size-80 px-24 py-14">
               {events.map((event, index) => (
                 <div
                   key={event.date}
@@ -104,9 +104,9 @@ export function WhatsOn() {
                     activeIndex === index ? 'opacity-100' : 'opacity-0',
                   )}
                 >
-                  <span className="font-body text-13 tracking-5 text-accent uppercase">{event.badge.day}</span>
-                  <span className="font-body text-21 tracking-[0.66px] text-accent uppercase">{event.badge.date}</span>
-                  <span className="font-body text-13 tracking-5 text-accent uppercase">{event.badge.month}</span>
+                  <span className="font-body max-768:text-12 text-13 tracking-5 text-accent uppercase">{event.badge.day}</span>
+                  <span className="font-body max-768:text-18 text-21 tracking-5 text-accent uppercase">{event.badge.date}</span>
+                  <span className="font-body max-768:text-12 text-13 tracking-5 text-accent uppercase">{event.badge.month}</span>
                 </div>
               ))}
             </div>
@@ -126,7 +126,7 @@ export function WhatsOn() {
                     hoveredIndex === index && 'bg-paper-alt/40',
                   )}
                 >
-                  <p className="font-body text-14 tracking-10 text-brand-muted uppercase max-992:mb-25 mb-20">
+                  <p className="font-body text-14 tracking-10 text-brand-muted uppercase mb-25">
                     {event.date} | {event.tag}
                   </p>
                   <Heading level={4} color="brand" uppercase={false} className="capitalize mb-20 block">
@@ -139,9 +139,9 @@ export function WhatsOn() {
                       activeIndex === index ? 'max-h-110 pb-20' : 'max-h-0',
                     )}
                   >
-                    <Stack gap={20} tabletGap={20} mobileGap={30}>
+                    <Stack gap={30} tabletGap={30} mobileGap={30}>
                       <div className="h-42">
-                        <Prose color="ink-light" className="line-clamp-2 text-link/100">
+                        <Prose color="ink" className="line-clamp-2">
                           {event.description}
                         </Prose>
                       </div>
