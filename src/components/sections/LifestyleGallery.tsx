@@ -26,21 +26,23 @@ export function LifestyleGallery() {
 
   return (
     <section className="py-60 max-992:pt-0 max-992:pb-100">
-      <Container>
-        <div ref={emblaRef} className="cursor-grab overflow-hidden active:cursor-grabbing">
-          <div className="flex gap-15">
+      <Container className="embla">
+        <div ref={emblaRef} className="embla__viewport cursor-grab overflow-hidden active:cursor-grabbing">
+          <div className="embla__container flex -ml-15">
             {IMAGES.map((image, index) => (
               <div
                 key={`${image.src}-${index}`}
-                className="relative max-992:h-349 h-450 flex-[0_0_765px] shrink-0 overflow-hidden rounded-card max-992:flex-[0_0_70.735%]"
+                className="embla__slide relative flex-[0_0_765px] shrink-0 pl-15 max-992:flex-[0_0_70.735%]"
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(min-width: 993px) 61vw, 71vw"
-                  className="pointer-events-none object-cover"
-                />
+                <div className="relative max-992:h-349 h-450 overflow-hidden rounded-card">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 993px) 61vw, 71vw"
+                    className="pointer-events-none object-cover"
+                  />
+                </div>
               </div>
             ))}
           </div>

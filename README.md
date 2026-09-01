@@ -444,7 +444,7 @@ Tailwind v4 uses **CSS-first config** — there is no `tailwind.config.js`. Setu
 | File | Role |
 |---|---|
 | [`postcss.config.mjs`](postcss.config.mjs) | Registers the `@tailwindcss/postcss` plugin |
-| [`src/app/(frontend)/css/styles.css`](src/app/(frontend)/css/styles.css) | Imports Tailwind, loads the typography plugin, and imports the `base.css` / `layout.css` / `components.css` partials |
+| [`src/app/(frontend)/styles.css`](src/app/(frontend)/styles.css) | Imports Tailwind, loads the typography plugin, and imports the `base.css` / `layout.css` / `components.css` partials |
 | [`src/components/ui/`](src/components/ui/) | Hand-rolled primitives composed with the `cn()` helper |
 
 **Scoped to the frontend.** Tailwind is imported **only** in the `(frontend)` stylesheet, so it never

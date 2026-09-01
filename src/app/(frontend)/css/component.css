@@ -115,12 +115,12 @@
   }
 }
 
-.core-experience-line span {
+.core-experience-line {
   animation: core-experience-line-in 0.6s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .core-experience-line span {
+  .core-experience-line {
     animation: none;
   }
 }

@@ -11,7 +11,9 @@ export function AnnouncementBar({ pairedWithMarquee = false }: { pairedWithMarqu
   const [visible, setVisible] = React.useState(false)
   const [isStuck, setIsStuck] = React.useState(false)
   const [forceHidden, setForceHidden] = React.useState(false)
+  const [marqueePassed, setMarqueePassed] = React.useState(false)
   const sentinelRef = React.useRef<HTMLDivElement>(null)
+  const barRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     let lastY = window.scrollY
@@ -46,7 +48,19 @@ export function AnnouncementBar({ pairedWithMarquee = false }: { pairedWithMarqu
     return () => observer.disconnect()
   }, [])
 
-  const hidden = forceHidden || (isStuck && !visible)
+  React.useEffect(() => {
+    if (!pairedWithMarquee) return
+    const marqueeEl = barRef.current?.nextElementSibling
+    if (!marqueeEl) return
+
+    const observer = new IntersectionObserver(([entry]) => setMarqueePassed(entry.boundingClientRect.bottom < 0), {
+      threshold: 0,
+    })
+    observer.observe(marqueeEl)
+    return () => observer.disconnect()
+  }, [pairedWithMarquee])
+
+  const hidden = forceHidden || (isStuck && pairedWithMarquee && !marqueePassed) || (isStuck && !visible)
 
   return (
     <>
@@ -57,9 +71,10 @@ export function AnnouncementBar({ pairedWithMarquee = false }: { pairedWithMarqu
       )}
 
       <div
+        ref={barRef}
         aria-hidden={hidden}
-        className={`sticky top-0 z-20 transition-transform duration-300 ease-out ${
-          hidden ? '-translate-y-full pointer-events-none' : 'translate-y-0 pointer-events-auto'
+        className={`relative top-0 z-20 transition-all duration-300 ease-out ${
+          hidden ? 'translate-y-0 pointer-events-none' : 'sticky translate-y-0 pointer-events-auto'
         }`}
       >
         <Stack

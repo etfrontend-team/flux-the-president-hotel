@@ -6,7 +6,7 @@ import { Header } from '@/components/Header'
 import { MegaMenu } from '@/components/MegaMenu'
 import { MegaMenuProvider } from '@/components/MegaMenuContext'
 import { DayNightProvider } from '@/components/DayNightContext'
-import './css/styles.css'
+import './styles.css'
 
 export const metadata = {
   description: site.meta.description,

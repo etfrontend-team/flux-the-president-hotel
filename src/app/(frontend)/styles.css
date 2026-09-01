@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
-@import './base.css';
-@import './layout.css';
-@import './utilities.css';
-@import './component.css';
+@import './css/base.css';
+@import './css/layout.css';
+@import './css/utilities.css';
+@import './css/component.css';
 
 @theme {
   /* Colours — from Figma (PRES Website Dev File, node 1:2291) */
@@ -29,14 +29,9 @@
   --font-accent: 'futura-pt', sans-serif;
   --font-display: 'kepler-std', serif;
 
-  /* Line-height — Figma has no named tokens, but these three ratios recur
-     consistently by role (none matches a Tailwind default exactly).
-     Letter-spacing needs no new tokens: every value in the file is exactly
-     5% of its font-size (→ tracking-wider) or 10% (→ tracking-widest) —
-     both already ship as Tailwind defaults. */
-  --leading-display: 120%; /* h1/h2 headings */
-  --leading-muted: 140%; /* secondary/opacity-80 copy */
-  --leading-copy: 160%; /* primary body paragraphs */
+  --leading-display: 120%;
+  --leading-muted: 140%;
+  --leading-copy: 160%;
 
   --tracking-5: 5%;
   --tracking-10: 10%;
