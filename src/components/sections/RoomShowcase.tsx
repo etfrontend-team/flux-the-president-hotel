@@ -12,9 +12,6 @@ type RoomSlide = {
   alt: string
 }
 
-/** Only one "Rooms" photo/caption was specified in Figma — reusing the other two
- * already-sourced room-type photos as slide filler, same as WhatsOn's stand-in
- * images, so the crossfade is actually visible. */
 const SLIDES: RoomSlide[] = [
   {
     image: '/images/stay-showcase-rooms.webp',
@@ -30,16 +27,8 @@ const SLIDES: RoomSlide[] = [
   },
 ]
 
-/** How long each slide holds before crossfading to the next. */
 const SLIDE_INTERVAL_MS = 5000
 
-/**
- * Per Figma (node 1:944): "Pup Stays" heading over a single full-bleed card.
- * The annotation on the image points to modern-carousel-slider.framer.website
- * as the reference for the crossfade — a long, gentle fade between images
- * rather than a snap cut, so the transition duration here is deliberately
- * slow (1.5s) with a long hold (5s) between slides.
- */
 export function RoomShowcase() {
   const [activeIndex, setActiveIndex] = React.useState(0)
 
@@ -87,7 +76,30 @@ export function RoomShowcase() {
               className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(45,7,0,0.2)_0%,rgba(0,0,0,0)_20%),linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),linear-gradient(to_top,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0)_27%)]"
             />
 
-            <Stack direction="row" gap={10} tabletGap={10} mobileGap={10} className="absolute right-30 bottom-30 z-10">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-198 overflow-hidden rounded-b-card max-992:h-135"
+            >
+              {[
+                { blur: 2, mask: 'linear-gradient(to top, black 0%, black 20%, transparent 90%)' },
+                { blur: 0.5, mask: 'linear-gradient(to top, black 0%, black 10%, transparent 100%)' },
+              ].map(({ blur, mask }) => (
+                <div
+                  key={blur}
+                  className="absolute inset-0"
+                  style={{
+                    backdropFilter: `blur(${blur}px)`,
+                    WebkitBackdropFilter: `blur(${blur}px)`,
+                    maskImage: mask,
+                    WebkitMaskImage: mask,
+                  }}
+                />
+              ))}
+              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(124,124,124,0.15)_0%,rgba(149,148,148,0)_100%)]" />
+            </div>
+
+            {/* Desktop: arrows grouped bottom-right. Mobile (per Figma node 1:4822): arrows split to the left/right edges, vertically centered on the image. */}
+            <Stack direction="row" gap={10} tabletGap={10} mobileGap={10} className="absolute right-30 bottom-30 z-10 max-992:hidden">
               <button
                 type="button"
                 onClick={goToPrev}
@@ -114,7 +126,32 @@ export function RoomShowcase() {
               </button>
             </Stack>
 
-            <div className="absolute inset-x-0 bottom-0 backdrop-blur-[2.5px]">
+            <button
+              type="button"
+              onClick={goToPrev}
+              aria-label="Previous room"
+              className="group/navbtn absolute left-25 top-1/2 z-10 hidden -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-paper/80 size-34 max-992:flex"
+            >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-full bg-brand/20 opacity-0 transition-opacity duration-300 ease-out group-hover/navbtn:opacity-100"
+              />
+              <ChevronRightIcon className="relative h-12 w-7 rotate-180 text-brand" />
+            </button>
+            <button
+              type="button"
+              onClick={goToNext}
+              aria-label="Next room"
+              className="group/navbtn absolute right-25 top-1/2 z-10 hidden -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-paper/80 size-34 max-992:flex"
+            >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-full bg-brand/20 opacity-0 transition-opacity duration-300 ease-out group-hover/navbtn:opacity-100"
+              />
+              <ChevronRightIcon className="relative h-12 w-7 text-brand" />
+            </button>
+
+            <div className="absolute inset-x-0 bottom-0">
               <Stack
                 align="start"
                 gap={30}
@@ -135,7 +172,7 @@ export function RoomShowcase() {
                     </p>
                   </Stack>
                 </Stack>
-                <Button as="a" href="#" variant="glass" color="paper">
+                <Button as="a" href="#" variant="glass" color="paper" className="max-992:hidden!">
                   View rooms
                 </Button>
               </Stack>

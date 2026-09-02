@@ -53,7 +53,7 @@ export function Faq({ className }: { className?: string }) {
   return (
     <section className={cn('general-padding', className)}>
       <Container className="max-w-1095 mx-auto 1199:px-0">
-        <Heading level={3} className="mb-60 text-center">
+        <Heading level={3} className="mb-60 max-992:mb-40 text-center max-992:text-pretty">
           Frequently Asked Questions
         </Heading>
 

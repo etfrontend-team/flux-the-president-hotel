@@ -79,30 +79,29 @@ export function Lightbox({ images, className, children }: LightboxProps) {
               ‹
             </button>
           )}
+          <div className="relative bg-paper overflow-hidden rounded-card size-full max-h-[85vh] max-w-[90vw]">
+            <Image
+              src={active.src}
+              alt={active.alt}
+              fill
+              sizes="90vw"
+              onClick={(event) => event.stopPropagation()}
+            />
 
-          <Image
-            src={active.src}
-            alt={active.alt}
-            width={active.width}
-            height={active.height}
-            sizes="90vw"
-            className="max-h-[85vh] w-auto max-w-[90vw] rounded-card object-contain"
-            onClick={(event) => event.stopPropagation()}
-          />
-
-          {images.length > 1 && (
-            <button
-              type="button"
-              aria-label="Next image"
-              className="absolute right-24 text-3xl text-paper/80 hover:text-paper"
-              onClick={(event) => {
-                event.stopPropagation()
-                setIndex((i) => (i === null ? i : (i + 1) % images.length))
-              }}
-            >
-              ›
-            </button>
-          )}
+            {images.length > 1 && (
+              <button
+                type="button"
+                aria-label="Next image"
+                className="absolute right-24 text-3xl text-paper/80 hover:text-paper"
+                onClick={(event) => {
+                  event.stopPropagation()
+                  setIndex((i) => (i === null ? i : (i + 1) % images.length))
+                }}
+              >
+                ›
+              </button>
+            )}
+          </div>
         </div>
       )}
     </div>

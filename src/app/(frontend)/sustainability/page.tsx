@@ -5,7 +5,6 @@ import { SplitContent } from '@/components/sections/SplitContent'
 import { LifestyleGallery } from '@/components/sections/LifestyleGallery'
 import { BookYourStay } from '@/components/sections/BookYourStay'
 import { Subscribe } from '@/components/sections/Subscribe'
-import { DiscoverMore } from '@/components/sections/DiscoverMore'
 import { Faq } from '@/components/sections/Faq'
 
 export default function SustainabilityPage() {
@@ -24,8 +23,9 @@ export default function SustainabilityPage() {
         <SplitInfo divider cardWidth={385} />
         <WildlifeShowcase />
         <SplitContent
+            className="max-992:bg-paper-alt/40"
             imagePosition="right"
-            eyebrow="SUPPORT"  
+            eyebrow="SUPPORT"
             heading="Cocktails for a Cause"
             description={[
                 "Introducing our cocktail trio in support of SANCCOB penguins. Meet Rocky, Pamela and Sylvester — each inspired by the spirit of conservation and coastal life, with proceeds supporting SANCCOB's ongoing conservation efforts.",
@@ -50,7 +50,6 @@ export default function SustainabilityPage() {
         />
         <LifestyleGallery />
         <Faq className="max-992:bg-paper-alt/40"/>
-        <DiscoverMore/>
         <BookYourStay />
         <Subscribe />
     </>

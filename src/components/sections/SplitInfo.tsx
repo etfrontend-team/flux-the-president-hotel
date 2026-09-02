@@ -48,7 +48,7 @@ export function SplitInfo({ divider = false, cardWidth = 607 }: { divider?: bool
               tabletGap={40}
               mobileGap={40}
               style={{ '--card-width': `${cardWidth}px` } as CSSProperties}
-              className="w-(--card-width) shrink-0 rounded-card border border-brand/10 bg-paper-alt px-45 py-40 max-992:w-full max-992:py-50 max-992:px-25 shadow-policy"
+              className="w-(--card-width) shrink-0 rounded-card border border-brand/10 bg-paper-alt/40 max-992:bg-paper-alt px-45 py-40 max-992:w-full max-992:py-50 max-992:px-25 shadow-policy"
             >
               <Stack gap={45} tabletGap={45} mobileGap={45}>
                 <FadeIn>

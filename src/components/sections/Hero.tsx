@@ -36,7 +36,7 @@ export function Hero({
   return (
     <>
       <section data-hero className="relative isolate overflow-hidden rounded-card max-992:m-15 m-25">
-        <div className="relative min-h-screen overflow-hidden">
+        <div className="relative max-1199:min-h-[calc(100dvh-50px)] 1199:h-[calc(100vh-50px)] overflow-hidden">
           <div className="absolute inset-0 overflow-hidden max-1199:rounded-bl-card max-1199:rounded-br-card">
             {videoSrc ? (
               <video
@@ -65,7 +65,7 @@ export function Hero({
             />
           </div>
 
-          <Container className="relative z-10 flex min-h-screen flex-col p-0 992:p-0">
+          <Container className="relative z-10 flex max-1199:min-h-[calc(100dvh-50px)] 1199:h-[calc(100vh-50px)] flex-col p-0 992:p-0">
             <Stack align="start" gap={30} tabletGap={30} mobileGap={30} className="my-auto text-paper max-992:px-25 px-35">
               <Prose as="span" font="accent" color="paper" className="text-16 leading-12 font-normal uppercase">
                 {eyebrow}

@@ -28,7 +28,7 @@ export function LifestyleGallery({ images = IMAGES }: { images?: GalleryImage[] 
 
   return (
     <section className="general-padding">
-      <Container className="embla">
+      <Container className="embla max-992:px-15!">
         <div ref={emblaRef} className="embla__viewport cursor-grab overflow-hidden active:cursor-grabbing">
           <div className="embla__container flex -ml-15">
             {images.map((image, index) => (

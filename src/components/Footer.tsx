@@ -47,8 +47,8 @@ const navColumns: { title: string; links: NavLinkItem[] }[] = [
     links: [
       { label: 'Experiences', href: '/experiences' },
       { label: 'Wellness & Spa', href: '#' },
-      { label: 'Events', href: '#' },
-      { label: "What's On", href: '#' },
+      { label: 'Events', href: '/events' },
+      { label: "What's On", href: '/whatson' },
       { label: 'Location', href: '#' },
     ],
   },

@@ -104,8 +104,8 @@ export function WhereToStayCarousel() {
                     >
                       <div className="pointer-events-none absolute inset-0 -z-1">
                         {[
-                          { blur: 5, mask: 'linear-gradient(to top, black 0%, black 30%, transparent 90%)' },
-                          { blur: 0.5, mask: 'linear-gradient(to top, black 0%, black 20%, transparent 100%)' },
+                          { blur: 2, mask: 'linear-gradient(to top, black 0%, black 20%, transparent 90%)' },
+                          { blur: 0.5, mask: 'linear-gradient(to top, black 0%, black 10%, transparent 100%)' },
                         ].map(({ blur, mask }) => (
                           <div
                             key={blur}

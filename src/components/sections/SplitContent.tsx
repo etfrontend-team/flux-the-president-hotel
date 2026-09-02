@@ -2,8 +2,9 @@ import Image from 'next/image'
 
 import { FadeIn } from '@/components/FadeIn'
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
+import { cn } from '@/lib/utils'
 
-/** Per Figma (node 251:1481, 298:1481): intro copy beside a full-bleed image. */
+/** Per Figma (node 251:1481, 298:1481, 326:1480): intro copy beside a full-bleed image. */
 export function SplitContent({
   imagePosition = 'right',
   eyebrow = 'SUPPORT',
@@ -14,6 +15,7 @@ export function SplitContent({
   image = '/images/split-content-pup-dining.webp',
   alt = 'A dog sniffing a plate of high-tea sandwiches set on the lawn',
   imageObjectPosition,
+  className,
 }: {
   imagePosition?: 'left' | 'right'
   eyebrow?: string
@@ -24,11 +26,12 @@ export function SplitContent({
   image?: string
   alt?: string
   imageObjectPosition?: string
+  className?: string
 }) {
   const isImageOnRight = imagePosition === 'right'
 
   return (
-    <section className="general-padding">
+    <section className={cn('general-padding', className)}>
       <Container variant="lg">
         <div className="flex flex-wrap justify-between gap-x-60 1199:gap-x-100 max-992:gap-y-50 1024:px-38 px-11">
           <Stack

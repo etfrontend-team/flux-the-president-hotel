@@ -41,8 +41,8 @@ const primaryLinks: { label: string; image: ImageKey; href?: string }[] = [
   { label: 'taste', image: 'stay', href: '/taste' },
   { label: 'Offers', image: 'taste', href: '/offers' },
   { label: 'About', image: 'wellness' },
-  { label: 'Events', image: 'stay' },
-  { label: "What's On", image: 'taste' },
+  { label: 'Events', image: 'stay', href: '/events' },
+  { label: "What's On", image: 'taste', href: '/whatson' },
   { label: 'Location', image: 'wellness' },
 ]
 
