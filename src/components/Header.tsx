@@ -14,8 +14,8 @@ const navLinks: { label: string; href?: string }[] = [
   { label: 'Stay', href: '/stay' },
   { label: 'Experiences', href: '/experiences' },
   { label: 'Wellness', href: 'wellness' },
-  { label: 'taste', href: 'taste' },
-  { label: 'Offers', href: 'offers' },
+  { label: 'taste', href: '/taste' },
+  { label: 'Offers', href: '/offers' },
 ]
 
 /** Delay before the sticky bar commits to appearing once the user starts scrolling up. */

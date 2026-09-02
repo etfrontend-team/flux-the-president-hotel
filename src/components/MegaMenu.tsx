@@ -36,10 +36,10 @@ const images: Record<ImageKey, { src: string; alt: string }> = {
  */
 const primaryLinks: { label: string; image: ImageKey; href?: string }[] = [
   { label: 'Stay', image: 'stay', href: '/stay' },
-  { label: 'Experiences', image: 'taste' },
+  { label: 'Experiences', image: 'taste', href: '/experiences' },
   { label: 'Wellness', image: 'wellness' },
-  { label: 'taste', image: 'stay' },
-  { label: 'Offers', image: 'taste' },
+  { label: 'taste', image: 'stay', href: '/taste' },
+  { label: 'Offers', image: 'taste', href: '/offers' },
   { label: 'About', image: 'wellness' },
   { label: 'Events', image: 'stay' },
   { label: "What's On", image: 'taste' },
@@ -53,7 +53,14 @@ const IMAGE_SLOT_GAP = 30
 /** Wraps the strip with the last/first items cloned at each end, so there's always a peek image above and below, even at the list's boundaries. */
 const filmstripItems = [primaryLinks[primaryLinks.length - 1], ...primaryLinks, primaryLinks[0]]
 
-const utilityLinks = ['Careers', 'Sustainability', 'FAQs', 'Gallery', 'Loyalty']
+/** `href: '#'` marks pages that don't exist yet — wire them up as soon as that page is built. */
+const utilityLinks: { label: string; href: string }[] = [
+  { label: 'Careers', href: '#' },
+  { label: 'Sustainability', href: '/sustainability' },
+  { label: 'FAQs', href: '/faq' },
+  { label: 'Gallery', href: '#' },
+  { label: 'Loyalty', href: '#' },
+]
 
 const socialLinks = [
   { label: 'Facebook', Icon: FacebookIcon },
@@ -228,15 +235,15 @@ export function MegaMenu() {
               </ul>
 
               <ul className="group/navlist flex flex-col gap-25 font-body text-15 leading-12 font-light tracking-10 text-ink capitalize max-1024:mx-auto">
-                {utilityLinks.map((label, index) => (
+                {utilityLinks.map((link, index) => (
                   <li
-                    key={label}
+                    key={link.label}
                     className={`transition-[opacity,transform] duration-400 ease-out ${
                       contentOpen ? 'translate-y-0 opacity-80' : 'translate-y-20 opacity-0'
                     }`}
                     style={{ transitionDelay: contentDelay(utilityStartIndex + index) }}
                   >
-                    <NavLink href="#" onClick={close}>{label}</NavLink>
+                    <NavLink href={link.href} onClick={close}>{link.label}</NavLink>
                   </li>
                 ))}
               </ul>

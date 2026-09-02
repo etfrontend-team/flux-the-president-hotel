@@ -61,83 +61,85 @@ export function RoomShowcase() {
   return (
     <section className="general-padding">
       <Container variant="lg" className="max-992:px-26">
-        <Heading level={3} className="mb-40">
-          Pup Stays
-        </Heading>
+        <div className='1024:px-38 px-11'>
+          <Heading level={3} className="mb-40">
+            Pup Stays
+          </Heading>
 
-        <div className="relative aspect-1244/600 w-full overflow-hidden rounded-card max-992:aspect-410/534">
-          {SLIDES.map((slide, index) => (
-            <Image
-              key={slide.image}
-              src={slide.image}
-              alt={slide.alt}
-              fill
-              priority={index === 0}
-              sizes="(min-width: 993px) 1244px, 100vw"
-              className={cn(
-                'object-cover transition-opacity duration-1500 ease-in-out',
-                activeIndex === index ? 'opacity-100' : 'opacity-0',
-              )}
+          <div className="relative aspect-1244/600 w-full overflow-hidden rounded-card max-992:aspect-410/534">
+            {SLIDES.map((slide, index) => (
+              <Image
+                key={slide.image}
+                src={slide.image}
+                alt={slide.alt}
+                fill
+                priority={index === 0}
+                sizes="(min-width: 993px) 1244px, 100vw"
+                className={cn(
+                  'object-cover transition-opacity duration-1500 ease-in-out',
+                  activeIndex === index ? 'opacity-100' : 'opacity-0',
+                )}
+              />
+            ))}
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(45,7,0,0.2)_0%,rgba(0,0,0,0)_20%),linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),linear-gradient(to_top,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0)_27%)]"
             />
-          ))}
 
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(45,7,0,0.2)_0%,rgba(0,0,0,0)_20%),linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),linear-gradient(to_top,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0)_27%)]"
-          />
-
-          <Stack direction="row" gap={10} tabletGap={10} mobileGap={10} className="absolute right-30 bottom-30 z-10">
-            <button
-              type="button"
-              onClick={goToPrev}
-              aria-label="Previous room"
-              className="group/navbtn relative cursor-pointer flex size-34 items-center justify-center rounded-full bg-paper/80"
-            >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 rounded-full bg-brand/20 opacity-0 transition-opacity duration-300 ease-out group-hover/navbtn:opacity-100"
-              />
-              <ChevronRightIcon className="relative h-12 w-7 rotate-180 text-brand" />
-            </button>
-            <button
-              type="button"
-              onClick={goToNext}
-              aria-label="Next room"
-              className="group/navbtn relative cursor-pointer flex size-34 items-center justify-center rounded-full bg-paper/80"
-            >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 rounded-full bg-brand/20 opacity-0 transition-opacity duration-300 ease-out group-hover/navbtn:opacity-100"
-              />
-              <ChevronRightIcon className="relative h-12 w-7 text-brand" />
-            </button>
-          </Stack>
-
-          <div className="absolute inset-x-0 bottom-0 backdrop-blur-[2.5px]">
-            <Stack
-              align="start"
-              gap={30}
-              tabletGap={30}
-              mobileGap={30}
-              className="max-w-400 w-full px-40 py-40 max-992:max-w-none max-992:px-25 max-992:py-30"
-            >
-              <Stack align="start" gap={20} tabletGap={20} mobileGap={20}>
-                <Heading level={4} color="paper" uppercase={false} className="capitalize">
-                  Rooms
-                </Heading>
-                <Stack align="start" gap={15} tabletGap={15} mobileGap={15}>
-                  <p className="font-accent font-medium text-12 leading-copy tracking-5 text-paper uppercase">
-                    2 adults | 31sqm
-                  </p>
-                  <p className="font-body font-light text-14 leading-copy tracking-5 text-paper">
-                    Comfortable sea-view rooms — queen or twin.
-                  </p>
-                </Stack>
-              </Stack>
-              <Button as="a" href="#" variant="glass" color="paper">
-                View rooms
-              </Button>
+            <Stack direction="row" gap={10} tabletGap={10} mobileGap={10} className="absolute right-30 bottom-30 z-10">
+              <button
+                type="button"
+                onClick={goToPrev}
+                aria-label="Previous room"
+                className="group/navbtn relative cursor-pointer flex size-34 items-center justify-center rounded-full bg-paper/80"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-full bg-brand/20 opacity-0 transition-opacity duration-300 ease-out group-hover/navbtn:opacity-100"
+                />
+                <ChevronRightIcon className="relative h-12 w-7 rotate-180 text-brand" />
+              </button>
+              <button
+                type="button"
+                onClick={goToNext}
+                aria-label="Next room"
+                className="group/navbtn relative cursor-pointer flex size-34 items-center justify-center rounded-full bg-paper/80"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-full bg-brand/20 opacity-0 transition-opacity duration-300 ease-out group-hover/navbtn:opacity-100"
+                />
+                <ChevronRightIcon className="relative h-12 w-7 text-brand" />
+              </button>
             </Stack>
+
+            <div className="absolute inset-x-0 bottom-0 backdrop-blur-[2.5px]">
+              <Stack
+                align="start"
+                gap={30}
+                tabletGap={30}
+                mobileGap={30}
+                className="max-w-400 w-full px-40 py-40 max-992:max-w-none max-992:px-25 max-992:py-30"
+              >
+                <Stack align="start" gap={20} tabletGap={20} mobileGap={20}>
+                  <Heading level={4} color="paper" uppercase={false} className="capitalize">
+                    Rooms
+                  </Heading>
+                  <Stack align="start" gap={15} tabletGap={15} mobileGap={15}>
+                    <p className="font-accent font-medium text-12 leading-copy tracking-5 text-paper uppercase">
+                      2 adults | 31sqm
+                    </p>
+                    <p className="font-body font-light text-14 leading-copy tracking-5 text-paper">
+                      Comfortable sea-view rooms — queen or twin.
+                    </p>
+                  </Stack>
+                </Stack>
+                <Button as="a" href="#" variant="glass" color="paper">
+                  View rooms
+                </Button>
+              </Stack>
+            </div>
           </div>
         </div>
       </Container>

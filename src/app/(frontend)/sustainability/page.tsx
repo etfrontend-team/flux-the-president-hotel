@@ -1,7 +1,6 @@
-import { AnnouncementBar } from '@/components/sections/AnnouncementBar'
 import { Hero } from '@/components/sections/Hero'
 import { SplitInfo } from '@/components/sections/SplitInfo'
-import { RoomShowcase } from '@/components/sections/RoomShowcase'
+import { WildlifeShowcase } from '@/components/sections/WildlifeShowcase'
 import { SplitContent } from '@/components/sections/SplitContent'
 import { LifestyleGallery } from '@/components/sections/LifestyleGallery'
 import { BookYourStay } from '@/components/sections/BookYourStay'
@@ -9,22 +8,23 @@ import { Subscribe } from '@/components/sections/Subscribe'
 import { DiscoverMore } from '@/components/sections/DiscoverMore'
 import { Faq } from '@/components/sections/Faq'
 
-export default function PetsPage() {
+export default function SustainabilityPage() {
   return (
     <>
         <Hero
-            eyebrow="GUEST INFORMATION"
+            eyebrow="EXPERIENCES"
             heading={
             <>
-                <span className="block">Pets</span>
+                    <span className="block">SANCCOB Penguin</span>
+                    <span className="block">Experience</span>
             </>
             }
-            description="We welcome well-behaved dogs. Your four-legged companion is as welcome at The President as you are."
+            description="A private morning with African penguins — an exclusive conservation experience with our flagship charity partner."
         />
-        <AnnouncementBar />
-        <SplitInfo />
-        <RoomShowcase />
+        <SplitInfo divider cardWidth={385} />
+        <WildlifeShowcase />
         <SplitContent imagePosition="right" />
+        <SplitContent imagePosition="left" />
         <LifestyleGallery />
         <Faq className="max-992:bg-paper-alt/40"/>
         <DiscoverMore/>

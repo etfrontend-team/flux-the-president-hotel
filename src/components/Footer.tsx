@@ -17,14 +17,52 @@ import { cn } from '@/lib/utils'
 /** Per Figma (node 1:5681): each column's default resting opacity is 80%, dims
  * to 50% when a sibling in the same list is hovered, and the hovered item
  * itself snaps to 100% — same group-hover mechanic as the header/mega menu NavLink. */
-const navColumns: { title: string; links: string[] }[] = [
-  { title: 'Stay', links: ['Rooms', 'Apartments', 'Suites', 'Pets', 'Offers'] },
+type NavLinkItem = { label: string; href: string }
+
+/** `href: '#'` marks pages that don't exist yet — wire them up as soon as that page is built. */
+const navColumns: { title: string; links: NavLinkItem[] }[] = [
+  {
+    title: 'Stay',
+    links: [
+      { label: 'Rooms', href: '#' },
+      { label: 'Apartments', href: '#' },
+      { label: 'Suites', href: '#' },
+      { label: 'Pets', href: '/pets' },
+      { label: 'Offers', href: '/offers' },
+    ],
+  },
   {
     title: 'Dine',
-    links: ['The Base', 'Restaurant & Terrace', 'Botany Café', 'The Senate', 'The Deck', 'Poolside'],
+    links: [
+      { label: 'The Base', href: '#' },
+      { label: 'Restaurant & Terrace', href: '#' },
+      { label: 'Botany Café', href: '#' },
+      { label: 'The Senate', href: '#' },
+      { label: 'The Deck', href: '#' },
+      { label: 'Poolside', href: '#' },
+    ],
   },
-  { title: 'Discover', links: ['Experiences', 'Wellness & Spa', 'Events', "What's On", 'Location'] },
-  { title: 'The Hotel', links: ['About Us', 'Careers', 'Sustainability', 'FAQs', 'Gallery', 'Loyalty'] },
+  {
+    title: 'Discover',
+    links: [
+      { label: 'Experiences', href: '/experiences' },
+      { label: 'Wellness & Spa', href: '#' },
+      { label: 'Events', href: '#' },
+      { label: "What's On", href: '#' },
+      { label: 'Location', href: '#' },
+    ],
+  },
+  {
+    title: 'The Hotel',
+    links: [
+      { label: 'About Us', href: '#' },
+      { label: 'Careers', href: '#' },
+      { label: 'Sustainability', href: '/sustainability' },
+      { label: 'FAQs', href: '/faq' },
+      { label: 'Gallery', href: '#' },
+      { label: 'Loyalty', href: '#' },
+    ],
+  },
 ]
 
 const partnerLogos = [
@@ -97,13 +135,13 @@ export function Footer() {
                   {column.title}
                 </p>
                 <ul className="flex flex-wrap justify-center gap-x-16 gap-y-18 text-14 tracking-10 font-light capitalize 992:flex-col 992:flex-nowrap 992:justify-start 992:items-start 992:gap-15 992:text-15 992:tracking-10">
-                  {column.links.map((label) => (
-                    <li key={label} className="whitespace-nowrap">
+                  {column.links.map((link) => (
+                    <li key={link.label} className="whitespace-nowrap">
                       <Link
-                        href="#"
+                        href={link.href}
                         className="opacity-80 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:!opacity-100"
                       >
-                        {label}
+                        {link.label}
                       </Link>
                     </li>
                   ))}
