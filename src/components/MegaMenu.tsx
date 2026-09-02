@@ -190,7 +190,7 @@ export function MegaMenu() {
             href="/"
             onClick={close}
             aria-label="The President Hotel, Cape Town"
-            className="block relative max-1024:!absolute max-1024:left-1/2 max-1024:top-0 max-1024:-translate-x-1/2 h-137 w-115"
+            className="block relative max-1024:absolute! max-1024:left-1/2 max-1024:top-0 max-1024:-translate-x-1/2 h-137 w-115"
           >
             <LogoMark className="h-full w-full text-brand" />
           </Link>
@@ -201,7 +201,7 @@ export function MegaMenu() {
             onClick={close}
             variant="glass"
             color="paper"
-            className="max-1024:!hidden mt-13"
+            className="max-1024:hidden! mt-13"
           >
             Book Your Stay
           </Button>
@@ -296,7 +296,7 @@ export function MegaMenu() {
               onClick={close}
               variant="solid"
               color="brand"
-              className={`w-full 1024:!hidden transition-[opacity,transform] duration-400 ease-out ${
+              className={`w-full 1024:hidden! transition-[opacity,transform] duration-400 ease-out ${
                 contentOpen ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
               }`}
               style={{ transitionDelay: contentDelay(bookButtonIndex) }}

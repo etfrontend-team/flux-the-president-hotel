@@ -39,7 +39,7 @@ export function NavLink({
     <Link
       href={href}
       onClick={onClick}
-      className={`group/link relative inline-block py-4 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:!opacity-100 ${underlineClasses}`}
+      className={`group/link relative inline-block py-4 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:opacity-100! ${underlineClasses}`}
     >
       <span className="block">
         {children}
@@ -148,7 +148,7 @@ export function Header() {
             </button>
           </>
         )}
-        <Button as="a" href="#" variant="glass" color="paper" className='max-1024:!hidden 1024:text-13! tracking-10!'>
+        <Button as="a" href="#" variant="glass" color="paper" className='max-1024:hidden! 1024:text-13! tracking-10!'>
           Book Your Stay
         </Button>
       </Stack>
@@ -178,7 +178,7 @@ export function Header() {
           <LogoSticky className="h-full w-full text-brand" />
         </Link>
 
-        <Button variant="solid" color="brand" className="max-1024:!hidden">
+        <Button variant="solid" color="brand" className="max-1024:hidden!">
           Book Your Stay
         </Button>
       </Container>

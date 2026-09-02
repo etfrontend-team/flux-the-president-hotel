@@ -116,7 +116,7 @@ export function WildlifeShowcase() {
                           aria-hidden="true"
                           className={cn(
                             'absolute inset-0',
-                            animal.gradientOverlay ? 'bg-gradient-to-b from-transparent to-black/25' : 'bg-black/0',
+                            animal.gradientOverlay ? 'bg-linear-to-b from-transparent to-black/25' : 'bg-black/0',
                           )}
                         />
                       </div>
@@ -124,7 +124,7 @@ export function WildlifeShowcase() {
                           <Heading level={4} color="white" uppercase={false} className="capitalize">
                             {animal.name}
                           </Heading>
-                          <Prose color="white" className="text-14 !leading-copy max-w-330">
+                          <Prose color="white" className="text-14 leading-copy! max-w-330">
                             {animal.description}
                           </Prose>
                         </Stack>

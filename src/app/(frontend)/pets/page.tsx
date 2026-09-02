@@ -24,7 +24,9 @@ export default function PetsPage() {
         <AnnouncementBar />
         <SplitInfo />
         <RoomShowcase />
-        <SplitContent imagePosition="right" />
+        <SplitContent
+          imagePosition="right"
+        />
         <LifestyleGallery />
         <Faq className="max-992:bg-paper-alt/40"/>
         <DiscoverMore/>

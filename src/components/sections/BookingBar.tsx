@@ -57,7 +57,7 @@ export function BookingBar({ variant = 'overlay' }: { variant?: BookingBarVarian
         align="center"
         gap={12}
         mobileGap={12}
-        className="max-1199:!items-stretch"
+        className="max-1199:items-stretch!"
       >
         <button type="button" className={fieldClasses}>
           <span className={`font-body text-12 tracking-10 uppercase ${isFlow ? 'text-ink' : 'text-paper'}`}>
@@ -95,7 +95,7 @@ export function BookingBar({ variant = 'overlay' }: { variant?: BookingBarVarian
         <Button
           variant="solid"
           color="brand"
-          className="h-42 shrink-0 rounded-card px-20 py-0 font-normal !text-12 !tracking-10 uppercase max-1199:w-full"
+          className="h-42 shrink-0 rounded-card px-20 py-0 font-normal text-12! tracking-10! uppercase max-1199:w-full"
         >
           Check availability
         </Button>

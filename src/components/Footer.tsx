@@ -139,7 +139,7 @@ export function Footer() {
                     <li key={link.label} className="whitespace-nowrap">
                       <Link
                         href={link.href}
-                        className="opacity-80 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:!opacity-100"
+                        className="opacity-80 transition-opacity duration-300 group-hover/navlist:opacity-50 hover:opacity-100!"
                       >
                         {link.label}
                       </Link>
