@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -9,7 +9,7 @@ type ParallaxProps = {
    * distance (e.g. 0.3 = moves at 30% of scroll speed). Defaults to 0.3. */
   speed?: number
   className?: string
-  children: React.ReactNode
+  children: ReactNode
 }
 
 /**
@@ -18,9 +18,9 @@ type ParallaxProps = {
  * when the user prefers reduced motion.
  */
 export function Parallax({ speed = 0.3, className, children }: ParallaxProps) {
-  const ref = React.useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const node = ref.current
     if (!node) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return

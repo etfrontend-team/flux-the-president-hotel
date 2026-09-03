@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 
 import { Container, Stack } from '@/components/ui'
@@ -10,10 +10,10 @@ const quote =
   'Stayed at this hotel as part of a trip a deal and I cannot fault it one bit. Great area within walking distance to some great shops and the restaurants.'
 
 export function Testimonial() {
-  const sectionRef = React.useRef<HTMLElement>(null)
-  const [isMobile, setIsMobile] = React.useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const mq = window.matchMedia('(max-width: 991px)')
     setIsMobile(mq.matches)
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)

@@ -1,5 +1,4 @@
-import React from 'react'
-
+import { Fragment } from 'react'
 import { Container, Heading, Prose, Stack } from '@/components/ui'
 
 const ROWS = [
@@ -32,13 +31,13 @@ export function GettingHere() {
           </div>
           <Stack gap={50} tabletGap={50} mobileGap={50}>
             {ROWS.map((row, index) => (
-              <React.Fragment key={row.label}>
+              <Fragment key={row.label}>
                 {index > 0 && <div className="w-full border-t border-brand-muted/30" />}
                 <Stack gap={32} tabletGap={32} mobileGap={32}>
                   <span className="font-accent text-15 tracking-5 leading-12 text-brand uppercase">{row.label}</span>
                   <Prose color="ink-light">{row.description}</Prose>
                 </Stack>
-              </React.Fragment>
+              </Fragment>
             ))}
           </Stack>
         </div>

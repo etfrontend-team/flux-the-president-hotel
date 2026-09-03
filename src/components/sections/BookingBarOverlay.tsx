@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 import { isHeroMostlyScrolledPast } from '@/lib/utils'
 
@@ -13,9 +13,9 @@ import { BookingBar } from './BookingBar'
  * same way rather than letting it just scroll out of view naturally.
  */
 export function BookingBarOverlay() {
-  const [pastThreshold, setPastThreshold] = React.useState(false)
+  const [pastThreshold, setPastThreshold] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     function onScroll() {
       setPastThreshold(isHeroMostlyScrolledPast())
     }

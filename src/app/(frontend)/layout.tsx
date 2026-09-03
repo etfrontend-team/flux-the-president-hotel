@@ -1,4 +1,4 @@
-import React from 'react'
+import { type ReactNode } from 'react'
 import { site } from '@/config/site.config'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { Footer } from '@/components/Footer'
@@ -17,7 +17,7 @@ export const metadata = {
 }
 
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
+export default async function RootLayout(props: { children: ReactNode }) {
   const { children } = props
 
   return (

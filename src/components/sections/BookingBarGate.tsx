@@ -1,8 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import React from 'react'
-
+import { type ReactNode } from 'react'
 const BOOKING_BAR_ROUTES = ['/', '/stay']
 
 function isBookingBarRoute(pathname: string) {
@@ -16,7 +15,7 @@ function isBookingBarRoute(pathname: string) {
  * rather than inside BookingBar itself, since BookingBar is a generic,
  * reusable field-set that other pages may legitimately embed on their own.
  */
-export function BookingBarGate({ children }: { children: React.ReactNode }) {
+export function BookingBarGate({ children }: { children: ReactNode }) {
   const pathname = usePathname()
   if (!isBookingBarRoute(pathname)) return null
   return <>{children}</>

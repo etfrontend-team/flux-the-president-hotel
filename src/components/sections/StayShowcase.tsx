@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 import { FadeIn } from '@/components/FadeIn'
 import { Button, Container, Heading, Stack } from '@/components/ui'
@@ -56,9 +56,9 @@ const CARDS: ShowcaseCard[] = [
 ]
 
 export function StayShowcase() {
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const mq = window.matchMedia('(max-width: 991px)')
     setIsMobile(mq.matches)
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)

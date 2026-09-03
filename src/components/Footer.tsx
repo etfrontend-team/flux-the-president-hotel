@@ -1,7 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-
 import {
   FacebookIcon,
   InstagramIcon,
@@ -60,7 +58,7 @@ const navColumns: { title: string; links: NavLinkItem[] }[] = [
       { label: 'Sustainability', href: '/sustainability' },
       { label: 'FAQs', href: '/faq' },
       { label: 'Gallery', href: '#' },
-      { label: 'Loyalty', href: '#' },
+      { label: 'Loyalty', href: '/loyalty' },
     ],
   },
 ]

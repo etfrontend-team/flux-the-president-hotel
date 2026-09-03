@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { MinusIcon, PlusIcon } from '@/components/icons'
 import { Stack } from '@/components/ui'
@@ -13,7 +13,7 @@ type GuestStepperProps = {
 
 /** Increment/decrement counter for the booking bar's Adults/Children fields. */
 export function GuestStepper({ label, color = 'paper' }: GuestStepperProps) {
-  const [count, setCount] = React.useState(0)
+  const [count, setCount] = useState(0)
   const colorClass = color === 'paper' ? 'text-paper' : 'text-brand'
 
   return (

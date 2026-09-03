@@ -1,7 +1,6 @@
 /** @format */
 
-import React from "react";
-
+import { useId } from 'react'
 type IconProps = {
   className?: string;
 };
@@ -179,7 +178,7 @@ export function LinkIcon({ className }: IconProps) {
 }
 
 export function LogoMark({ className }: IconProps) {
-  const uid = React.useId();
+  const uid = useId();
   return (
     <svg
       viewBox="66 25 367 454"
@@ -400,7 +399,7 @@ export function LogoMark({ className }: IconProps) {
  * height directly, no manual transform math needed.
  */
 export function LogoSticky({ className }: IconProps) {
-  const uid = React.useId();
+  const uid = useId();
   return (
     <svg
       viewBox="188 24 123 197"

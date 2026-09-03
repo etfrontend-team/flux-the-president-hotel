@@ -1,20 +1,20 @@
 'use client'
 
-import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { Stack, Button } from '@/components/ui'
 import { isPinnedSectionInView } from '@/lib/utils'
 
 
 export function AnnouncementBar({ pairedWithMarquee = false }: { pairedWithMarquee?: boolean }) {
-  const [visible, setVisible] = React.useState(false)
-  const [isStuck, setIsStuck] = React.useState(false)
-  const [forceHidden, setForceHidden] = React.useState(false)
-  const [marqueePassed, setMarqueePassed] = React.useState(false)
-  const sentinelRef = React.useRef<HTMLDivElement>(null)
-  const barRef = React.useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+  const [isStuck, setIsStuck] = useState(false)
+  const [forceHidden, setForceHidden] = useState(false)
+  const [marqueePassed, setMarqueePassed] = useState(false)
+  const sentinelRef = useRef<HTMLDivElement>(null)
+  const barRef = useRef<HTMLDivElement>(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     let lastY = window.scrollY
 
     function onScroll() {
@@ -36,7 +36,7 @@ export function AnnouncementBar({ pairedWithMarquee = false }: { pairedWithMarqu
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     const sentinel = sentinelRef.current
     if (!sentinel) return
 
@@ -47,7 +47,7 @@ export function AnnouncementBar({ pairedWithMarquee = false }: { pairedWithMarqu
     return () => observer.disconnect()
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!pairedWithMarquee) return
     const marqueeEl = barRef.current?.nextElementSibling
     if (!marqueeEl) return

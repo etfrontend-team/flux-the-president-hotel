@@ -1,5 +1,4 @@
-import React from 'react'
-
+import { Fragment } from 'react'
 import { FadeIn } from '@/components/FadeIn'
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 
@@ -29,7 +28,7 @@ export function VenueHighlights({
       <Container variant="lg">
         <div className="flex items-center justify-between gap-40 1199:gap-60 992:px-38 px-11 max-992:flex-col max-992:gap-30">
           {highlights.map((item, index) => (
-            <React.Fragment key={item.heading}>
+            <Fragment key={item.heading}>
               {index > 0 && (
                 <div aria-hidden="true" className="max-992:h-px max-992:w-full h-74 w-px shrink-0 bg-brand-muted/30" />
               )}
@@ -41,7 +40,7 @@ export function VenueHighlights({
                   <Prose color="ink-light">{item.description}</Prose>
                 </Stack>
               </FadeIn>
-            </React.Fragment>
+            </Fragment>
           ))}
 
           {buttonLabel && (

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { CalendarIcon, ChevronRightIcon } from '@/components/icons'
 import { Button, Stack } from '@/components/ui'
 

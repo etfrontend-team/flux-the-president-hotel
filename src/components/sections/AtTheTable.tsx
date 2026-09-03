@@ -2,8 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
-
+import { useState, type CSSProperties, type ReactNode } from 'react'
 import { Carousel } from '@/components/Carousel'
 import { FadeIn } from '@/components/FadeIn'
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
@@ -139,7 +138,7 @@ function VenuePanel({
       onMouseEnter={onActivate}
       onFocus={onActivate}
       aria-current={isActive || undefined}
-      style={{ '--grow': isActive ? EXPANDED_GROW : COLLAPSED_GROW } as React.CSSProperties}
+      style={{ '--grow': isActive ? EXPANDED_GROW : COLLAPSED_GROW } as CSSProperties}
       className={cn(
         'group relative h-660 min-w-0 shrink-0 basis-0 grow-(--grow) overflow-hidden rounded-card',
         'transition-[flex-grow] duration-1200 motion-reduce:transition-none',
@@ -197,7 +196,7 @@ function RevealLine({
 }: {
   isActive: boolean
   delay: string
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <span className="block overflow-hidden">

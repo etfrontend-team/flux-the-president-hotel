@@ -1,6 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
-
+import { type ReactNode } from 'react'
 import { Container, Heading, Prose, Stack } from '@/components/ui'
 
 import { BookingBar } from './BookingBar'
@@ -13,7 +12,7 @@ const DEFAULT_VIDEO_SRC = '/images/pres-hero-video.mp4'
 
 interface HeroProps {
   eyebrow?: string
-  heading?: React.ReactNode
+  heading?: ReactNode
   description?: string
   videoSrc?: string
   imageSrc?: string

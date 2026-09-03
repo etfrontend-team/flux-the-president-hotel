@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { MinusIcon, PlusIcon } from '@/components/icons'
 import { Container, Heading, Prose, Stack } from '@/components/ui'
@@ -48,7 +48,7 @@ const FAQS: FaqItem[] = [
  * closes whichever was open; clicking the open item closes it).
  */
 export function Faq({ className }: { className?: string }) {
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(0)
+  const [activeIndex, setActiveIndex] = useState<number | null>(0)
 
   return (
     <section className={cn('general-padding', className)}>

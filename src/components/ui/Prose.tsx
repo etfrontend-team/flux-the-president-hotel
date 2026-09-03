@@ -1,5 +1,4 @@
-import React from 'react'
-
+import { type CSSProperties, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 type ProseColor = 'brand' | 'brand-light' | 'ink' | 'ink-light' | 'paper' | 'white'
@@ -11,8 +10,8 @@ interface ProseProps {
   color?: ProseColor
   font?: ProseFont
   className?: string
-  style?: React.CSSProperties
-  children: React.ReactNode | React.ReactNode[]
+  style?: CSSProperties
+  children: ReactNode | ReactNode[]
 }
 
 const colors: Record<ProseColor, string> = {

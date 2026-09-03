@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 
 import { WhereToStayCarousel } from './WhereToStayCarousel'

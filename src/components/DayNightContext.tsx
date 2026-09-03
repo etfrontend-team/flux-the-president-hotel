@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
 type DayNightMode = 'day' | 'night'
 
@@ -9,21 +9,21 @@ type DayNightContextValue = {
   toggle: () => void
 }
 
-const DayNightContext = React.createContext<DayNightContextValue | null>(null)
+const DayNightContext = createContext<DayNightContextValue | null>(null)
 
 /**
  * Day/night mode toggle — homepage-only per Figma annotation (node 1:23068).
  * Mirrors the mode onto `<body>` as a class so the body background (the only
  * thing that changes between modes) can be styled in CSS.
  */
-export function DayNightProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = React.useState<DayNightMode>('day')
+export function DayNightProvider({ children }: { children: ReactNode }) {
+  const [mode, setMode] = useState<DayNightMode>('day')
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.classList.toggle('night', mode === 'night')
   }, [mode])
 
-  const value = React.useMemo(
+  const value = useMemo(
     () => ({
       mode,
       toggle: () => setMode((prev) => (prev === 'day' ? 'night' : 'day')),
@@ -35,7 +35,7 @@ export function DayNightProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useDayNight() {
-  const ctx = React.useContext(DayNightContext)
+  const ctx = useContext(DayNightContext)
   if (!ctx) throw new Error('useDayNight must be used within a DayNightProvider')
   return ctx
 }

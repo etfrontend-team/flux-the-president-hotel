@@ -1,8 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
-
+import { type FormEvent } from 'react'
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 
 /**
@@ -18,7 +17,7 @@ import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
  * convention for unspecified backend behavior.
  */
 export function Subscribe() {
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
   }
 

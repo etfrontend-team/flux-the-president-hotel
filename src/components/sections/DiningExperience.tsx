@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { FadeIn } from '@/components/FadeIn'
 import { ChevronRightIcon } from '@/components/icons'

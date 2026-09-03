@@ -1,11 +1,10 @@
-import React from 'react'
-
+import { type CSSProperties, type ElementType, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 type StackDirection = 'row' | 'col' | 'row-reverse' | 'col-reverse' | 'wrap'
 
 interface StackProps {
-  as?: React.ElementType
+  as?: ElementType
   /** Layout direction. Defaults to vertical. */
   direction?: StackDirection
   /** Mobile direction (≤992). Defaults to `direction`. */
@@ -19,11 +18,11 @@ interface StackProps {
   /** Cross-axis alignment. */
   align?: 'start' | 'center' | 'end' | 'stretch'
   /** Main-axis distribution. */
-  justify?: 'start' | 'center' | 'end' | 'between'
+  justify?: 'start' | 'center' | 'end' | 'between' | 'around'
   className?: string
   /** Merged with the internal gap CSS variables — for things like a transition delay. */
-  style?: React.CSSProperties
-  children: React.ReactNode
+  style?: CSSProperties
+  children: ReactNode
 }
 
 const directionMap: Record<StackDirection, string> = {
@@ -54,6 +53,7 @@ const justifyMap: Record<NonNullable<StackProps['justify']>, string> = {
   center: 'justify-center',
   end: 'justify-end',
   between: 'justify-between',
+  around: 'justify-around',
 }
 
 /**
@@ -81,7 +81,7 @@ export function Stack({
           '--gap-tablet': `${tabletGap ?? gap}px`,
           '--gap-mobile': `${mobileGap}px`,
           ...style,
-        } as React.CSSProperties
+        } as CSSProperties
       }
       className={cn(
         'flex stack-gap',

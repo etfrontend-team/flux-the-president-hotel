@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { AnnouncementBar } from '@/components/sections/AnnouncementBar'
 import { AtTheTable } from '@/components/sections/AtTheTable'
 import { AtlanticMeetsCity } from '@/components/sections/AtlanticMeetsCity'

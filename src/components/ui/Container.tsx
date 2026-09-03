@@ -1,14 +1,13 @@
-import React from 'react'
-
+import { type ElementType, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 type ContainerVariant = 'sm' | 'lg'
 
 interface ContainerProps {
-  as?: React.ElementType
+  as?: ElementType
   variant?: ContainerVariant
   className?: string
-  children: React.ReactNode
+  children: ReactNode
   [key: `aria-${string}`]: unknown
   [key: `data-${string}`]: unknown
   id?: string

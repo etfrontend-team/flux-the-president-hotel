@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 
 import { FacebookAltIcon, InstagramAltIcon, LinkIcon } from '@/components/icons'
 import { Button, Container, Heading, Prose } from '@/components/ui'
@@ -15,7 +15,7 @@ const META = {
 }
 
 export function ArticleConclusion() {
-  const [copied, setCopied] = React.useState(false)
+  const [copied, setCopied] = useState(false)
 
   const handleCopyLink = async () => {
     await navigator.clipboard.writeText(window.location.href)

@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { useState } from 'react'
 
 import { FadeIn } from '@/components/FadeIn'
 import { ChevronRightIcon } from '@/components/icons'
@@ -111,7 +111,7 @@ const EVENTS: EventItem[] = [
 
 /** Per Figma (node 343:1490): filterable grid of all events, below the featured one. */
 export function EventListing() {
-  const [activeFilter, setActiveFilter] = React.useState<Filter>('all')
+  const [activeFilter, setActiveFilter] = useState<Filter>('all')
 
   const visibleEvents =
     activeFilter === 'all' || activeFilter === 'this-week' || activeFilter === 'this-month'

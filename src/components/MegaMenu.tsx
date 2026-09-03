@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { NavLink } from '@/components/Header'
 import {
@@ -55,11 +55,11 @@ const filmstripItems = [primaryLinks[primaryLinks.length - 1], ...primaryLinks, 
 
 /** `href: '#'` marks pages that don't exist yet — wire them up as soon as that page is built. */
 const utilityLinks: { label: string; href: string }[] = [
-  { label: 'Careers', href: '#' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Sustainability', href: '/sustainability' },
   { label: 'FAQs', href: '/faq' },
   { label: 'Gallery', href: '/gallery' },
-  { label: 'Loyalty', href: '#' },
+  { label: 'Loyalty', href: '/loyalty' },
 ]
 
 const socialLinks = [
@@ -91,11 +91,11 @@ const CONTENT_CLOSE_MS = CONTENT_FADE_MS
 /** Full-screen site menu. Per Figma (node 1:2716): hovering a primary category swaps the right-hand preview image. */
 export function MegaMenu() {
   const { isOpen, close } = useMegaMenu()
-  const [activeIndex, setActiveIndex] = React.useState(0)
-  const [panelOpen, setPanelOpen] = React.useState(false)
-  const [contentOpen, setContentOpen] = React.useState(false)
-  const [isScrolling, setIsScrolling] = React.useState(false)
-  const scrollHideTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [panelOpen, setPanelOpen] = useState(false)
+  const [contentOpen, setContentOpen] = useState(false)
+  const [isScrolling, setIsScrolling] = useState(false)
+  const scrollHideTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // Reveals the custom scrollbar thumb only while the panel is actively
   // being wheel-scrolled, hiding it again shortly after scrolling stops.
@@ -105,7 +105,7 @@ export function MegaMenu() {
     scrollHideTimer.current = setTimeout(() => setIsScrolling(false), 800)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       if (scrollHideTimer.current) clearTimeout(scrollHideTimer.current)
     }
@@ -121,7 +121,7 @@ export function MegaMenu() {
   // Sequences the two-stage animation: opening reveals the panel first, then
   // fades the content in; closing fades the content out first, then collapses
   // the panel — never both at once.
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       setPanelOpen(true)
       const timer = setTimeout(() => setContentOpen(true), REVEAL_MS)
@@ -133,7 +133,7 @@ export function MegaMenu() {
     return () => clearTimeout(timer)
   }, [isOpen])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isOpen) return
 
     document.body.style.overflow = 'hidden'

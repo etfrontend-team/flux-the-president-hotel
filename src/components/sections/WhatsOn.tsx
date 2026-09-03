@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
+import { useState } from 'react'
 
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 import { cn } from '@/lib/utils'
@@ -58,7 +58,7 @@ const events: EventItem[] = [
 
 /** Homepage section right below WhereToStay. Per Figma (node 1:2648). */
 export function WhatsOn() {
-  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const activeIndex = hoveredIndex ?? 0
 
   return (

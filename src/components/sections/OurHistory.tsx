@@ -2,7 +2,7 @@
 
 import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 import { FadeIn } from '@/components/FadeIn'
 import { ChevronRightIcon } from '@/components/icons'
@@ -48,9 +48,9 @@ const TIMELINE: Era[] = [
  */
 export function OurHistory() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' })
-  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!emblaApi) return
 
     function onSelect() {

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
 
 type MegaMenuContextValue = {
   isOpen: boolean
@@ -9,13 +9,13 @@ type MegaMenuContextValue = {
   toggle: () => void
 }
 
-const MegaMenuContext = React.createContext<MegaMenuContextValue | null>(null)
+const MegaMenuContext = createContext<MegaMenuContextValue | null>(null)
 
 /** Shared open/close state for the mega menu, since both of Header's nav bars (the transparent overlay and the sticky reveal) trigger it. */
-export function MegaMenuProvider({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = React.useState(false)
+export function MegaMenuProvider({ children }: { children: ReactNode }) {
+  const [isOpen, setIsOpen] = useState(false)
 
-  const value = React.useMemo(
+  const value = useMemo(
     () => ({
       isOpen,
       open: () => setIsOpen(true),
@@ -29,7 +29,7 @@ export function MegaMenuProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useMegaMenu() {
-  const ctx = React.useContext(MegaMenuContext)
+  const ctx = useContext(MegaMenuContext)
   if (!ctx) throw new Error('useMegaMenu must be used within a MegaMenuProvider')
   return ctx
 }

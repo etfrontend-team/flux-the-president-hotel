@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useState } from 'react'
 
 import { ChevronRightIcon } from '@/components/icons'
 import { Button, Container, Heading, Stack } from '@/components/ui'
@@ -30,9 +30,9 @@ const SLIDES: RoomSlide[] = [
 const SLIDE_INTERVAL_MS = 5000
 
 export function RoomShowcase() {
-  const [activeIndex, setActiveIndex] = React.useState(0)
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((index) => (index + 1) % SLIDES.length)
     }, SLIDE_INTERVAL_MS)

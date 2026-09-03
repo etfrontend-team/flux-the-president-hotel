@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
-
 import { Stack } from '@/components/ui'
 
 type MarqueeSlide = { src: string | null; video?: string | null; alt: string }

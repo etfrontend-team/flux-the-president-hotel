@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useState } from 'react'
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
 
@@ -46,9 +46,9 @@ const ANIMALS: Animal[] = [
 
 export function WildlifeShowcase() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' }, [Autoplay({ delay: 4500 })])
-  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!emblaApi) return
 
     function onSelect() {

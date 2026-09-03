@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-
+import { type FormEvent } from 'react'
 import { FadeIn } from '@/components/FadeIn'
 import { Button, Container, Heading, Stack } from '@/components/ui'
 
@@ -14,7 +13,7 @@ const inputClasses =
  * placeholder-action convention.
  */
 export function EventEnquiry() {
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
   }
 

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 
 type LightboxImage = {
   src: string
@@ -14,7 +14,7 @@ type LightboxProps = {
   images: LightboxImage[]
   className?: string
   /** Render thumbnails; call `open(index)` on click to launch the viewer at that image. */
-  children: (open: (index: number) => void) => React.ReactNode
+  children: (open: (index: number) => void) => ReactNode
 }
 
 /**
@@ -23,9 +23,9 @@ type LightboxProps = {
  * controls) and Escape/backdrop-click to close.
  */
 export function Lightbox({ images, className, children }: LightboxProps) {
-  const [index, setIndex] = React.useState<number | null>(null)
+  const [index, setIndex] = useState<number | null>(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (index === null) return
 
     function onKeyDown(event: KeyboardEvent) {

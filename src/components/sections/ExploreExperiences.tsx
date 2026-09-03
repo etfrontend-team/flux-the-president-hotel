@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { useState } from 'react'
 
 import { underlineClasses } from '@/components/Header'
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
@@ -106,7 +106,7 @@ const filters: { label: string; value: 'all' | ExperienceCategory }[] = [
 ]
 
 export function ExploreExperiences() {
-  const [activeFilter, setActiveFilter] = React.useState<'all' | ExperienceCategory>('all')
+  const [activeFilter, setActiveFilter] = useState<'all' | ExperienceCategory>('all')
 
   const visible =
     activeFilter === 'all' ? experiences : experiences.filter((experience) => experience.category === activeFilter)

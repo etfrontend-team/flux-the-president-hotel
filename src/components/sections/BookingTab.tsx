@@ -1,16 +1,16 @@
 'use client'
 
 import { useLenis } from 'lenis/react'
-import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { isHeroMostlyScrolledPast } from '@/lib/utils'
 
 export function BookingTab() {
-  const [visible, setVisible] = React.useState(false)
-  const wrapperRef = React.useRef<HTMLButtonElement>(null)
+  const [visible, setVisible] = useState(false)
+  const wrapperRef = useRef<HTMLButtonElement>(null)
   const lenis = useLenis()
 
-  React.useEffect(() => {
+  useEffect(() => {
     function onScroll() {
       const footer = document.querySelector('[data-footer]')
       const wrapperRect = wrapperRef.current?.getBoundingClientRect()

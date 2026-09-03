@@ -1,5 +1,4 @@
-import React from 'react'
-
+import { type CSSProperties, type ElementType, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
@@ -13,8 +12,8 @@ interface HeadingProps {
   color?: HeadingColor
   uppercase?: boolean
   className?: string
-  style?: React.CSSProperties
-  children: React.ReactNode
+  style?: CSSProperties
+  children: ReactNode
 }
 
 const colorMap: Record<HeadingColor, string> = {
@@ -47,7 +46,7 @@ export function Heading({
   style,
   children,
 }: HeadingProps) {
-  const Tag = `h${level}` as React.ElementType
+  const Tag = `h${level}` as ElementType
   return (
     <Tag
       style={style}

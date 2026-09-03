@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import React from 'react'
-
+import { type ReactNode } from 'react'
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 
 type Experience = {
   key: string
-  heading: React.ReactNode
+  heading: ReactNode
   description: string
   image: string
   alt: string

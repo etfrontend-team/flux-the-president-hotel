@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
-
+import { type ButtonHTMLAttributes, type ComponentProps } from 'react'
 import { cn } from '@/lib/utils'
 
 type ButtonVariant = 'link' | 'outlined' | 'glass' | 'solid'
@@ -11,8 +10,8 @@ type ButtonProps = {
   color?: ButtonColor
   className?: string
 } & (
-  | ({ as?: 'button' } & React.ButtonHTMLAttributes<HTMLButtonElement>)
-  | ({ as: 'a' } & React.ComponentProps<typeof Link>)
+  | ({ as?: 'button' } & ButtonHTMLAttributes<HTMLButtonElement>)
+  | ({ as: 'a' } & ComponentProps<typeof Link>)
 )
 
 const variants: Record<ButtonVariant, string> = {
@@ -79,14 +78,14 @@ export function Button({
 
   if (as === 'a') {
     return (
-      <Link className={classes} {...(props as React.ComponentProps<typeof Link>)}>
+      <Link className={classes} {...(props as ComponentProps<typeof Link>)}>
         {label}
       </Link>
     )
   }
 
   return (
-    <button className={classes} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
+    <button className={classes} {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}>
       {label}
     </button>
   )

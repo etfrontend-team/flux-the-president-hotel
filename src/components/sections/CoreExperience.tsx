@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { Button, Heading, Prose, Stack } from '@/components/ui'
 import { cn, isVideoSrc } from '@/lib/utils'
@@ -68,12 +68,12 @@ const tabs: ExperienceTab[] = [
  * on screen, per the Figma annotation.
  */
 export function CoreExperience() {
-  const wrapperRef = React.useRef<HTMLDivElement>(null)
-  const [activeIndex, setActiveIndex] = React.useState(0)
-  const [tabProgress, setTabProgress] = React.useState(0)
-  const [isMobileViewport, setIsMobileViewport] = React.useState(false)
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [tabProgress, setTabProgress] = useState(0)
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const query = window.matchMedia('(width < 992px)')
     setIsMobileViewport(query.matches)
 
@@ -85,7 +85,7 @@ export function CoreExperience() {
     return () => query.removeEventListener('change', onChange)
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     function onScroll() {
       const wrapper = wrapperRef.current
       if (!wrapper) return

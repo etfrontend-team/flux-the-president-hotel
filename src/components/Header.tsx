@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 
 import { useDayNight } from '@/components/DayNightContext'
 import { LogoMark, LogoSticky, MenuIcon } from '@/components/icons'
@@ -32,7 +32,7 @@ export function NavLink({
   onClick,
 }: {
   href: string
-  children: React.ReactNode
+  children: ReactNode
   onClick?: () => void
 }) {
   return (
@@ -52,9 +52,9 @@ export function Header() {
   const { toggle } = useMegaMenu()
   const { mode, toggle: toggleDayNight } = useDayNight()
   const isHomepage = usePathname() === '/'
-  const [stickyVisible, setStickyVisible] = React.useState(false)
+  const [stickyVisible, setStickyVisible] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     let lastY = window.scrollY
     let revealTimer: ReturnType<typeof setTimeout> | undefined
 

@@ -57,7 +57,7 @@ export function SustainabilityGallery() {
                 <div
                   key={image.src}
                   className={cn(
-                    'relative aspect-399/323 w-full overflow-hidden rounded-card',
+                    'relative aspect-397/321 w-full overflow-hidden rounded-card',
                     image.hideOnMobile && 'max-992:hidden',
                     !image.hideOnMobile && 'max-992:aspect-389/323',
                   )}
