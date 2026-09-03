@@ -33,7 +33,7 @@ export function SplitContent({
   return (
     <section className={cn('general-padding', className)}>
       <Container variant="lg">
-        <div className="flex flex-wrap justify-between gap-x-60 1199:gap-x-100 max-992:gap-y-50 1024:px-38 px-11">
+        <div className="flex flex-wrap max-992:flex-col justify-between gap-x-60 1199:gap-x-100 max-992:gap-y-50 1024:px-38 px-11">
           <Stack
             align="start"
             justify="center"
@@ -47,10 +47,10 @@ export function SplitContent({
                 <span className="font-accent text-16 leading-11 tracking-5 text-accent uppercase">
                   {eyebrow}
                 </span>
-                <Heading level={3} className="max-w-517 text-wrap">
+                <Heading level={3} className="992:max-w-565 text-wrap">
                   {heading}
                 </Heading>
-                <Prose color="ink-light" className="max-w-471">
+                <Prose color="ink-light" className="max-992:max-w-full max-w-517">
                   {description}
                 </Prose>
               </Stack>
@@ -64,24 +64,24 @@ export function SplitContent({
             )}
           </Stack>
 
-            <div
-              className={
-                isImageOnRight
-                  ? 'order-2 max-992:order-0 relative w-607 max-640:w-388 aspect-607/560 overflow-hidden rounded-card max-992:aspect-388/326'
-                  : 'order-1 max-992:order-0 relative w-607 max-640:w-388 aspect-607/560 overflow-hidden rounded-card max-992:aspect-388/326'
-              }
-              >
-              <FadeIn>
-                <Image
-                  src={image}
-                  alt={alt}
-                  fill
-                  sizes="(min-width: 993px) 607px, 100vw"
-                  className="object-cover"
-                  style={imageObjectPosition ? { objectPosition: imageObjectPosition } : undefined}
-                />
-              </FadeIn>
-            </div>
+          <div
+            className={
+              isImageOnRight
+                ? 'order-2 max-992:order-0 relative min-w-0 max-992:w-full max-992:flex-none 992:max-w-607 992:flex-1 aspect-607/560 overflow-hidden rounded-card max-992:aspect-388/326'
+                : 'order-1 max-992:order-0 relative min-w-0 max-992:w-full max-992:flex-none 992:max-w-607 992:flex-1 aspect-607/560 overflow-hidden rounded-card max-992:aspect-388/326'
+            }
+            >
+            <FadeIn>
+              <Image
+                src={image}
+                alt={alt}
+                fill
+                sizes="(min-width: 993px) 607px, 100vw"
+                className="object-cover"
+                style={imageObjectPosition ? { objectPosition: imageObjectPosition } : undefined}
+              />
+            </FadeIn>
+          </div>
         </div>
       </Container>
     </section>

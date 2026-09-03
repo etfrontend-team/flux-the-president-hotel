@@ -20,11 +20,6 @@ export function BookingTab() {
       const bars = document.querySelectorAll<HTMLElement>('[data-booking-bar]')
       const activeBar = Array.from(bars).find((el) => el.offsetParent !== null)
 
-      // Desktop's overlay bar fades out via opacity once the hero is mostly
-      // scrolled past (see BookingBarOverlay), staying in the layout the
-      // whole time — so the tab hands off at that same point. Mobile's flow
-      // bar has no fade, it just scrolls out of the document normally, so
-      // wait until it's actually scrolled past instead.
       const pastBookingBar =
         activeBar?.dataset.bookingBar === 'flow'
           ? activeBar.getBoundingClientRect().bottom <= 0

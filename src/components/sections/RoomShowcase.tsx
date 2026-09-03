@@ -49,7 +49,7 @@ export function RoomShowcase() {
 
   return (
     <section className="general-padding">
-      <Container variant="lg" className="max-992:px-26">
+      <Container variant="lg">
         <div className='1024:px-38 px-11'>
           <Heading level={3} className="mb-40">
             Pup Stays
@@ -136,7 +136,7 @@ export function RoomShowcase() {
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 rounded-full bg-brand/20 opacity-0 transition-opacity duration-300 ease-out group-hover/navbtn:opacity-100"
               />
-              <ChevronRightIcon className="relative h-12 w-7 rotate-180 text-brand" />
+              <ChevronRightIcon className="relative h-12 w-7 rotate-180 mr-3 text-brand" />
             </button>
             <button
               type="button"

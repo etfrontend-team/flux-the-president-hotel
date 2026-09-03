@@ -114,66 +114,68 @@ export function ExploreExperiences() {
   return (
     <section className="general-padding">
       <Container variant="lg">
-        <Stack
-          direction="row"
-          align="center"
-          gap={25}
-          tabletGap={25}
-          mobileGap={15}
-          className="mb-50 max-992:flex-wrap"
-        >
-          {filters.map((filter) => (
-            <button
-              key={filter.value}
-              type="button"
-              onClick={() => setActiveFilter(filter.value)}
-              className={cn(
-                'relative inline-block px-1 pb-10 font-body text-14 tracking-10 text-brand uppercase cursor-pointer',
-                underlineClasses,
-                activeFilter === filter.value && 'after:origin-left after:scale-x-100',
-              )}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </Stack>
+        <div className="px-38 max-992:px-11">
+          <Stack
+            direction="row"
+            align="center"
+            gap={25}
+            tabletGap={25}
+            mobileGap={15}
+            className="mb-50 max-992:flex-wrap"
+          >
+            {filters.map((filter) => (
+              <button
+                key={filter.value}
+                type="button"
+                onClick={() => setActiveFilter(filter.value)}
+                className={cn(
+                  'relative inline-block px-1 pb-10 font-body text-14 tracking-10 text-brand uppercase cursor-pointer',
+                  underlineClasses,
+                  activeFilter === filter.value && 'after:origin-left after:scale-x-100',
+                )}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </Stack>
 
-        <div className="grid grid-cols-1 gap-x-40 gap-y-80 max-1024:gap-y-40 768:grid-cols-2 1024:grid-cols-3">
-          {visible.map((experience) => (
-            <article key={experience.title} className="group flex flex-col gap-35">
-              <Link href="#" className="relative block aspect-388/315 overflow-hidden rounded-card">
-                <Image
-                  src={experience.image}
-                  alt={experience.alt}
-                  fill
-                  unoptimized
-                  style={experience.imagePosition ? { objectPosition: experience.imagePosition } : undefined}
-                  className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                />
-              </Link>
+          <div className="grid grid-cols-1 gap-x-40 gap-y-80 max-1024:gap-y-40 768:grid-cols-2 1024:grid-cols-3">
+            {visible.map((experience) => (
+              <article key={experience.title} className="group flex flex-col gap-35">
+                <Link href="#" className="relative block aspect-388/315 overflow-hidden rounded-card">
+                  <Image
+                    src={experience.image}
+                    alt={experience.alt}
+                    fill
+                    unoptimized
+                    style={experience.imagePosition ? { objectPosition: experience.imagePosition } : undefined}
+                    className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                  />
+                </Link>
 
-              <Stack gap={30} tabletGap={30} mobileGap={30}>
-                <Stack gap={20} tabletGap={20} mobileGap={20}>
-                  <span className="font-accent text-13 tracking-5 text-accent uppercase">
-                    {experience.categoryLabel}
-                  </span>
-                  <Heading level={4} color="brand" uppercase={false} className="capitalize">
-                    {experience.title}
-                  </Heading>
-                  <Prose color="ink-light">{experience.description}</Prose>
+                <Stack gap={30} tabletGap={30} mobileGap={30}>
+                  <Stack gap={20} tabletGap={20} mobileGap={20}>
+                    <span className="font-accent text-13 tracking-5 text-accent uppercase">
+                      {experience.categoryLabel}
+                    </span>
+                    <Heading level={4} color="brand" uppercase={false} className="capitalize">
+                      {experience.title}
+                    </Heading>
+                    <Prose color="ink-light">{experience.description}</Prose>
+                  </Stack>
+                  <Button as="a" href="#" variant="link" color="brand" className="text-13">
+                    Discover
+                  </Button>
                 </Stack>
-                <Button as="a" href="#" variant="link" color="brand" className="text-13">
-                  Discover
-                </Button>
-              </Stack>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
 
-        <div className="mt-60 flex justify-center">
-          <Button as="a" href="#" variant="glass" color="brand">
-            Load More
-          </Button>
+          <div className="mt-60 flex justify-center">
+            <Button as="a" href="#" variant="glass" color="brand">
+              Load More
+            </Button>
+          </div>
         </div>
       </Container>
     </section>

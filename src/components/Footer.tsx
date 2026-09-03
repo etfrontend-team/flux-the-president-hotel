@@ -46,17 +46,17 @@ const navColumns: { title: string; links: NavLinkItem[] }[] = [
     title: 'Discover',
     links: [
       { label: 'Experiences', href: '/experiences' },
-      { label: 'Wellness & Spa', href: '#' },
+      { label: 'Wellness & Spa', href: '/wellness' },
       { label: 'Events', href: '/events' },
       { label: "What's On", href: '/whatson' },
-      { label: 'Location', href: '#' },
+      { label: 'Location', href: '/location' },
     ],
   },
   {
     title: 'The Hotel',
     links: [
-      { label: 'About Us', href: '#' },
-      { label: 'Careers', href: '#' },
+      { label: 'About Us', href: '/about' },
+      { label: 'Careers', href: '/careers' },
       { label: 'Sustainability', href: '/sustainability' },
       { label: 'FAQs', href: '/faq' },
       { label: 'Gallery', href: '#' },

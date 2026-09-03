@@ -37,13 +37,13 @@ const images: Record<ImageKey, { src: string; alt: string }> = {
 const primaryLinks: { label: string; image: ImageKey; href?: string }[] = [
   { label: 'Stay', image: 'stay', href: '/stay' },
   { label: 'Experiences', image: 'taste', href: '/experiences' },
-  { label: 'Wellness', image: 'wellness' },
+  { label: 'Wellness', image: 'wellness', href: '/wellness' },
   { label: 'taste', image: 'stay', href: '/taste' },
   { label: 'Offers', image: 'taste', href: '/offers' },
-  { label: 'About', image: 'wellness' },
+  { label: 'About', image: 'wellness', href: '/about' },
   { label: 'Events', image: 'stay', href: '/events' },
   { label: "What's On", image: 'taste', href: '/whatson' },
-  { label: 'Location', image: 'wellness' },
+  { label: 'Location', image: 'wellness', href: '/location' },
 ]
 
 /** Height/gap of one slot in the hover image strip below — keep in sync with the `h-350`/`gap-30` classes on each slot. */
@@ -58,7 +58,7 @@ const utilityLinks: { label: string; href: string }[] = [
   { label: 'Careers', href: '#' },
   { label: 'Sustainability', href: '/sustainability' },
   { label: 'FAQs', href: '/faq' },
-  { label: 'Gallery', href: '#' },
+  { label: 'Gallery', href: '/gallery' },
   { label: 'Loyalty', href: '#' },
 ]
 
@@ -258,9 +258,13 @@ export function MegaMenu() {
               }`}
               style={{ transitionDelay: contentDelay(contactIndex) }}
             >
-              <p className="font-body text-18 leading-12 font-normal tracking-10 text-brand uppercase">
+              <Link
+                href="/contactus"
+                onClick={close}
+                className="font-body text-18 leading-12 font-normal tracking-10 text-brand uppercase hover:opacity-70"
+              >
                 Contact
-              </p>
+              </Link>
               <Stack gap={20} tabletGap={20} mobileGap={20} className="font-body text-13 leading-muted font-light tracking-5 text-ink">
                 <Link href="tel:+27214348111" onClick={close} className="hover:opacity-70">
                   +27 21 434 8111

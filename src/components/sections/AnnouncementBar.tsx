@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import React from 'react'
 
 import { Stack, Button } from '@/components/ui'
