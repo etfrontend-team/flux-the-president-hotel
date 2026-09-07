@@ -63,7 +63,7 @@ export function WhereToStayCarousel() {
   return (
     <div className="w-full">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-20 1024:grid 1024:grid-cols-3 1024:gap-40">
+        <div className="flex gap-20 1024:grid 1024:grid-cols-3 1024:gap-40 transition-all duration-300 ease-linear">
           {stayCards.map((card, index) => {
             const isLastSlide = index === stayCards.length - 1
 

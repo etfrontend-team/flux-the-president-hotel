@@ -9,7 +9,6 @@ import { Container } from '@/components/ui'
 type GalleryImage = {
   src: string
   alt: string
-  /** Per Figma (node 1:15218): a caption is optional — only some images carry one. */
   caption?: string
 }
 
@@ -30,7 +29,7 @@ export function LifestyleGallery({ images = IMAGES }: { images?: GalleryImage[] 
     <section className="general-padding">
       <Container className="embla max-992:px-15!">
         <div ref={emblaRef} className="embla__viewport cursor-grab overflow-hidden active:cursor-grabbing">
-          <div className="embla__container flex -ml-15">
+          <div className="embla__container flex -ml-15 transition-all duration-300 ease-linear">
             {images.map((image, index) => (
               <div
                 key={`${image.src}-${index}`}

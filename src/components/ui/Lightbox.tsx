@@ -55,12 +55,13 @@ export function Lightbox({ images, className, children }: LightboxProps) {
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-24"
           role="dialog"
           aria-modal="true"
+          aria-label="Image viewer"
           onClick={() => setIndex(null)}
         >
           <button
             type="button"
             aria-label="Close"
-            className="absolute top-24 right-24 text-2xl text-paper/80 hover:text-paper"
+            className="absolute top-24 right-24 text-2xl text-paper/80 hover:text-paper cursor-pointer"
             onClick={() => setIndex(null)}
           >
             ✕
@@ -70,7 +71,7 @@ export function Lightbox({ images, className, children }: LightboxProps) {
             <button
               type="button"
               aria-label="Previous image"
-              className="absolute left-24 text-3xl text-paper/80 hover:text-paper"
+              className="absolute left-24 text-3xl text-paper/80 hover:text-paper cursor-pointer"
               onClick={(event) => {
                 event.stopPropagation()
                 setIndex((i) => (i === null ? i : (i - 1 + images.length) % images.length))
@@ -79,29 +80,30 @@ export function Lightbox({ images, className, children }: LightboxProps) {
               ‹
             </button>
           )}
-          <div className="relative bg-paper overflow-hidden rounded-card size-full max-h-[85vh] max-w-[90vw]">
+          <div className="relative bg-paper overflow-hidden size-full max-h-[85vh] max-w-[90vw]">
             <Image
               src={active.src}
               alt={active.alt}
               fill
               sizes="90vw"
               onClick={(event) => event.stopPropagation()}
+              className='object-cover'
             />
-
-            {images.length > 1 && (
-              <button
-                type="button"
-                aria-label="Next image"
-                className="absolute right-24 text-3xl text-paper/80 hover:text-paper"
-                onClick={(event) => {
-                  event.stopPropagation()
-                  setIndex((i) => (i === null ? i : (i + 1) % images.length))
-                }}
-              >
-                ›
-              </button>
-            )}
           </div>
+
+          {images.length > 1 && (
+            <button
+              type="button"
+              aria-label="Next image"
+              className="absolute right-24 text-3xl text-paper/80 hover:text-paper cursor-pointer"
+              onClick={(event) => {
+                event.stopPropagation()
+                setIndex((i) => (i === null ? i : (i + 1) % images.length))
+              }}
+            >
+              ›
+            </button>
+          )}
         </div>
       )}
     </div>

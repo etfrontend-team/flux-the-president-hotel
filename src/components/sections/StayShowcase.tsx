@@ -31,7 +31,7 @@ const CARDS: ShowcaseCard[] = [
     image: '/images/stay-showcase-rooms.webp',
     mobileImage: '/images/stay-showcase-rooms-mob.webp',
     alt: 'A sea-view room with a wave photograph above the headboard',
-    href: '#',
+    href: '/stay/rooms',
   },
   {
     title: 'Suites',

@@ -101,7 +101,7 @@ export function NearbyDestinations() {
           </div>
 
           <div ref={emblaRef} className="embla__viewport 992:overflow-hidden">
-            <div className="embla__container flex -ml-20 992:-ml-40">
+            <div className="embla__container flex -ml-20 992:-ml-40 transition-all duration-300 ease-linear">
               {DESTINATIONS.map((destination, index) => (
                 <div key={`${destination.title}-${index}`} className="embla__slide min-w-0 shrink-0 pl-20 992:pl-40 flex-[0_0_83.335%] 992:flex-[0_0_33.333%]">
                   <article className="flex flex-col gap-35 max-992:gap-25">

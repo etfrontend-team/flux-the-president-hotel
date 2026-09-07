@@ -111,7 +111,7 @@ export function OurHistory() {
         </FadeIn>
 
         <div ref={emblaRef} className="embla__viewport min-w-0 flex-1 overflow-hidden">
-          <div className="embla__container flex -ml-20 992:-ml-30">
+          <div className="embla__container flex -ml-20 992:-ml-30 transition-all duration-300 ease-linear">
             {TIMELINE.map((era, index) => (
               <FadeIn key={era.year} className="embla__slide pl-20 992:pl-30 min-w-0 shrink-0 flex-[0_0_calc((100%--57%)/2)] 1024:w-521 1024:flex-none">
                 <button

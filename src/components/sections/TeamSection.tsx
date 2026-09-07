@@ -48,7 +48,7 @@ export function TeamSection() {
           </FadeIn>
 
           <div ref={emblaRef} className="embla__viewport 992:overflow-hidden">
-            <div className="embla__container flex max-992:-ml-20 992:grid 992:grid-cols-4 992:gap-x-30">
+            <div className="embla__container flex max-992:-ml-20 992:grid 992:grid-cols-4 992:gap-x-30 transition-all duration-300 ease-linear">
               {TEAM.map((member, index) => (
                 <FadeIn key={`${member.name}-${index}`} className="embla__slide max-992:pl-20 min-w-0 shrink-0 flex-[0_0_83%] 992:flex-none">
                   <Stack gap={35} tabletGap={35} mobileGap={35}>

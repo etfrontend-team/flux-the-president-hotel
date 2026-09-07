@@ -79,7 +79,7 @@ export function WildlifeShowcase() {
           </Stack>
 
           <div ref={emblaRef} className="overflow-hidden">
-            <div className="flex gap-20 992:grid 992:grid-cols-3 992:gap-x-40">
+            <div className="flex gap-20 992:grid 992:grid-cols-3 992:gap-x-40 transition-all duration-300 ease-linear">
               {ANIMALS.map((animal, index) => {
                 const isLastSlide = index === ANIMALS.length - 1
 

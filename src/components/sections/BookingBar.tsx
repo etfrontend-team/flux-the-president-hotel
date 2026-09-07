@@ -3,30 +3,35 @@ import { Button, Stack } from '@/components/ui'
 
 import { GuestStepper } from './GuestStepper'
 
-type BookingBarVariant = 'overlay' | 'flow'
+type BookingBarVariant = 'overlay' | 'flow' | 'stay'
 
 const fieldBase = 'flex h-42 max-1199:min-h-42 flex-1 items-center justify-between rounded-card px-10 1366:px-20'
 
 const fieldVariantClasses: Record<BookingBarVariant, string> = {
   overlay: 'border border-paper bg-smoke/15',
   flow: 'border border-brand-muted bg-transparent',
+  stay: 'border border-brand-muted 992:border-brand bg-transparent',
 }
 
+/** Per Figma (node 416:1481 desktop, 430:1486 mobile): the StayHero variant — plain outlined fields in normal flow, like `flow`, but with a full-strength brand border at desktop instead of the muted one. */
 export function BookingBar({ variant = 'overlay' }: { variant?: BookingBarVariant }) {
+  const isOverlay = variant === 'overlay'
   const isFlow = variant === 'flow'
   const fieldClasses = `${fieldBase} ${fieldVariantClasses[variant]}`
-  const labelColor = isFlow ? 'text-brand' : 'text-paper'
-  const stepperColor = isFlow ? 'brand' : 'paper'
+  const labelColor = isOverlay ? 'text-paper' : 'text-brand'
+  const stepperColor = isOverlay ? 'paper' : 'brand'
 
   return (
     <div
       className={
-        isFlow
-          ? 'relative w-full bg-paper px-25 pt-40 max-992:pb-25 pb-15'
-          : 'absolute bottom-0 left-0 w-full pt-58 pb-35 max-1366:px-25 1366:px-35'
+        isOverlay
+          ? 'absolute bottom-0 left-0 w-full pt-58 pb-35 max-1366:px-25 1366:px-35'
+          : isFlow
+            ? 'relative w-full bg-paper px-25 pt-40 max-992:pb-25 pb-15'
+            : 'relative w-full pt-40 max-992:pb-25 pb-15'
       }
     >
-      {!isFlow && (
+      {isOverlay && (
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-full -z-1">
           {[
             { blur: 10, mask: 'linear-gradient(to top, rgba(149,148,148,1) 0%, rgba(149,148,148,0) 25%, transparent 40%)' },
@@ -58,10 +63,10 @@ export function BookingBar({ variant = 'overlay' }: { variant?: BookingBarVarian
         className="max-1199:items-stretch!"
       >
         <button type="button" className={fieldClasses}>
-          <span className={`font-body text-12 tracking-10 uppercase ${isFlow ? 'text-ink' : 'text-paper'}`}>
+          <span className={`font-body text-12 tracking-10 uppercase ${isFlow ? 'text-ink' : labelColor}`}>
             Room Type
           </span>
-          <ChevronRightIcon className={`h-12 w-7 rotate-90 ${isFlow ? 'text-ink' : 'text-paper'}`} />
+          <ChevronRightIcon className={`h-12 w-7 rotate-90 ${isFlow ? 'text-ink' : labelColor}`} />
         </button>
 
         {/* Paired on their own row at every width — `1199:contents` drops this wrapper from

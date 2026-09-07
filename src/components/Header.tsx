@@ -51,8 +51,24 @@ export function NavLink({
 export function Header() {
   const { toggle } = useMegaMenu()
   const { mode, toggle: toggleDayNight } = useDayNight()
-  const isHomepage = usePathname() === '/'
+  const pathname = usePathname()
+  const isHomepage = pathname === '/'
   const [stickyVisible, setStickyVisible] = useState(false)
+  const [isLightHero, setIsLightHero] = useState(false)
+
+  /**
+   * Most heroes sit on a dark image/video, so the absolute top bar defaults
+   * to `text-paper`. A hero can opt into `data-hero-theme="light"` (e.g.
+   * StayHero, whose gallery+booking-bar hero has plain paper background
+   * behind the header) to flip this bar to brand-colored text instead. The
+   * top bar only ever overlaps the page's initial hero (it scrolls away
+   * with the page — the separate fixed bar below takes over from there),
+   * so this only needs to be read once per navigation, not on scroll.
+   */
+  useEffect(() => {
+    const hero = document.querySelector('[data-hero]')
+    setIsLightHero(hero?.getAttribute('data-hero-theme') === 'light')
+  }, [pathname])
 
   useEffect(() => {
     let lastY = window.scrollY
@@ -99,7 +115,7 @@ export function Header() {
     >
       <Stack as="nav" direction="row" align="center" gap={25} tabletGap={15} mobileGap={25} className="mt-27 1024:mt-28">
         <button type="button" onClick={toggle} aria-label="Open menu" className="cursor-pointer">
-          <MenuIcon className="h-10 w-20 text-paper" />
+          <MenuIcon className={`h-10 w-20 ${isLightHero ? 'text-brand' : 'text-paper'}`} />
         </button>
         <Stack
           as="ul"
@@ -108,7 +124,7 @@ export function Header() {
           gap={25}
           tabletGap={10}
           mobileGap={25}
-          className="group/navlist max-1024:hidden font-body text-14 leading-12 tracking-10 text-paper uppercase"
+          className={`group/navlist max-1024:hidden font-body text-14 leading-12 tracking-10 uppercase ${isLightHero ? 'text-brand' : 'text-paper'}`}
         >
           {navLinks.map(({ label, href }) => (
             <li key={label}>
@@ -123,13 +139,13 @@ export function Header() {
         aria-label="The President Hotel, Cape Town"
         className="block h-auto w-115 mx-auto absolute left-1/2 -translate-x-1/2"
       >
-        <LogoMark className="h-auto w-full text-paper" />
+        <LogoMark className={`h-auto w-full ${isLightHero ? 'text-brand' : 'text-paper'}`} />
       </Link>
 
       <Stack direction="row" align="center" gap={20} mobileGap={15} className="relative 1024:ml-auto max-w-476 mt-17 1024:mt-13">
         {isHomepage && (
           <>
-            <span className="font-body text-14 leading-12 tracking-10 text-paper uppercase sm:inline">
+            <span className={`font-body text-14 leading-12 tracking-10 uppercase sm:inline ${isLightHero ? 'text-brand' : 'text-paper'}`}>
               {mode === 'night' ? 'Night Mode' : 'Day Mode'}
             </span>
             <button
@@ -138,17 +154,17 @@ export function Header() {
               onClick={toggleDayNight}
               aria-checked={mode === 'night'}
               aria-label="Toggle day/night mode"
-              className="relative h-20 w-35 shrink-0 rounded-full border border-paper bg-smoke/5 backdrop-blur-[1px] block cursor-pointer"
+              className={`relative h-20 w-35 shrink-0 rounded-full border bg-smoke/5 backdrop-blur-[1px] block cursor-pointer ${isLightHero ? 'border-brand' : 'border-paper'}`}
             >
               <span
-                className={`absolute top-1/2 size-12 -translate-y-1/2 rounded-full bg-paper transition-[left] duration-300 ease-out ${
+                className={`absolute top-1/2 size-12 -translate-y-1/2 rounded-full transition-[left] duration-300 ease-out ${isLightHero ? 'bg-brand' : 'bg-paper'} ${
                   mode === 'night' ? 'left-19' : 'left-4'
                 }`}
               />
             </button>
           </>
         )}
-        <Button as="a" href="#" variant="glass" color="paper" className='max-1024:hidden! 1024:text-13! tracking-10!'>
+        <Button as="a" href="#" variant="glass" color={isLightHero ? 'brand' : 'paper'} className='max-1024:hidden! 1024:text-13! tracking-10!'>
           Book Your Stay
         </Button>
       </Stack>

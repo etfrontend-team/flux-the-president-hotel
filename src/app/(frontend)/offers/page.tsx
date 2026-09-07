@@ -4,6 +4,8 @@ import { BookYourStay } from '@/components/sections/BookYourStay'
 import { Subscribe } from '@/components/sections/Subscribe'
 import { PhotoMarquee } from '@/components/sections/PhotoMarquee'
 import { CurrentOffers } from '@/components/sections/CurrentOffers'
+import { BookingOffer } from '@/components/sections/BookingOffer'
+
 
 export default function OffersPage() {
   return (
@@ -20,6 +22,7 @@ export default function OffersPage() {
         <AnnouncementBar pairedWithMarquee />
         <PhotoMarquee />
         <CurrentOffers />
+        <BookingOffer />
         <BookYourStay />
         <Subscribe />
     </>
