@@ -2,10 +2,13 @@ import { Fragment } from 'react'
 import { FadeIn } from '@/components/FadeIn'
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 type Job = {
   title: string
   href?: string
+  /** Per Figma (node 396:1515): only the very first row in the whole list carries a permanent highlight tint. */
+  highlighted?: boolean
 }
 
 type CategoryGroup = {
@@ -48,11 +51,11 @@ export function CareerListing() {
 
           {GROUPS.map((group, groupIndex) => (
             <FadeIn key={group.category}>
-              <div className={cn(groupIndex > 0 && 'mt-155 max-992:mt-100')}>
+              <div className={cn(groupIndex > 0 && 'mt-150 max-992:mt-100')}>
                 <span className="font-accent text-16 leading-11 tracking-5 text-accent uppercase">
                   {group.category}
                 </span>
-                <div className="mt-55 border-t border-brand-muted/30 max-992:mt-30" />
+                <div className="mt-55 border-t border-brand-muted/30 max-992:mt-25" />
 
                 {group.jobs.map((job, jobIndex) => (
                   <Fragment key={`${group.category}-${job.title}-${jobIndex}`}>
@@ -63,11 +66,16 @@ export function CareerListing() {
                       justify="between"
                       gap={20}
                       tabletGap={20}
-                      mobileGap={20}
-                      className="h-124 max-992:h-auto max-992:items-start max-992:py-25 transition-colors duration-300 hover:bg-paper-alt/30"
+                      mobileGap={35}
+                      className={cn(
+                        'py-32 px-35 max-992:px-15 max-992:py-40 max-992:items-start transition-colors duration-300 hover:bg-paper-alt/30',
+                        job.highlighted && 'bg-paper-alt/30',
+                      )}
                     >
                       <Heading level={4} uppercase={false} className="capitalize">
-                        {job.title}
+                        <Link href={job.href ?? '#'}>
+                          {job.title}
+                        </Link>
                       </Heading>
                       <Button as="a" href={job.href ?? '#'} variant="glass" color="brand">
                         Apply now
