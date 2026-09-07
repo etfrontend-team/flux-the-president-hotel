@@ -30,6 +30,11 @@ const GROUPS: CategoryGroup[] = [
   },
 ]
 
+/** Every listing shares one application page (Figma node 1:13284); the role rides in the query string. */
+function applyHref(title: string): string {
+  return `/careers/apply?position=${encodeURIComponent(title)}`
+}
+
 export function CareerListing() {
   return (
     <section className="general-padding">
@@ -73,11 +78,11 @@ export function CareerListing() {
                       )}
                     >
                       <Heading level={4} uppercase={false} className="capitalize">
-                        <Link href={job.href ?? '#'}>
+                        <Link href={job.href ?? applyHref(job.title)}>
                           {job.title}
                         </Link>
                       </Heading>
-                      <Button as="a" href={job.href ?? '#'} variant="glass" color="brand">
+                      <Button as="a" href={job.href ?? applyHref(job.title)} variant="glass" color="brand">
                         Apply now
                       </Button>
                     </Stack>
