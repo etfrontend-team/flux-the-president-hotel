@@ -56,15 +56,7 @@ export function Header() {
   const [stickyVisible, setStickyVisible] = useState(false)
   const [isLightHero, setIsLightHero] = useState(false)
 
-  /**
-   * Most heroes sit on a dark image/video, so the absolute top bar defaults
-   * to `text-paper`. A hero can opt into `data-hero-theme="light"` (e.g.
-   * StayHero, whose gallery+booking-bar hero has plain paper background
-   * behind the header) to flip this bar to brand-colored text instead. The
-   * top bar only ever overlaps the page's initial hero (it scrolls away
-   * with the page — the separate fixed bar below takes over from there),
-   * so this only needs to be read once per navigation, not on scroll.
-   */
+
   useEffect(() => {
     const hero = document.querySelector('[data-hero]')
     setIsLightHero(hero?.getAttribute('data-hero-theme') === 'light')
@@ -110,8 +102,8 @@ export function Header() {
   return (
     <>
     <Container
-      as="header"
-      className="w-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 max-992:mx-15 mx-25 max-1199:px-25 1199:px-35 py-17"
+        as="header"
+        className={`w-auto absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-24 max-992:mx-15 mx-25 max-1199:px-25 1199:px-35 py-17 ${isLightHero ? 'top-25' : 'top-0'}`}
     >
       <Stack as="nav" direction="row" align="center" gap={25} tabletGap={15} mobileGap={25} className="mt-27 1024:mt-28">
         <button type="button" onClick={toggle} aria-label="Open menu" className="cursor-pointer">
