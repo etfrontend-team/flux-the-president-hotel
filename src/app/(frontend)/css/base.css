@@ -37,15 +37,19 @@ img {
   @apply text-18 text-brand font-accent rotate-[3.92deg] leading-35 tracking-normal;
 }
 
+.prose ul li:where(li):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  @apply my-0;
+}
+
 .prose ul {
   @apply list-disc;
 }
 
 .prose ul li {
-  @apply leading-24;
+  @apply leading-muted;
 }
 .prose ul li:where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
-  @apply text-brand;
+  @apply text-ink/80;
 }
 
 .preserve-3d {

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { type ReactNode } from 'react'
 
 import { FadeIn } from '@/components/FadeIn'
 import { Button, Container, Heading, Prose, Stack } from '@/components/ui'
@@ -38,7 +39,7 @@ export function SplitContent({
   eyebrow?: string | null
   heading?: string
   meta?: string
-  description?: string | string[]
+  description?: ReactNode | ReactNode[]
   list?: string[]
   note?: string
   buttonLabel?: string | null

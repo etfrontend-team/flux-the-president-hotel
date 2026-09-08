@@ -57,7 +57,7 @@ const navColumns: { title: string; links: NavLinkItem[] }[] = [
     links: [
       { label: "About Us", href: "/about" },
       { label: "Careers", href: "/careers" },
-      { label: "Sustainability", href: "/sustainability" },
+      { label: "SANCCOB Penguins", href: "/sustainability/sanccob-penguins" },
       { label: "FAQs", href: "/faq" },
       { label: "Gallery", href: "#" },
       { label: "Loyalty", href: "/loyalty" },
@@ -144,7 +144,7 @@ export function Footer() {
             gap={50}
             tabletGap={50}
             mobileGap={50}
-            className="w-full justify-between 1199:px-80 992:flex-row 992:items-start">
+            className="w-full justify-between 1199:px-90 992:flex-row 992:items-start">
             {navColumns.map((column) => (
               <Stack
                 key={column.title}

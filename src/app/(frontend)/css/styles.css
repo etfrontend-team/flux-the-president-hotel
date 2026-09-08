@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
-@import './css/base.css';
-@import './css/layout.css';
-@import './css/utilities.css';
-@import './css/component.css';
+@import './base.css';
+@import './layout.css';
+@import './utilities.css';
+@import './component.css';
 
 @theme {
   /* Colours — from Figma (PRES Website Dev File, node 1:2291) */

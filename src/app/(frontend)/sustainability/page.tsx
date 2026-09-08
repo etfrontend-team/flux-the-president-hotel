@@ -1,57 +1,47 @@
-import { Hero } from '@/components/sections/Hero'
-import { SplitInfo } from '@/components/sections/SplitInfo'
-import { WildlifeShowcase } from '@/components/sections/WildlifeShowcase'
-import { SplitContent } from '@/components/sections/SplitContent'
-import { LifestyleGallery } from '@/components/sections/LifestyleGallery'
-import { BookYourStay } from '@/components/sections/BookYourStay'
-import { Subscribe } from '@/components/sections/Subscribe'
-import { Faq } from '@/components/sections/Faq'
+/** @format */
 
-export default function SustainabilityPage() {
+import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
+import { Hero } from "@/components/sections/Hero";
+import { BookYourStay } from "@/components/sections/BookYourStay";
+import { Subscribe } from "@/components/sections/Subscribe";
+import { PhotoMarquee } from "@/components/sections/PhotoMarquee";
+import { SplitContent } from "@/components/sections/SplitContent";
+import { SustainabilityGallery } from "@/components/sections/SustainabilityGallery";
+import { MemberBenefits } from "@/components/sections/MemberBenefits";
+
+export default function VouchersPage() {
   return (
     <>
-        <Hero
-            eyebrow="EXPERIENCES"
-            heading={
-                <>
-                    <span className="block">SANCCOB Penguin</span>
-                    <span className="block">Experience</span>
-                </>
-            }
-            description="A private morning with African penguins — an exclusive conservation experience with our flagship charity partner."
-        />
-        <SplitInfo divider cardWidth={385} />
-        <WildlifeShowcase />
-        <SplitContent
-            className="max-992:bg-paper-alt/40"
-            imagePosition="right"
-            eyebrow="SUPPORT"
-            heading="Cocktails for a Cause"
-            description={[
-                "Introducing our cocktail trio in support of SANCCOB penguins. Meet Rocky, Pamela and Sylvester — each inspired by the spirit of conservation and coastal life, with proceeds supporting SANCCOB's ongoing conservation efforts.",
-                'Rocky A refreshing blend of apple, mint, passionfruit and club soda. Pamela A smooth blend of rooibos espresso, cinnamon and vanilla. Sylvester Bloedlemon Amber Gin with pineapple lemonade.',
-            ]}
-            buttonLabel={null}
-            image="/images/split-content-cocktails.webp"
-            alt="Three cocktails served on a poolside table, garnished with mint, dried citrus and lime"
-            imageObjectPosition="50% 66%"
-        />
-        <SplitContent
-            imagePosition="left"
-            eyebrow="SUPPORT"
-            heading="Plush Penguins"
-            description={[
-                "In addition, Souvenir, The President Hotel's online store, stocks plush penguins, with a portion of each sale donated directly to SANCCOB in support of their ongoing work protecting vulnerable seabird populations.",
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            ]}
-            buttonLabel="Shop Now"
-            image="/images/split-content-plush-penguin.webp"
-            alt="Plush penguin toys wearing striped hats and name tags"
-        />
-        <LifestyleGallery />
-        <Faq className="max-992:bg-paper-alt/40"/>
-        <BookYourStay />
-        <Subscribe />
+      <Hero
+        eyebrow="SUSTAINABILITY"
+        heading={
+          <>
+            <span className="block">Our Commitment to</span>
+            <span className="block">the Environment</span>
+          </>
+        }
+        description="We believe a great hotel should take care of more than its guests. Green Key certified. SANCCOB partner. A hotel working to do better."
+      />
+      <AnnouncementBar pairedWithMarquee />
+      <PhotoMarquee />
+      <SplitContent
+        imagePosition="left"
+        eyebrow="SUSTAINABILITY"
+        heading="Green Key Certification"
+        description={[
+          <span key="lead" className="font-medium text-ink">
+            Green Key Certified since 2019
+          </span>,
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Green Key is the leading standard for excellence in the field of environmental responsibility and sustainable operation within the tourism industry.",
+        ]}
+        buttonLabel={null}
+        image="/images/placeholder.webp"
+        alt="Three cocktails served on a poolside table, garnished with mint, dried citrus and lime"
+      />
+      <MemberBenefits />
+      <SustainabilityGallery />
+      <BookYourStay />
+      <Subscribe />
     </>
-  )
+  );
 }

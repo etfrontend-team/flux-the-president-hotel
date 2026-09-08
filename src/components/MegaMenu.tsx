@@ -71,7 +71,7 @@ const filmstripItems = [
 /** `href: '#'` marks pages that don't exist yet — wire them up as soon as that page is built. */
 const utilityLinks: { label: string; href: string }[] = [
   { label: "Careers", href: "/careers" },
-  { label: "Sustainability", href: "/sustainability" },
+  { label: "SANCCOB Penguins", href: "/sustainability/sanccob-penguins" },
   { label: "FAQs", href: "/faq" },
   { label: "Gallery", href: "/gallery" },
   { label: "Loyalty", href: "/loyalty" },
