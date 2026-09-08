@@ -252,7 +252,17 @@ export function Footer() {
                   href="#"
                   aria-label={label}
                   className="text-paper hover:opacity-70">
-                  <Icon className="size-16" />
+                  {label === "YouTube" ? (
+                    <YouTubeIcon className="size-16" accentColor="#1A454F" />
+                  ) : label === "Pinterest" ? (
+                    <PinterestIcon
+                      className="size-16"
+                      circleColor="#1A454F"
+                      markColor="#FFFCF9"
+                    />
+                  ) : (
+                    <Icon className="size-16" />
+                  )}
                 </Link>
               ))}
             </Stack>

@@ -9,7 +9,7 @@ import { SplitContent } from "@/components/sections/SplitContent";
 import { SustainabilityGallery } from "@/components/sections/SustainabilityGallery";
 import { MemberBenefits } from "@/components/sections/MemberBenefits";
 
-export default function VouchersPage() {
+export default function SustainabilityPage() {
   return (
     <>
       <Hero

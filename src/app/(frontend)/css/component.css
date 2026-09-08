@@ -19,7 +19,7 @@
 }
 
 .btn-glass {
-  @apply inline-flex items-center justify-center rounded-card border border-solid border-brand-muted px-25 pt-9 pb-9 cursor-pointer uppercase font-body font-normal text-14 leading-12 tracking-5 backdrop-blur-[1px] transition-colors duration-150 ease-out;
+  @apply inline-flex items-center justify-center rounded-card border border-solid border-brand-muted px-25 pt-9 pb-9 cursor-pointer uppercase font-body font-normal text-14 leading-12 tracking-5 backdrop-blur-[2px] transition-colors duration-150 ease-out;
 }
 
 .btn-glass-brand {

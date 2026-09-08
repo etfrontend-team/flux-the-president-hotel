@@ -191,7 +191,7 @@ export function MegaMenu() {
         as="nav"
         aria-label="Site menu"
         className="relative flex h-full 1024:flex-row p-0 992:p-0">
-        <div className="flex flex-wrap items-start justify-between w-full absolute top-42 left-0 shrink-0 px-44 max-425:px-25 z-1 1199:pl-129 1199:pr-60">
+        <div className="flex flex-wrap items-start justify-between w-full absolute top-42 left-0 shrink-0 px-44 max-425:px-25 z-2 1199:pl-129 1199:pr-60">
           <button
             type="button"
             onClick={close}
@@ -220,6 +220,7 @@ export function MegaMenu() {
             Book Your Stay
           </Button>
         </div>
+
         <div
           onScroll={handlePanelScroll}
           className={`megamenu-scroll flex w-full flex-col overflow-y-auto mt-249 1024:mt-167 ${
@@ -362,7 +363,7 @@ export function MegaMenu() {
             {filmstripItems.map((item, index) => (
               <div
                 key={index}
-                className="relative h-350 w-full shrink-0 rounded-5 overflow-hidden">
+                className="relative h-350 w-full shrink-0 rounded-tl-5 rounded-bl-5 overflow-hidden">
                 <Image
                   src={images[item.image].src}
                   alt={images[item.image].alt}
@@ -373,6 +374,29 @@ export function MegaMenu() {
               </div>
             ))}
           </Stack>
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 z-1 h-135">
+            {[
+              {
+                blur: 2,
+                mask: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(149,148,148,0) 80%)",
+              },
+            ].map(({ blur, mask }) => (
+              <div
+                key={blur}
+                className="absolute inset-0"
+                style={{
+                  backdropFilter: `blur(${blur}px)`,
+                  WebkitBackdropFilter: `blur(${blur}px)`,
+                  maskImage: mask,
+                  WebkitMaskImage: mask,
+                }}
+              />
+            ))}
+            <div className="absolute inset-0 opacity-25 bg-[linear-gradient(180deg,rgba(0,0,0,1)_0%,rgba(149,148,148,0)_80%)]" />
+          </div>
         </div>
       </Container>
     </div>

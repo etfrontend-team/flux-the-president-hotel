@@ -1,137 +1,141 @@
-'use client'
+/** @format */
 
-import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+"use client";
 
-import { Button, Heading, Prose, Stack } from '@/components/ui'
-import { cn, isVideoSrc } from '@/lib/utils'
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
+import { Button, Heading, Prose, Stack } from "@/components/ui";
+import { cn, isVideoSrc } from "@/lib/utils";
 
 type ExperienceTab = {
-  key: string
-  label: string
-  eyebrow: string
-  heading: [string, string]
-  description: string
-  media: string
-  /** Overrides `media` below the `max-992` breakpoint. Falls back to `media` when unset. */
-  mobileMedia?: string
-  alt: string
-  buttonLabel: string
-  href: string
-}
+  key: string;
+  label: string;
+  eyebrow: string;
+  heading: [string, string];
+  description: string;
+  media: string;
+  mobileMedia?: string;
+  alt: string;
+  buttonLabel: string;
+  href: string;
+};
 
 const tabs: ExperienceTab[] = [
   {
-    key: 'wellness',
-    label: 'Wellness',
-    eyebrow: 'Wellness',
-    heading: ['COVE WELLNESS SPA', 'Your Wellness Sanctuary'],
+    key: "wellness",
+    label: "Wellness",
+    eyebrow: "Wellness",
+    heading: ["COVE WELLNESS SPA", "Your Wellness Sanctuary"],
     description:
-      'Lorem ipsum dolor sit amet consectetur. Ullamcorper quam pellentesque porttitor nisi quis bibendum tristique consequat orci. Lorem ipsum dolor sit amet consectetur. ',
-    media: '/images/core-experience-wellness.webp',
-    alt: 'A guest receiving a hot stone massage at the spa',
-    buttonLabel: 'Discover Wellness',
-    href: '/wellness-and-spa/',
+      "Lorem ipsum dolor sit amet consectetur. Ullamcorper quam pellentesque porttitor nisi quis bibendum tristique consequat orci. Lorem ipsum dolor sit amet consectetur. ",
+    media: "/images/core-experience-wellness.webp",
+    alt: "A guest receiving a hot stone massage at the spa",
+    buttonLabel: "Discover Wellness",
+    href: "/wellness-and-spa/",
   },
   {
-    key: 'pets',
-    label: 'Pets',
-    eyebrow: 'Pets',
-    heading: ['Every guest arrives —', 'four legs included'],
-    description: 'Linen beds turned down at the foot of yours, a garden walk at first light, and a kitchen that plates for them too.',
-    media: '/images/PRESIDENTHOTEL-POOLSIDE-20260513-TOMPARKINSON-17.mp4',
-    alt: 'A dog relaxing poolside',
-    buttonLabel: 'Our Pet Policy',
-    href: '/pets/',
+    key: "pets",
+    label: "Pets",
+    eyebrow: "Pets",
+    heading: ["Every guest arrives —", "four legs included"],
+    description:
+      "Linen beds turned down at the foot of yours, a garden walk at first light, and a kitchen that plates for them too.",
+    media: "/images/PRESIDENTHOTEL-POOLSIDE-20260513-TOMPARKINSON-17.mp4",
+    alt: "A dog relaxing poolside",
+    buttonLabel: "Our Pet Policy",
+    href: "/pets/",
   },
   {
-    key: 'events',
-    label: 'Events',
-    eyebrow: 'Events',
-    heading: ['Long tables,', 'longer evenings'],
-    description: 'Private dining beneath the olive terrace, seated for twelve or ninety. Menus written the week you arrive.',
-    media: '/images/core-experience-events.webp',
-    alt: 'A table set for dining on the terrace',
-    buttonLabel: 'Plan an Occasion',
-    href: '/events/',
+    key: "events",
+    label: "Events",
+    eyebrow: "Events",
+    heading: ["Long tables,", "longer evenings"],
+    description:
+      "Private dining beneath the olive terrace, seated for twelve or ninety. Menus written the week you arrive.",
+    media: "/images/core-experience-events.webp",
+    alt: "A table set for dining on the terrace",
+    buttonLabel: "Plan an Occasion",
+    href: "/events/",
   },
-]
+];
 
-/**
- * Fixed-scroll tabbed showcase (Figma node 1:2688). The wrapper reserves
- * `tabs.length * 100vh` of scroll space in normal flow; the actual visual
- * (image, nav, copy) is `position: sticky` inside it, so it stays pinned to
- * the viewport for that whole scroll range while `activeIndex`/`tabProgress`
- * — derived from how far through that range the user has scrolled — drive
- * which tab is shown and how full its progress line is. `data-pinned-section`
- * is what tells AnnouncementBar (and any future nav) to hide while this is
- * on screen, per the Figma annotation.
- */
 export function CoreExperience() {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [tabProgress, setTabProgress] = useState(0)
-  const [isMobileViewport, setIsMobileViewport] = useState(false)
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [tabProgress, setTabProgress] = useState(0);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
 
   useEffect(() => {
-    const query = window.matchMedia('(width < 992px)')
-    setIsMobileViewport(query.matches)
+    const query = window.matchMedia("(width < 992px)");
+    setIsMobileViewport(query.matches);
 
     function onChange(event: MediaQueryListEvent) {
-      setIsMobileViewport(event.matches)
+      setIsMobileViewport(event.matches);
     }
 
-    query.addEventListener('change', onChange)
-    return () => query.removeEventListener('change', onChange)
-  }, [])
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     function onScroll() {
-      const wrapper = wrapperRef.current
-      if (!wrapper) return
+      const wrapper = wrapperRef.current;
+      if (!wrapper) return;
 
-      const scrollableHeight = wrapper.offsetHeight - window.innerHeight
-      if (scrollableHeight <= 0) return
+      const scrollableHeight = wrapper.offsetHeight - window.innerHeight;
+      if (scrollableHeight <= 0) return;
 
-      const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY
-      const scrolled = window.scrollY - wrapperTop
-      const fraction = Math.min(1, Math.max(0, scrolled / scrollableHeight))
-      const scaled = fraction * tabs.length
-      const index = Math.min(tabs.length - 1, Math.floor(scaled))
+      const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
+      const scrolled = window.scrollY - wrapperTop;
+      const fraction = Math.min(1, Math.max(0, scrolled / scrollableHeight));
+      const scaled = fraction * tabs.length;
+      const index = Math.min(tabs.length - 1, Math.floor(scaled));
 
-      setActiveIndex(index)
-      setTabProgress(scaled - index)
+      setActiveIndex(index);
+      setTabProgress(scaled - index);
     }
 
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   function goToTab(index: number) {
-    const wrapper = wrapperRef.current
-    if (!wrapper) return
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
 
-    const scrollableHeight = wrapper.offsetHeight - window.innerHeight
-    const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY
-    window.scrollTo({ top: wrapperTop + (index / tabs.length) * scrollableHeight + 1, behavior: 'smooth' })
+    const scrollableHeight = wrapper.offsetHeight - window.innerHeight;
+    const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: wrapperTop + (index / tabs.length) * scrollableHeight + 1,
+      behavior: "smooth",
+    });
   }
 
-  const active = tabs[activeIndex]
+  const active = tabs[activeIndex];
 
   return (
-    <div ref={wrapperRef} style={{ height: `${tabs.length * 100}vh` }} className="relative">
-      <div data-pinned-section className="sticky top-0 h-screen w-full overflow-hidden">
+    <div
+      ref={wrapperRef}
+      style={{ height: `${tabs.length * 100}vh` }}
+      className="relative">
+      <div
+        data-pinned-section
+        className="sticky top-0 h-screen w-full overflow-hidden">
         {tabs.map((tab, index) => {
-          const src = isMobileViewport && tab.mobileMedia ? tab.mobileMedia : tab.media
+          const src =
+            isMobileViewport && tab.mobileMedia ? tab.mobileMedia : tab.media;
           const revealClassName = cn(
-            'object-cover transition-[clip-path] duration-800 ease-out',
-            index <= activeIndex ? '[clip-path:inset(0_0_0_0%)]' : '[clip-path:inset(0_0_0_100%)]',
-          )
+            "object-cover transition-[clip-path] duration-800 ease-out",
+            index <= activeIndex ?
+              "[clip-path:inset(0_0_0_0%)]"
+            : "[clip-path:inset(0_0_0_100%)]",
+          );
 
           if (isVideoSrc(src)) {
             return (
@@ -143,9 +147,12 @@ export function CoreExperience() {
                 muted
                 playsInline
                 style={{ zIndex: index }}
-                className={cn('absolute inset-0 h-full w-full', revealClassName)}
+                className={cn(
+                  "absolute inset-0 h-full w-full",
+                  revealClassName,
+                )}
               />
-            )
+            );
           }
 
           return (
@@ -159,7 +166,7 @@ export function CoreExperience() {
               style={{ zIndex: index }}
               className={revealClassName}
             />
-          )
+          );
         })}
 
         {/* Persistent gradient — same across every tab, per Figma. */}
@@ -168,12 +175,26 @@ export function CoreExperience() {
           className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0)_100%),linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2))] max-992:bg-[linear-gradient(0deg,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0)_40%),linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2))]"
         />
 
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-10 max-992:h-180 h-100">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 z-10 max-992:h-180 h-100">
           {[
-            { blur: 10, mask: 'linear-gradient(to bottom, black 0%, black 25%, transparent 40%)' },
-            { blur: 7, mask: 'linear-gradient(to bottom, black 0%, black 45%, transparent 60%)' },
-            { blur: 4, mask: 'linear-gradient(to bottom, black 0%, black 65%, transparent 80%)' },
-            { blur: 2, mask: 'linear-gradient(to bottom, black 0%, black 85%, transparent 100%)' },
+            {
+              blur: 10,
+              mask: "linear-gradient(to bottom, black 0%, black 25%, transparent 40%)",
+            },
+            {
+              blur: 7,
+              mask: "linear-gradient(to bottom, black 0%, black 45%, transparent 60%)",
+            },
+            {
+              blur: 4,
+              mask: "linear-gradient(to bottom, black 0%, black 65%, transparent 80%)",
+            },
+            {
+              blur: 2,
+              mask: "linear-gradient(to bottom, black 0%, black 85%, transparent 100%)",
+            },
           ].map(({ blur, mask }) => (
             <div
               key={blur}
@@ -194,33 +215,36 @@ export function CoreExperience() {
           gap={30}
           tabletGap={30}
           mobileGap={20}
-          className="absolute inset-x-0 top-90 max-992:top-90 z-20 px-60 max-1024:px-25"
-        >
+          className="absolute inset-x-0 top-90 max-992:top-90 z-20 px-60 max-1024:px-25">
           {tabs.map((tab, index) => {
-            const isActive = index === activeIndex
-            const isPast = index < activeIndex
-            const fillPercent = isPast ? 100 : isActive ? tabProgress * 100 : 0
+            const isActive = index === activeIndex;
+            const isPast = index < activeIndex;
+            const fillPercent =
+              isPast ? 100
+              : isActive ? tabProgress * 100
+              : 0;
 
             return (
               <button
                 key={tab.key}
                 type="button"
                 onClick={() => goToTab(index)}
-                className="flex flex-1 cursor-pointer flex-col items-start gap-25 text-left"
-              >
+                className="flex flex-1 cursor-pointer flex-col items-start gap-25 text-left">
                 <span
                   className={cn(
-                    'font-accent text-16 tracking-5 uppercase text-white transition-opacity duration-300 ease-out max-992:hidden',
-                    isActive || isPast ? 'opacity-100' : 'opacity-40',
-                  )}
-                >
+                    "font-accent text-16 tracking-5 uppercase text-white transition-opacity duration-300 ease-out max-992:hidden",
+                    isActive || isPast ? "opacity-100" : "opacity-40",
+                  )}>
                   {tab.label}
                 </span>
                 <div className="relative h-px w-full bg-white/40">
-                  <div className="absolute inset-y-0 left-0 bg-white/80" style={{ width: `${fillPercent}%` }} />
+                  <div
+                    className="absolute inset-y-0 left-0 bg-white/80"
+                    style={{ width: `${fillPercent}%` }}
+                  />
                 </div>
               </button>
-            )
+            );
           })}
         </Stack>
 
@@ -230,34 +254,34 @@ export function CoreExperience() {
           gap={35}
           tabletGap={35}
           mobileGap={35}
-          className="absolute bottom-80 left-60 z-20 max-w-530 max-1024:bottom-60 max-1024:left-26 max-1024:right-26 max-1024:max-w-full"
-        >
+          className="absolute bottom-80 left-60 z-20 max-w-530 max-1024:bottom-60 max-1024:left-26 max-1024:right-26 max-1024:max-w-full">
           <Stack align="start" gap={30} tabletGap={30} mobileGap={30}>
             <span
               className="core-experience-line font-accent text-16 uppercase leading-display tracking-5 text-white"
-              style={{ animationDelay: '0ms' }}
-            >
+              style={{ animationDelay: "0ms" }}>
               {active.eyebrow}
             </span>
             <div className="flex flex-col">
-                <Heading
-                  
-                  level={3}
-                  color="paper"
-                  uppercase={false}
-                  className="core-experience-line text-white uppercase"
-                  >
-                  {active.heading.map((line, index) => (
-                    <span className='block' key={line} style={{ animationDelay: `${80 + index * 60}ms` }}>{line}</span>
-                  ))}
-                </Heading>
+              <Heading
+                level={3}
+                color="paper"
+                uppercase={false}
+                className="core-experience-line text-white uppercase">
+                {active.heading.map((line, index) => (
+                  <span
+                    className="block"
+                    key={line}
+                    style={{ animationDelay: `${80 + index * 60}ms` }}>
+                    {line}
+                  </span>
+                ))}
+              </Heading>
             </div>
           </Stack>
           <Prose
             color="ink-light"
             className="core-experience-line max-w-529 text-white!"
-            style={{ animationDelay: '220ms' }}
-          >
+            style={{ animationDelay: "220ms" }}>
             {active.description}
           </Prose>
           <Button
@@ -266,12 +290,11 @@ export function CoreExperience() {
             variant="glass"
             color="white"
             className="core-experience-line"
-            style={{ animationDelay: '300ms' }}
-          >
+            style={{ animationDelay: "300ms" }}>
             {active.buttonLabel}
           </Button>
         </Stack>
       </div>
     </div>
-  )
+  );
 }
