@@ -1,8 +1,13 @@
-import { AnnouncementBar } from '@/components/sections/AnnouncementBar'
-import { Hero } from '@/components/sections/Hero'
-import { GuestAccessibility } from '@/components/sections/GuestAccessibility'
-import { BookYourStay } from '@/components/sections/BookYourStay'
-import { Subscribe } from '@/components/sections/Subscribe'
+/** @format */
+
+import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
+import { Hero } from "@/components/sections/Hero";
+import { GuestAccessibility } from "@/components/sections/GuestAccessibility";
+import { BookYourStay } from "@/components/sections/BookYourStay";
+import { Subscribe } from "@/components/sections/Subscribe";
+import { BookingOffer } from "@/components/sections/BookingOffer";
+import { Faq } from "@/components/sections/Faq";
+import { UpcomingEvents } from "@/components/sections/UpcomingEvents";
 
 export default function StayPage() {
   return (
@@ -18,8 +23,11 @@ export default function StayPage() {
       />
       <AnnouncementBar />
       <GuestAccessibility />
+      <Faq className="bg-paper-alt/40" />
+      <BookingOffer />
+      <UpcomingEvents />
       <BookYourStay />
       <Subscribe />
     </>
-  )
+  );
 }

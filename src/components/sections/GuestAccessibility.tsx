@@ -134,7 +134,13 @@ function TopicCopy({ topic }: { topic: Topic }) {
   )
 }
 
-function ParallaxCard({ topic }: { topic: Topic }) {
+function ParallaxCard({
+  topic,
+  aspectClassName,
+}: {
+  topic: Topic
+  aspectClassName: string
+}) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], [-30, 30])
@@ -144,7 +150,7 @@ function ParallaxCard({ topic }: { topic: Topic }) {
       <FadeIn>
         <m.div style={{ y }}>
           <Stack align="start" gap={50} tabletGap={50} mobileGap={50}>
-            <TopicImage topic={topic} aspectClassName="aspect-572/450" />
+            <TopicImage topic={topic} aspectClassName={aspectClassName} />
             <TopicCopy topic={topic} />
           </Stack>
         </m.div>
@@ -171,19 +177,14 @@ export function GuestAccessibility() {
 
             <div className="992:-mt-53 flex flex-1 flex-col gap-100">
               {RIGHT_TOPICS.map((topic) => (
-                <ParallaxCard key={topic.title} topic={topic} />
+                <ParallaxCard key={topic.title} topic={topic} aspectClassName="aspect-572/450" />
               ))}
             </div>
           </div>
 
           <div className="flex flex-col gap-100 992:hidden">
             {MOBILE_TOPICS.map((topic) => (
-              <FadeIn key={topic.title}>
-                <Stack align="start" gap={50} tabletGap={50} mobileGap={50}>
-                  <TopicImage topic={topic} aspectClassName="aspect-square" />
-                  <TopicCopy topic={topic} />
-                </Stack>
-              </FadeIn>
+              <ParallaxCard key={topic.title} topic={topic} aspectClassName="aspect-square" />
             ))}
           </div>
         </div>
