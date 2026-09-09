@@ -38,13 +38,6 @@ const images: Record<ImageKey, { src: string; alt: string }> = {
   },
 };
 
-/**
- * All 9 primary menu links — hovering any of these scrolls the right-hand
- * image strip so that item's photo centers in the panel (per Figma
- * annotation on node 1:2716 and the live-site reference at
- * presidenthotel.co.za). Only 3 distinct photos exist so far, so they
- * repeat in a cycle across the 9 links.
- */
 const primaryLinks: { label: string; image: ImageKey; href?: string }[] = [
   { label: "Stay", image: "stay", href: "/stay" },
   { label: "Experiences", image: "taste", href: "/experiences" },
@@ -57,18 +50,15 @@ const primaryLinks: { label: string; image: ImageKey; href?: string }[] = [
   { label: "Location", image: "wellness", href: "/location" },
 ];
 
-/** Height/gap of one slot in the hover image strip below — keep in sync with the `h-350`/`gap-30` classes on each slot. */
 const IMAGE_SLOT_HEIGHT = 350;
 const IMAGE_SLOT_GAP = 30;
 
-/** Wraps the strip with the last/first items cloned at each end, so there's always a peek image above and below, even at the list's boundaries. */
 const filmstripItems = [
   primaryLinks[primaryLinks.length - 1],
   ...primaryLinks,
   primaryLinks[0],
 ];
 
-/** `href: '#'` marks pages that don't exist yet — wire them up as soon as that page is built. */
 const utilityLinks: { label: string; href: string }[] = [
   { label: "Careers", href: "/careers" },
   { label: "SANCCOB Penguins", href: "/sustainability/sanccob-penguins" },

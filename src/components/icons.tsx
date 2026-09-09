@@ -21,13 +21,16 @@ export function MenuIcon({ className }: IconProps) {
 export function ChevronRightIcon({ className }: IconProps) {
   return (
     <svg
-      viewBox="0 0 7 12"
+      viewBox="0 0 10 6"
       fill="none"
       className={className}
       aria-hidden="true">
       <path
-        d="M4.834 5.579 0 .744.744 0l5.578 5.579-5.578 5.579-.744-.744L4.834 5.58Z"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.292894 0.292893C0.683419 -0.0976309 1.31658 -0.0976309 1.70711 0.292893L5.00001 3.58579L8.29291 0.292893C8.68344 -0.097631 9.3166 -0.097631 9.70713 0.292893C10.0976 0.683417 10.0976 1.31658 9.70713 1.70711L5.70712 5.70711C5.31659 6.09763 4.68343 6.09763 4.2929 5.70711L0.292894 1.70711C-0.0976312 1.31658 -0.0976312 0.683418 0.292894 0.292893Z"
         fill="currentColor"
+        fillOpacity="0.8"
       />
     </svg>
   );
