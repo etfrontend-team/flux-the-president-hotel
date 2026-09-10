@@ -30,9 +30,10 @@ export function PositionBanner({
   imageAlt = 'Sunset over the Atlantic from The President Hotel',
 }: PositionBannerProps) {
   return (
-    // `data-hero` is the shared hook Header's sticky bar and AnnouncementBar read
-    // (see isHeroInView in lib/utils) so they stay hidden while this banner is on screen.
-    <section data-hero className="max-992:pt-214 pt-219">
+    // `data-hero` is the shared hook Header's sticky bar and AnnouncementBar read (see
+    // isHeroInView in lib/utils); `data-hero-theme="light"` is what flips the header to its
+    // dark-on-paper treatment, the same pair StayHero uses.
+    <section data-hero data-hero-theme="light" className="max-992:pt-214 pt-219">
       <div className="relative isolate overflow-hidden rounded-card max-992:mx-15 max-992:aspect-410/727 mx-25 992:aspect-1390/673">
         <Image src={imageSrc} alt={imageAlt} fill priority sizes="100vw" className="object-cover" />
 

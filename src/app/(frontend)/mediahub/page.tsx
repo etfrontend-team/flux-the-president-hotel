@@ -1,6 +1,7 @@
 import { AnnouncementBar } from '@/components/sections/AnnouncementBar'
 import { Hero } from '@/components/sections/Hero'
 import { MediaContact } from '@/components/sections/MediaContact'
+import { MediaHubPopup } from '@/components/sections/MediaHubPopup'
 import { SplitContent } from '@/components/sections/SplitContent'
 import { MediaHubListing } from '@/components/sections/MediaHubListing'
 import { BookYourStay } from '@/components/sections/BookYourStay'
@@ -35,6 +36,7 @@ export default function MediaHubPage() {
         <MediaHubListing />
         <BookYourStay />
         <Subscribe />
+        <MediaHubPopup />
     </>
   )
 }
